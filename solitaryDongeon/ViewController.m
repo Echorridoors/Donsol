@@ -75,7 +75,7 @@
 	
 	NSLog(@"Cards count: %lu",(unsigned long)[[playableHand cards] count]);
 	
-	if( [[playableHand cards] count] < 5 ){
+	if( [[playableHand cards] count] < 4 ){
 		self.runButton.enabled = false;
 	}
 	else{

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F040AF46-A5B4-4DD8-9C75-6349C27273EB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>solitaryDongeon</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>17D878BE0DB89D7B6ABE2B0701C3D26D51F3F2D7</key>
+		<string>https://github.com/aliceffekt/donsol.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>solitaryDongeon.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>17D878BE0DB89D7B6ABE2B0701C3D26D51F3F2D7</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aliceffekt/donsol.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>17D878BE0DB89D7B6ABE2B0701C3D26D51F3F2D7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>17D878BE0DB89D7B6ABE2B0701C3D26D51F3F2D7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>donsol</string>
+		</dict>
+	</array>
+</dict>
+</plist>
