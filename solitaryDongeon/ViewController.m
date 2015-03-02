@@ -17,18 +17,32 @@
 @property (weak, nonatomic) IBOutlet UIButton *runButton;
 - (IBAction)runButton:(id)sender;
 
+
+// Card 1
+@property (weak, nonatomic) IBOutlet UIView *card1Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card1Button;
 - (IBAction)card1Button:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *card1Image;
 
+// Card 2
+@property (weak, nonatomic) IBOutlet UIView *card2Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card2Button;
 - (IBAction)card2Button:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *card2Image;
 
+// Card 3
+@property (weak, nonatomic) IBOutlet UIView *card3Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card3Button;
 - (IBAction)card3Button:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *card3Image;
 
+// Card 4
+@property (weak, nonatomic) IBOutlet UIView *card4Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card4Button;
 - (IBAction)card4Button:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *card4Image;
 
+// Details
 @property (weak, nonatomic) IBOutlet UILabel *lifeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *Equipment;
 @property (weak, nonatomic) IBOutlet UILabel *discardLabel;
@@ -47,7 +61,47 @@
 	discardPile = [[NSMutableArray alloc] init];
 	user = [[User alloc] init];
 	
+	[self template];
 	[self updateStage];
+}
+
+-(void)template
+{
+	NSLog(@"Template(%f %f)", self.view.frame.size.width, self.view.frame.size.height);
+	
+	CGFloat margin = self.view.frame.size.width;
+	
+	_card1Wrapper.frame = CGRectMake(0, 0, 100, 100);
+	_card1Wrapper.backgroundColor = [UIColor redColor];
+	_card1Image.frame = CGRectMake(0, 0, 10, 10);
+	_card1Image.backgroundColor = [UIColor blueColor];
+	_card1Button.frame = CGRectMake(0, 0, 100, 100);
+	_card1Wrapper.layer.cornerRadius = 10;
+	_card1Wrapper.clipsToBounds = YES;
+	
+	_card2Wrapper.frame = CGRectMake(100, 0, 100, 100);
+	_card2Wrapper.backgroundColor = [UIColor yellowColor];
+	_card2Image.frame = CGRectMake(0, 0, 10, 10);
+	_card2Image.backgroundColor = [UIColor blueColor];
+	_card2Button.frame = CGRectMake(0, 0, 100, 100);
+	_card2Wrapper.layer.cornerRadius = 10;
+	_card2Wrapper.clipsToBounds = YES;
+	
+	_card3Wrapper.frame = CGRectMake(0, 100, 100, 100);
+	_card3Wrapper.backgroundColor = [UIColor purpleColor];
+	_card3Image.frame = CGRectMake(0, 0, 10, 10);
+	_card3Image.backgroundColor = [UIColor blueColor];
+	_card3Button.frame = CGRectMake(0, 0, 100, 100);
+	_card3Wrapper.layer.cornerRadius = 10;
+	_card3Wrapper.clipsToBounds = YES;
+	
+	_card4Wrapper.frame = CGRectMake(100, 100, 100, 100);
+	_card4Wrapper.backgroundColor = [UIColor cyanColor];
+	_card4Image.frame = CGRectMake(0, 0, 10, 10);
+	_card4Image.backgroundColor = [UIColor blueColor];
+	_card4Button.frame = CGRectMake(0, 0, 100, 100);
+	_card4Wrapper.layer.cornerRadius = 10;
+	_card4Wrapper.clipsToBounds = YES;
 }
 
 -(void)updateStage
