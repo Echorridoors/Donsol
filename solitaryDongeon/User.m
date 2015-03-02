@@ -39,16 +39,6 @@
 	escaped = value;
 }
 
--(void)setLastCard :(Card*)card
-{
-	lastCard = card;
-}
-
--(Card*)lastCard
-{
-	return lastCard;
-}
-
 -(int)room
 {
 	return room;

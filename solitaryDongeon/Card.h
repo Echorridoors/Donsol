@@ -17,6 +17,7 @@
 -(int)value;
 -(NSString*)symbol;
 -(UIColor*)color;
+-(int)number;
 
 @end
 

@@ -24,9 +24,6 @@
 -(void)setEscape :(int)value;
 -(int)escaped;
 
--(Card*)lastCard;
--(void)setLastCard :(Card*)card;
-
 @end
 
 int life;
@@ -34,5 +31,4 @@ int equip;
 int room;
 int malus;
 int escaped;
-
-Card * lastCard;
+int isHealing;

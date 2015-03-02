@@ -57,10 +57,10 @@
 		[self draw];
 	}
 	
-	[self.card1Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:0] value],[[playableHand card:0] symbol]] forState:UIControlStateNormal];
-	[self.card2Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:1] value],[[playableHand card:1] symbol]] forState:UIControlStateNormal];
-	[self.card3Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:2] value],[[playableHand card:2] symbol]] forState:UIControlStateNormal];
-	[self.card4Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:3] value],[[playableHand card:3] symbol]] forState:UIControlStateNormal];
+	[self.card1Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:0] number],[[playableHand card:0] symbol]] forState:UIControlStateNormal];
+	[self.card2Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:1] number],[[playableHand card:1] symbol]] forState:UIControlStateNormal];
+	[self.card3Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:2] number],[[playableHand card:2] symbol]] forState:UIControlStateNormal];
+	[self.card4Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:3] number],[[playableHand card:3] symbol]] forState:UIControlStateNormal];
 	
 	[self.card1Button setTitleColor:[[playableHand card:0] color] forState:UIControlStateNormal];
 	[self.card2Button setTitleColor:[[playableHand card:1] color] forState:UIControlStateNormal];
@@ -73,14 +73,13 @@
 	
 	self.roomLabel.text = [NSString stringWithFormat:@"Room: %d",[user room]];
 	
-	NSLog(@"Cards count: %lu",(unsigned long)[[playableHand cards] count]);
-	
 	if( [[playableHand cards] count] < 4 ){
 		self.runButton.enabled = false;
 	}
 	else{
 		self.runButton.enabled = true;
 	}
+
 }
 
 # pragma mark - Choice
@@ -90,22 +89,23 @@
 	NSString * cardData = [playableHand cardValue:cardNumber];
 	Card * card = [[Card alloc] initWithString:cardData];
 	
-	NSLog(@"CARD TYPE YO -> %@", [card type]);
-	
-	// Set last card
-	[user setLastCard:card];
+	NSLog(@"--------+-------------------");
+	NSLog(@"!  CARD | %@ %d", [card type], [card number]);
+	NSLog(@"--------+-------------------");
 	
 	// Check for trying to heal twice
-	if( [[[user lastCard] type] isEqualToString:@"H"] && [[card type] isEqualToString:@"H"] ){
+	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){
 		NSLog(@"Cannot heal twice!");
 		[discardPile addObject:[playableHand cardValue:cardNumber]];
 		[playableHand discard:cardNumber];
+		justHealed = 1;
 	}
 	else if( [[card type] isEqualToString:@"H"] ){
 		[user gainLife:[card value]];
 		// Manip cards
 		[discardPile addObject:[playableHand cardValue:cardNumber]];
 		[playableHand discard:cardNumber];
+		justHealed = 1;
 		
 	}
 	else if( [[card type] isEqualToString:@"D"] ){
@@ -114,10 +114,9 @@
 		[discardPile addObject:[playableHand cardValue:cardNumber]];
 		[playableHand discard:cardNumber];
 		[user setMalus:25];
+		justHealed = 0;
 	}
 	else{
-	
-		NSLog(@"%d %d",[card value] , [user malus]);
 		// Malus
 		if( [card value] >= [user malus] ){
 			NSLog(@"!!!!!!!");
@@ -127,17 +126,14 @@
 		
 		int battleDamage = ( [card value] - [user equip]) ;
 		if( battleDamage < 0 ){ battleDamage = 0; }
+		if( battleDamage > 0 ){ [user looseLife:battleDamage]; }
 		
-		NSLog(@"Battle Damage: %d",battleDamage );
-		
-		if( battleDamage > 0 ){
-			[user looseLife:battleDamage];
-		}
 		[user setMalus:[card value]];
 		
 		// Manip cards
 		[discardPile addObject:[playableHand cardValue:cardNumber]];
 		[playableHand discard:cardNumber];
+		justHealed = 0;
 	}
 	
 	[user setEscape:0];
@@ -180,7 +176,7 @@
 		return;
 	}
 	
-	if( [[playableHand cards] count] < 5 ){
+	if( [[playableHand cards] count] < 4 ){
 		return;
 	}
 	
@@ -222,31 +218,22 @@
 
 - (IBAction)card1Button:(id)sender
 {
-	NSLog(@"!  CARD | card: %@", [playableHand cardValue:0]);
 	[self choice:0];
 }
 
 - (IBAction)card2Button:(id)sender
 {
-	NSLog(@"!  CARD | card: %@", [playableHand cardValue:1]);
 	[self choice:1];
 }
 
 - (IBAction)card3Button:(id)sender
 {
-	NSLog(@"!  CARD | card: %@", [playableHand cardValue:2]);
 	[self choice:2];
 }
 
 - (IBAction)card4Button:(id)sender
 {
-	NSLog(@"!  CARD | card: %@", [playableHand cardValue:3]);
 	[self choice:3];
-}
-
-- (IBAction)card5Button:(id)sender {
-	NSLog(@"!  CARD | card: %@", [playableHand cardValue:4]);
-	[self choice:4];
 }
 
 # pragma mark - Defaults

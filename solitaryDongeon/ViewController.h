@@ -10,6 +10,7 @@
 #import "Deck.h"
 #import "Hand.h"
 #import "User.h"
+#import "Card.h"
 
 @interface ViewController : UIViewController
 
@@ -20,3 +21,5 @@ Hand * playableHand;
 User * user;
 
 NSMutableArray * discardPile;
+
+int justHealed;

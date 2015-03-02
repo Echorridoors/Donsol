@@ -31,6 +31,7 @@
 	if( [[self type] isEqualToString:@"D"] ){ return @"♦︎"; }
 	if( [[self type] isEqualToString:@"H"] ){ return @"♥︎"; }
 	if( [[self type] isEqualToString:@"C"] ){ return @"♣︎"; }
+	if( [[self type] isEqualToString:@"J"] ){ return @"@"; }
 	return @"♠︎";
 }
 
@@ -39,7 +40,18 @@
 	if( [[self type] isEqualToString:@"D"] ){ return [UIColor redColor]; }
 	if( [[self type] isEqualToString:@"H"] ){ return [UIColor redColor]; }
 	if( [[self type] isEqualToString:@"C"] ){ return [UIColor blackColor]; }
+	if( [[self type] isEqualToString:@"J"] ){ return [UIColor purpleColor]; }
 	return [UIColor blackColor];
+}
+
+-(int)number
+{
+	int cardValue = [[cardString substringToIndex:1] intValue];
+	
+	if( [cardString length] == 3){
+		cardValue = [[cardString substringToIndex:2] intValue];
+	}
+	return cardValue;
 }
 
 -(int)value
