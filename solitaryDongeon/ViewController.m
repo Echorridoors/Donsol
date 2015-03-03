@@ -69,37 +69,40 @@
 {
 	NSLog(@"Template(%f %f)", self.view.frame.size.width, self.view.frame.size.height);
 	
-	CGFloat margin = self.view.frame.size.width;
+	CGRect screen = self.view.frame;
+	CGFloat margin = self.view.frame.size.width/16;
+	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
+	CGFloat cardHeight =(cardWidth * 88)/56;
 	
-	_card1Wrapper.frame = CGRectMake(0, 0, 100, 100);
-	_card1Wrapper.backgroundColor = [UIColor redColor];
+	_card1Wrapper.frame = CGRectMake(margin, margin, cardWidth, cardHeight);
+	_card1Wrapper.backgroundColor = [UIColor whiteColor];
 	_card1Image.frame = CGRectMake(0, 0, 10, 10);
-	_card1Image.backgroundColor = [UIColor blueColor];
-	_card1Button.frame = CGRectMake(0, 0, 100, 100);
+	_card1Image.backgroundColor = [UIColor grayColor];
+	_card1Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Wrapper.layer.cornerRadius = 10;
 	_card1Wrapper.clipsToBounds = YES;
 	
-	_card2Wrapper.frame = CGRectMake(100, 0, 100, 100);
-	_card2Wrapper.backgroundColor = [UIColor yellowColor];
+	_card2Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, margin, cardWidth, cardHeight);
+	_card2Wrapper.backgroundColor = [UIColor whiteColor];
 	_card2Image.frame = CGRectMake(0, 0, 10, 10);
-	_card2Image.backgroundColor = [UIColor blueColor];
-	_card2Button.frame = CGRectMake(0, 0, 100, 100);
+	_card2Image.backgroundColor = [UIColor grayColor];
+	_card2Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card2Wrapper.layer.cornerRadius = 10;
 	_card2Wrapper.clipsToBounds = YES;
 	
-	_card3Wrapper.frame = CGRectMake(0, 100, 100, 100);
-	_card3Wrapper.backgroundColor = [UIColor purpleColor];
+	_card3Wrapper.frame = CGRectMake(margin, (margin*1.5)+cardHeight, cardWidth, cardHeight);
+	_card3Wrapper.backgroundColor = [UIColor whiteColor];
 	_card3Image.frame = CGRectMake(0, 0, 10, 10);
-	_card3Image.backgroundColor = [UIColor blueColor];
-	_card3Button.frame = CGRectMake(0, 0, 100, 100);
+	_card3Image.backgroundColor = [UIColor grayColor];
+	_card3Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card3Wrapper.layer.cornerRadius = 10;
 	_card3Wrapper.clipsToBounds = YES;
 	
-	_card4Wrapper.frame = CGRectMake(100, 100, 100, 100);
-	_card4Wrapper.backgroundColor = [UIColor cyanColor];
+	_card4Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, (margin*1.5)+cardHeight, cardWidth, cardHeight);
+	_card4Wrapper.backgroundColor = [UIColor whiteColor];
 	_card4Image.frame = CGRectMake(0, 0, 10, 10);
-	_card4Image.backgroundColor = [UIColor blueColor];
-	_card4Button.frame = CGRectMake(0, 0, 100, 100);
+	_card4Image.backgroundColor = [UIColor grayColor];
+	_card4Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card4Wrapper.layer.cornerRadius = 10;
 	_card4Wrapper.clipsToBounds = YES;
 }
