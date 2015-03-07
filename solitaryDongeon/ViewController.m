@@ -44,9 +44,12 @@
 
 // Details
 @property (weak, nonatomic) IBOutlet UILabel *lifeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *Equipment;
+@property (weak, nonatomic) IBOutlet UILabel *swordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discardLabel;
-@property (weak, nonatomic) IBOutlet UILabel *roomLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *swordValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lifeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *discardValueLabel;
 
 @end
 
@@ -73,38 +76,48 @@
 	CGFloat margin = self.view.frame.size.width/16;
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
+	CGFloat verticalOffset = margin * 3;
 	
-	_card1Wrapper.frame = CGRectMake(margin, margin, cardWidth, cardHeight);
+	_card1Wrapper.frame = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
 	_card1Wrapper.backgroundColor = [UIColor whiteColor];
-	_card1Image.frame = CGRectMake(0, 0, 10, 10);
-	_card1Image.backgroundColor = [UIColor grayColor];
+	_card1Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Wrapper.layer.cornerRadius = 10;
 	_card1Wrapper.clipsToBounds = YES;
 	
-	_card2Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, margin, cardWidth, cardHeight);
+	_card2Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, margin+verticalOffset, cardWidth, cardHeight);
 	_card2Wrapper.backgroundColor = [UIColor whiteColor];
-	_card2Image.frame = CGRectMake(0, 0, 10, 10);
-	_card2Image.backgroundColor = [UIColor grayColor];
+	_card2Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card2Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card2Wrapper.layer.cornerRadius = 10;
 	_card2Wrapper.clipsToBounds = YES;
 	
-	_card3Wrapper.frame = CGRectMake(margin, (margin*1.5)+cardHeight, cardWidth, cardHeight);
+	_card3Wrapper.frame = CGRectMake(margin, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
 	_card3Wrapper.backgroundColor = [UIColor whiteColor];
-	_card3Image.frame = CGRectMake(0, 0, 10, 10);
-	_card3Image.backgroundColor = [UIColor grayColor];
+	_card3Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card3Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card3Wrapper.layer.cornerRadius = 10;
 	_card3Wrapper.clipsToBounds = YES;
 	
-	_card4Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, (margin*1.5)+cardHeight, cardWidth, cardHeight);
+	_card4Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
 	_card4Wrapper.backgroundColor = [UIColor whiteColor];
 	_card4Image.frame = CGRectMake(0, 0, 10, 10);
-	_card4Image.backgroundColor = [UIColor grayColor];
 	_card4Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card4Wrapper.layer.cornerRadius = 10;
 	_card4Wrapper.clipsToBounds = YES;
+	
+	_lifeLabel.frame = CGRectMake(margin, margin*0.5, margin * 3, margin);
+	_swordLabel.frame = CGRectMake(margin, (margin*1.5), margin * 3, margin);
+	_discardLabel.frame = CGRectMake(margin, (margin*2.5), margin * 3, margin);
+	
+	_lifeValueLabel.frame = CGRectMake(margin*4, margin*0.5, margin * 3, margin);
+	_swordValueLabel.frame = CGRectMake(margin*4, (margin*1.5), margin * 3, margin);
+	_discardValueLabel.frame = CGRectMake(margin*4, (margin*2.5), margin * 3, margin);
+	
+	_runButton.frame = CGRectMake(screen.size.width-(4*margin), (margin*0.5), margin*3, margin*3);
+	_runButton.backgroundColor = [UIColor whiteColor];
+	_runButton.layer.cornerRadius = 10;
+	
 }
 
 -(void)updateStage
@@ -124,11 +137,9 @@
 	[self.card3Button setTitleColor:[[playableHand card:2] color] forState:UIControlStateNormal];
 	[self.card4Button setTitleColor:[[playableHand card:3] color] forState:UIControlStateNormal];
 	
-	self.Equipment.text = [NSString stringWithFormat:@"Sword: %d(Malus: %d)",[user equip], [user malus]];
-	self.lifeLabel.text = [NSString stringWithFormat:@"Life: %d",[user life]];
-	self.discardLabel.text = [NSString stringWithFormat:@"Points: %lu(%lu left)",(unsigned long)[discardPile count],(52-[discardPile count])];
-	
-	self.roomLabel.text = [NSString stringWithFormat:@"Room: %d",[user room]];
+	self.swordValueLabel.text = [NSString stringWithFormat:@"%d(Malus: %d)",[user equip], [user malus]];
+	self.lifeValueLabel.text = [NSString stringWithFormat:@"%d",[user life]];
+	self.discardValueLabel.text = [NSString stringWithFormat:@"%lu(%lu left) Room:%d",(unsigned long)[discardPile count],(52-[discardPile count]),[user room]];
 	
 	if( [[playableHand cards] count] < 4 ){
 		self.runButton.enabled = false;
