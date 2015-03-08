@@ -51,6 +51,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *lifeValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discardValueLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *lifeBarWrapper;
+@property (weak, nonatomic) IBOutlet UIView *swordBarWrapper;
+@property (weak, nonatomic) IBOutlet UIView *discardBarWrapper;
+
+@property (weak, nonatomic) IBOutlet UIView *lifeBar;
+@property (weak, nonatomic) IBOutlet UIView *swordBar;
+@property (weak, nonatomic) IBOutlet UIView *discardBar;
+@property (weak, nonatomic) IBOutlet UIView *swordMalusBar;
+
 @end
 
 @implementation ViewController
@@ -65,7 +74,9 @@
 	user = [[User alloc] init];
 	
 	[self template];
+	[self draw];
 	[self updateStage];
+	
 }
 
 -(void)template
@@ -110,21 +121,47 @@
 	_swordLabel.frame = CGRectMake(margin, (margin*1.5), margin * 3, margin);
 	_discardLabel.frame = CGRectMake(margin, (margin*2.5), margin * 3, margin);
 	
-	_lifeValueLabel.frame = CGRectMake(margin*4, margin*0.5, margin * 3, margin);
-	_swordValueLabel.frame = CGRectMake(margin*4, (margin*1.5), margin * 3, margin);
-	_discardValueLabel.frame = CGRectMake(margin*4, (margin*2.5), margin * 3, margin);
+	_lifeLabel.text = @"HP";
+	_swordLabel.text = @"AP";
+	_discardLabel.text = @"XP";
+	
+	_lifeValueLabel.frame = CGRectMake(margin*2, margin*0.5, margin * 3, margin);
+	_swordValueLabel.frame = CGRectMake(margin*2, (margin*1.5), margin * 3, margin);
+	_discardValueLabel.frame = CGRectMake(margin*2, (margin*2.5), margin * 3, margin);
 	
 	_runButton.frame = CGRectMake(screen.size.width-(4*margin), (margin*0.5), margin*3, margin*3);
 	_runButton.backgroundColor = [UIColor whiteColor];
 	_runButton.layer.cornerRadius = 10;
 	
+	_lifeBarWrapper.frame = CGRectMake(margin*4, margin-(margin/8), screen.size.width-(2*margin)-(margin*7), margin/4);
+	_lifeBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
+	_lifeBarWrapper.clipsToBounds = YES;
+	_lifeBarWrapper.layer.cornerRadius = margin/8;
+	
+	_lifeBar.backgroundColor = [UIColor redColor];
+	
+	_swordBarWrapper.frame = CGRectMake(margin*4, margin*2-(margin/8), screen.size.width-(2*margin)-(margin*7), margin/4);
+	_swordBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
+	_swordBarWrapper.clipsToBounds = YES;
+	_swordBarWrapper.layer.cornerRadius = margin/8;
+	
+	_swordBar.backgroundColor = [UIColor redColor];
+	
+	_discardBarWrapper.frame = CGRectMake(margin*4, margin*3-(margin/8), screen.size.width-(2*margin)-(margin*7), margin/4);
+	_discardBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
+	_discardBarWrapper.clipsToBounds = YES;
+	_discardBarWrapper.layer.cornerRadius = margin/8;
+	
+	_discardBar.backgroundColor = [UIColor redColor];
+	
 }
 
 -(void)updateStage
 {
-	if( [[playableHand cards] count] < 3 ){
-		[user nextRoom];
-		[self draw];
+	// TODO
+	if( [[playableHand cards] count] < 1 ){
+//		[user nextRoom];
+//		[self draw];
 	}
 	
 	[self.card1Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:0] number],[[playableHand card:0] symbol]] forState:UIControlStateNormal];
@@ -137,16 +174,32 @@
 	[self.card3Button setTitleColor:[[playableHand card:2] color] forState:UIControlStateNormal];
 	[self.card4Button setTitleColor:[[playableHand card:3] color] forState:UIControlStateNormal];
 	
-	self.swordValueLabel.text = [NSString stringWithFormat:@"%d(Malus: %d)",[user equip], [user malus]];
+	self.swordValueLabel.text = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	self.lifeValueLabel.text = [NSString stringWithFormat:@"%d",[user life]];
-	self.discardValueLabel.text = [NSString stringWithFormat:@"%lu(%lu left) Room:%d",(unsigned long)[discardPile count],(52-[discardPile count]),[user room]];
+	self.discardValueLabel.text = [NSString stringWithFormat:@"%d(%d)",(int)[discardPile count], [user room]];
 	
-	if( [[playableHand cards] count] < 4 ){
-		self.runButton.enabled = false;
-	}
-	else{
+	if( [[playableHand cards] count] == 1 || [[playableHand cards] count] == 4 ){
+		NSLog(@"!   RUN | Enabled");
 		self.runButton.enabled = true;
 	}
+	else{
+		NSLog(@"!   RUN | Disabled");
+		self.runButton.enabled = false;
+	}
+	
+	self.swordBar.clipsToBounds = true;
+	
+	CGFloat healthBar = (([user life] * self.lifeBarWrapper.frame.size.width)/21);
+	CGFloat swordBar = (([user equip] * self.lifeBarWrapper.frame.size.width)/15);
+	CGFloat swordMalusBar = (([user malus] * self.lifeBarWrapper.frame.size.width)/15);
+	CGFloat discardBar = (((int)[discardPile count] * self.lifeBarWrapper.frame.size.width)/52);
+	
+	[UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+		self.lifeBar.frame = CGRectMake(0, 0, healthBar, self.lifeBarWrapper.frame.size.height);
+		self.swordBar.frame = CGRectMake(0, 0, swordBar, self.swordBarWrapper.frame.size.height);
+		self.swordMalusBar.frame = CGRectMake(0, 0, swordMalusBar, self.swordBarWrapper.frame.size.height);
+		self.discardBar.frame = CGRectMake(0, 0, discardBar, self.swordBarWrapper.frame.size.height);
+	} completion:^(BOOL finished){}];
 
 }
 
@@ -214,22 +267,22 @@
 	
 	// Draw 4 cards
 	
-	if( [[playableHand cards] count] == 0){
+	if( [playableHand numberOfCards] == 0){
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
 	}
-	else if( [[playableHand cards] count] == 1){
+	else if( [playableHand numberOfCards] == 1){
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
 	}
-	else if( [[playableHand cards] count] == 2){
+	else if( [playableHand numberOfCards] == 2){
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
 	}
-	else if( [[playableHand cards] count] == 3){
+	else if( [playableHand numberOfCards] == 3){
 		[playableHand pickCard:[playableDeck pickCard]];
 	}
 	
@@ -241,45 +294,23 @@
 - (IBAction)runButton:(id)sender
 {
 	if([user escaped] == 1){
+		NSLog(@"already escaped");
 		return;
 	}
 	
-	if( [[playableHand cards] count] < 4 ){
+	if( [playableHand numberOfCards] < 2){
+		NSLog(@"Can run, less than 2 cards.");
+	}
+	else
+	{
+		NSLog(@"too many cards left:%d",[playableHand numberOfCards]);
 		return;
 	}
 	
 	NSLog(@"   VIEW | Run Away! Discard %lu cards",(unsigned long)[[playableHand cards] count]);
 	
-	if( [[playableHand cards] count] == 4){
-		[playableDeck addCard:[playableHand cardValue:0]];
-		[playableDeck addCard:[playableHand cardValue:1]];
-		[playableDeck addCard:[playableHand cardValue:2]];
-		[playableDeck addCard:[playableHand cardValue:3]];
-		[playableHand discard:0];
-		[playableHand discard:0];
-		[playableHand discard:0];
-		[playableHand discard:0];
-	}
-	else if( [[playableHand cards] count] == 3){
-		[playableDeck addCard:[playableHand cardValue:0]];
-		[playableDeck addCard:[playableHand cardValue:1]];
-		[playableDeck addCard:[playableHand cardValue:2]];
-		[playableHand discard:0];
-		[playableHand discard:0];
-		[playableHand discard:0];
-	}
-	else if( [[playableHand cards] count] == 2){
-		[playableDeck addCard:[playableHand cardValue:0]];
-		[playableDeck addCard:[playableHand cardValue:1]];
-		[playableHand discard:0];
-		[playableHand discard:0];
-	}
-	else if( [[playableHand cards] count] == 1){
-		[playableDeck addCard:[playableHand cardValue:0]];
-		[playableHand discard:0];
-	}
-	[user setEscape:1];
 	[user nextRoom];
+	[user setEscape:1];
 	
 	[self draw];
 }

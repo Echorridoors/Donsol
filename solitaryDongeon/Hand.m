@@ -14,20 +14,36 @@
 -(Hand*)init
 {
 	cardsInHand = [[NSMutableArray alloc] init];
+	[cardsInHand addObject:@"--"];
+	[cardsInHand addObject:@"--"];
+	[cardsInHand addObject:@"--"];
+	[cardsInHand addObject:@"--"];
 	
 	return self;
 }
 
 -(void)pickCard:(NSString*)card
 {
-	[cardsInHand addObject:card];
+	int index = 0;
+	for (NSString* card in cardsInHand) {
+		NSLog(@"card: %d -> %@",index,card);
+		if( [card isEqualToString:@"--"] ){
+			
+			break;
+			
+		}
+		index++;
+	}
+	
+	[cardsInHand replaceObjectAtIndex:index withObject:card];
+	
 	NSLog(@"+  HAND | Picked card: %@(%lu in hand)",card, (unsigned long)[cardsInHand count] );
 }
 
 -(void)discard:(int)cardNumber
 {
-	[cardsInHand removeObjectAtIndex:cardNumber];
-	NSLog(@"+  HAND | Discarded card: #%d (%lu in hand)",cardNumber, (unsigned long)[cardsInHand count] );
+	NSLog(@"+  HAND | Discarded card: #%d (%d in hand)",cardNumber, (int)[cardsInHand count] );
+	[cardsInHand replaceObjectAtIndex:cardNumber withObject:@"--"];
 }
 
 -(NSString*)cardValue:(int)cardNumber
@@ -38,6 +54,17 @@
 -(NSArray*)cards
 {
 	return cardsInHand;
+}
+
+-(int)numberOfCards
+{
+	int count = 0;
+	for (NSString* card in cardsInHand) {
+		if( ![card isEqualToString:@"--"] ){
+			count++;
+		}
+	}
+	return count;
 }
 
 -(Card*)card :(int)cardNumber

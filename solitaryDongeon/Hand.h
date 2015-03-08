@@ -16,6 +16,7 @@
 -(NSString*)cardValue:(int)cardNumber;
 -(void)discard:(int)cardNumber;
 -(NSArray*)cards;
+-(int)numberOfCards;
 
 -(Card*)card :(int)cardNumber;
 
