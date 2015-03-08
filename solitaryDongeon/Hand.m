@@ -26,12 +26,7 @@
 {
 	int index = 0;
 	for (NSString* card in cardsInHand) {
-		NSLog(@"card: %d -> %@",index,card);
-		if( [card isEqualToString:@"--"] ){
-			
-			break;
-			
-		}
+		if( [card isEqualToString:@"--"] ){ break; }
 		index++;
 	}
 	

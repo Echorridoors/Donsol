@@ -57,7 +57,7 @@
 -(void)setMalus:(int)value
 {
 	malus = value;
-	NSLog(@"malus is now %d", malus);
+	NSLog(@": MALUS | %d", malus);
 }
 
 -(void)gainLife :(int)value

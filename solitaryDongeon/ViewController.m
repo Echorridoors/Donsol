@@ -216,7 +216,7 @@
 	
 	// Check for trying to heal twice
 	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){
-		NSLog(@"Cannot heal twice!");
+		NSLog(@"x  HEAL | Cannot heal twice!");
 		[discardPile addObject:[playableHand cardValue:cardNumber]];
 		[playableHand discard:cardNumber];
 		justHealed = 1;
@@ -240,7 +240,6 @@
 	else{
 		// Malus
 		if( [card value] >= [user malus] ){
-			NSLog(@"!!!!!!!");
 			[user looseEquip];
 			[self updateStage];
 		}
@@ -294,16 +293,19 @@
 - (IBAction)runButton:(id)sender
 {
 	if([user escaped] == 1){
-		NSLog(@"already escaped");
+		NSLog(@"    RUN | Already escape");
 		return;
 	}
 	
 	if( [playableHand numberOfCards] < 2){
-		NSLog(@"Can run, less than 2 cards.");
+		NSLog(@"    RUN | Can run, less than 2 cards.");
+	}
+	else if( [playableHand numberOfCards] == 4){
+		NSLog(@"    RUN | Can run, exactly 4 cards.");
 	}
 	else
 	{
-		NSLog(@"too many cards left:%d",[playableHand numberOfCards]);
+		NSLog(@"    RUN | too many cards left:%d",[playableHand numberOfCards]);
 		return;
 	}
 	
@@ -311,6 +313,18 @@
 	
 	[user nextRoom];
 	[user setEscape:1];
+	
+	// Put the cards in hand, back in the deck
+	
+	for (NSString* card in cardsInHand) {
+		if( ![card isEqualToString:@"--"] ){
+			[playableDeck addCard:card];
+		}
+	}
+	[playableHand discard:0];
+	[playableHand discard:1];
+	[playableHand discard:2];
+	[playableHand discard:3];
 	
 	[self draw];
 }
