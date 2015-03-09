@@ -23,3 +23,4 @@ User * user;
 NSMutableArray * discardPile;
 
 int justHealed;
+CGFloat margin;

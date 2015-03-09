@@ -60,6 +60,9 @@
 @property (weak, nonatomic) IBOutlet UIView *discardBar;
 @property (weak, nonatomic) IBOutlet UIView *swordMalusBar;
 
+@property (weak, nonatomic) IBOutlet UIView *cardsWrapper;
+
+
 @end
 
 @implementation ViewController
@@ -84,7 +87,7 @@
 	NSLog(@"Template(%f %f)", self.view.frame.size.width, self.view.frame.size.height);
 	
 	CGRect screen = self.view.frame;
-	CGFloat margin = self.view.frame.size.width/16;
+	margin = self.view.frame.size.width/16;
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
 	CGFloat verticalOffset = margin * 3;
@@ -154,6 +157,7 @@
 	
 	_discardBar.backgroundColor = [UIColor redColor];
 	
+	_cardsWrapper.frame = self.view.frame;
 }
 
 -(void)updateStage
@@ -178,15 +182,6 @@
 	self.lifeValueLabel.text = [NSString stringWithFormat:@"%d",[user life]];
 	self.discardValueLabel.text = [NSString stringWithFormat:@"%d(%d)",(int)[discardPile count], [user room]];
 	
-	if( [[playableHand cards] count] == 1 || [[playableHand cards] count] == 4 ){
-		NSLog(@"!   RUN | Enabled");
-		self.runButton.enabled = true;
-	}
-	else{
-		NSLog(@"!   RUN | Disabled");
-		self.runButton.enabled = false;
-	}
-	
 	self.swordBar.clipsToBounds = true;
 	
 	CGFloat healthBar = (([user life] * self.lifeBarWrapper.frame.size.width)/21);
@@ -200,7 +195,26 @@
 		self.swordMalusBar.frame = CGRectMake(0, 0, swordMalusBar, self.swordBarWrapper.frame.size.height);
 		self.discardBar.frame = CGRectMake(0, 0, discardBar, self.swordBarWrapper.frame.size.height);
 	} completion:^(BOOL finished){}];
-
+	
+	
+	if([user escaped] == 1 && (int)[discardPile count] != 0){
+		_runButton.enabled = false;
+		[_runButton setAlpha:0.5];
+	}
+	else if( [playableHand numberOfCards] < 2){
+		_runButton.enabled = true;
+		[_runButton setAlpha:1];
+	}
+	else if( [playableHand numberOfCards] == 4){
+		_runButton.enabled = true;
+		[_runButton setAlpha:1];
+	}
+	else
+	{
+		_runButton.enabled = false;
+		[_runButton setAlpha:0.5];
+	}
+	
 }
 
 # pragma mark - Choice
@@ -292,7 +306,7 @@
 
 - (IBAction)runButton:(id)sender
 {
-	if([user escaped] == 1){
+	if([user escaped] == 1 && (int)[discardPile count] != 0){
 		NSLog(@"    RUN | Already escape");
 		return;
 	}
@@ -329,25 +343,34 @@
 	[self draw];
 }
 
-- (IBAction)card1Button:(id)sender
+- (IBAction)cardPressed:(UIButton*)sender
 {
-	[self choice:0];
+	UIView * targetWrapper = _card1Wrapper;
+	
+	if( sender.tag == 201 ){ targetWrapper = _card1Wrapper; }
+	if( sender.tag == 202 ){ targetWrapper = _card2Wrapper; }
+	if( sender.tag == 203 ){ targetWrapper = _card3Wrapper; }
+	if( sender.tag == 204 ){ targetWrapper = _card4Wrapper; }
+	
+	CGRect cardOrigin = targetWrapper.frame;
+	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		targetWrapper.frame = CGRectOffset(cardOrigin, 0, -10);
+		targetWrapper.alpha = 0;
+	} completion:^(BOOL finished){
+		
+		if( sender.tag == 201 ){ [self choice:0]; }
+		if( sender.tag == 202 ){ [self choice:1]; }
+		if( sender.tag == 203 ){ [self choice:2]; }
+		if( sender.tag == 204 ){ [self choice:3]; }
+	
+		[UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+			targetWrapper.frame = cardOrigin;
+			targetWrapper.alpha = 1;
+		} completion:^(BOOL finished){}];
+	}];
+	
 }
 
-- (IBAction)card2Button:(id)sender
-{
-	[self choice:1];
-}
-
-- (IBAction)card3Button:(id)sender
-{
-	[self choice:2];
-}
-
-- (IBAction)card4Button:(id)sender
-{
-	[self choice:3];
-}
 
 # pragma mark - Defaults
 
