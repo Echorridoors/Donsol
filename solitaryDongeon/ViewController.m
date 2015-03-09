@@ -80,8 +80,6 @@
 
 -(void)template
 {
-	NSLog(@"Template(%f %f)", self.view.frame.size.width, self.view.frame.size.height);
-	
 	CGRect screen = self.view.frame;
 	margin = self.view.frame.size.width/16;
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
@@ -371,9 +369,6 @@
 		_card4Wrapper.frame = card4Origin;
 		_card4Wrapper.alpha = 1;
 	} completion:^(BOOL finished){}];
-
-	
-	
 	
 	[playableHand discard:0];
 	[playableHand discard:1];

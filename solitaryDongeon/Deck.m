@@ -7,6 +7,7 @@
 //
 
 #import "Deck.h"
+#import "Card.h"
 
 @implementation Deck
 
@@ -24,17 +25,49 @@
 					  @"1J",@"2J",
 					  nil];
 	
+	[self shuffle];
+	
+	return self;
+}
+
+-(int)starterHandContains:(NSString*)target
+{
+	NSLog(@"+  DECK | Look for %@ in %@ %@ %@ %@", target,cards[0],cards[1],cards[2],cards[3]);
+	
+	if( [cards[0] containsString:target] ){ return 1; }
+	if( [cards[1] containsString:target] ){ return 1; }
+	if( [cards[2] containsString:target] ){ return 1; }
+	if( [cards[3] containsString:target] ){ return 1; }
+	
+	return 0;
+}
+
+-(void)shuffle
+{
+	NSLog(@"+  DECK | Shuffle");
+	
 	for (int i = 0; i < [cards count]; i++ ) {
-		
 		int random = arc4random() % [cards count];
-		
 		NSString * temp1 = cards[i];
 		cards[i] = cards[random];
 		cards[random] = temp1;
-		
 	}
 	
-	return self;
+	if( [self starterHandContains:@"D"] == 0 ){
+		[self shuffle];
+	}
+	
+	if( [self starterHandContains:@"H"] == 0 ){
+		[self shuffle];
+	}
+	
+	if( [self starterHandContains:@"S"] == 0 ){
+		[self shuffle];
+	}
+	
+	if( [self starterHandContains:@"C"] == 0 ){
+		[self shuffle];
+	}
 }
 
 -(void)addCard:(NSString*)card
