@@ -21,25 +21,21 @@
 // Card 1
 @property (weak, nonatomic) IBOutlet UIView *card1Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card1Button;
-- (IBAction)card1Button:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *card1Image;
 
 // Card 2
 @property (weak, nonatomic) IBOutlet UIView *card2Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card2Button;
-- (IBAction)card2Button:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *card2Image;
 
 // Card 3
 @property (weak, nonatomic) IBOutlet UIView *card3Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card3Button;
-- (IBAction)card3Button:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *card3Image;
 
 // Card 4
 @property (weak, nonatomic) IBOutlet UIView *card4Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card4Button;
-- (IBAction)card4Button:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *card4Image;
 
 // Details
@@ -115,7 +111,7 @@
 	
 	_card4Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
 	_card4Wrapper.backgroundColor = [UIColor whiteColor];
-	_card4Image.frame = CGRectMake(0, 0, 10, 10);
+	_card4Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card4Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card4Wrapper.layer.cornerRadius = 10;
 	_card4Wrapper.clipsToBounds = YES;
@@ -177,6 +173,13 @@
 	[self.card2Button setTitleColor:[[playableHand card:1] color] forState:UIControlStateNormal];
 	[self.card3Button setTitleColor:[[playableHand card:2] color] forState:UIControlStateNormal];
 	[self.card4Button setTitleColor:[[playableHand card:3] color] forState:UIControlStateNormal];
+	
+	_card1Image.image = [[playableHand card:0] image];
+	_card2Image.image = [[playableHand card:1] image];
+	_card3Image.image = [[playableHand card:2] image];
+	_card4Image.image = [[playableHand card:3] image];
+	
+	_card4Image.backgroundColor = [UIColor redColor];
 	
 	self.swordValueLabel.text = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	self.lifeValueLabel.text = [NSString stringWithFormat:@"%d",[user life]];
@@ -335,6 +338,43 @@
 			[playableDeck addCard:card];
 		}
 	}
+	
+	CGRect card1Origin = _card1Wrapper.frame;
+	_card1Wrapper.frame = CGRectOffset(card1Origin, 0, -10);
+	_card1Wrapper.alpha = 0;
+	CGRect card2Origin = _card2Wrapper.frame;
+	_card2Wrapper.frame = CGRectOffset(card2Origin, 0, -10);
+	_card2Wrapper.alpha = 0;
+	CGRect card3Origin = _card3Wrapper.frame;
+	_card3Wrapper.frame = CGRectOffset(card3Origin, 0, -10);
+	_card3Wrapper.alpha = 0;
+	CGRect card4Origin = _card4Wrapper.frame;
+	_card4Wrapper.frame = CGRectOffset(card4Origin, 0, -10);
+	_card4Wrapper.alpha = 0;
+	
+	[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card1Wrapper.frame = card1Origin;
+		_card1Wrapper.alpha = 1;
+	} completion:^(BOOL finished){}];
+	
+	[UIView animateWithDuration:0.25 delay:0.05 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card2Wrapper.frame = card2Origin;
+		_card2Wrapper.alpha = 1;
+	} completion:^(BOOL finished){}];
+	
+	[UIView animateWithDuration:0.25 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card3Wrapper.frame = card3Origin;
+		_card3Wrapper.alpha = 1;
+	} completion:^(BOOL finished){}];
+	
+	[UIView animateWithDuration:0.25 delay:0.15 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card4Wrapper.frame = card4Origin;
+		_card4Wrapper.alpha = 1;
+	} completion:^(BOOL finished){}];
+
+	
+	
+	
 	[playableHand discard:0];
 	[playableHand discard:1];
 	[playableHand discard:2];
