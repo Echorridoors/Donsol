@@ -65,17 +65,22 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 	
-	playableHand = [[Hand alloc] init];
-	playableDeck = [[Deck alloc] init];
-	discardPile = [[NSMutableArray alloc] init];
-	user = [[User alloc] init];
+	[self newGame];
 	
 	[self template];
 	[self draw];
 	[self updateStage];
 	
+}
+
+-(void)newGame
+{
+	NSLog(@"   GAME | New Deck");
+	playableHand = [[Hand alloc] init];
+	playableDeck = [[Deck alloc] init];
+	discardPile = [[NSMutableArray alloc] init];
+	user = [[User alloc] init];
 }
 
 -(void)template
@@ -307,6 +312,10 @@
 
 - (IBAction)runButton:(id)sender
 {
+	if( (int)[discardPile count] == 0){
+		[self newGame];
+	}
+	
 	if([user escaped] == 1 && (int)[discardPile count] != 0){
 		NSLog(@"    RUN | Already escape");
 		return;

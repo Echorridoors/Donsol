@@ -31,9 +31,7 @@
 }
 
 -(int)starterHandContains:(NSString*)target
-{
-	NSLog(@"+  DECK | Look for %@ in %@ %@ %@ %@", target,cards[0],cards[1],cards[2],cards[3]);
-	
+{	
 	if( [cards[0] containsString:target] ){ return 1; }
 	if( [cards[1] containsString:target] ){ return 1; }
 	if( [cards[2] containsString:target] ){ return 1; }
