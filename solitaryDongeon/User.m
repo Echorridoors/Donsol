@@ -17,7 +17,16 @@
 	malus = 25;
 	escaped = 0;
 	room = 1;
+	difficulty = 1;
 	return self;
+}
+-(int)difficulty
+{
+	return difficulty;
+}
+-(void)setDifficulty :(int)newDifficulty
+{
+	difficulty = newDifficulty;
 }
 
 -(int)life

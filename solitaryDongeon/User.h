@@ -24,6 +24,9 @@
 -(void)setEscape :(int)value;
 -(int)escaped;
 
+-(int)difficulty;
+-(void)setDifficulty :(int)newDifficulty;
+
 -(void)gainExperience :(int)value;
 -(int)experience;
 
@@ -36,3 +39,4 @@ int malus;
 int escaped;
 int isHealing;
 int experience;
+int difficulty;

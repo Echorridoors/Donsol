@@ -12,6 +12,7 @@
 
 -(NSString*)pickCard;
 -(void)addCard:(NSString*)card;
+-(NSArray*)cards;
 
 @end
 

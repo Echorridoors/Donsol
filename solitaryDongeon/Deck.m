@@ -30,6 +30,11 @@
 	return self;
 }
 
+-(NSArray*)cards
+{
+	return cards;
+}
+
 -(int)starterHandContains:(NSString*)target
 {	
 	if( [cards[0] containsString:target] ){ return 1; }
@@ -75,11 +80,17 @@
 
 -(NSString*)pickCard
 {
-	NSLog(@"+  DECK | Picked card: %@",[cards objectAtIndex:0]);
+	NSLog(@"+  DECK | Picked card");
 	
-	NSString * newCard = [cards objectAtIndex:0];
-	[cards removeObjectAtIndex:0];
-	return newCard;
+	if( [cards count] < 1 ){
+		return nil;
+	}
+	else{
+		NSString * newCard = [cards objectAtIndex:0];
+		[cards removeObjectAtIndex:0];
+		return newCard;
+	}
+	
 }
 
 @end

@@ -28,6 +28,119 @@
 	[self draw];
 	[self updateStage];
 	[self hideMenu];
+	
+	
+	// START
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
+	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
+	[discardPile addObject:[playableHand cardValue:2]]; [playableHand discard:2];
+	[discardPile addObject:[playableHand cardValue:3]]; [playableHand discard:3];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	[playableHand pickCard:[playableDeck pickCard]];
+	
+	[self updateStage];
+	// END
 }
 
 -(void)newGame
@@ -166,7 +279,7 @@
 	_card1Image.image = [[playableHand card:0] image];
 	_card2Image.image = [[playableHand card:1] image];
 	_card3Image.image = [[playableHand card:2] image];
-	_card4Image.image = [[playableHand card:3] image];
+	_card4Image.image = [[playableHand card:3] image];	
 	
 	NSString * swordValue = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	
@@ -228,6 +341,16 @@
 		[_runButton setTitle:[NSString stringWithFormat:@"You died in room %d",[user room]] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
+	else if( (int)[discardPile count] == 54 ){
+		_runButton.enabled = true;
+		_optionJewelView.backgroundColor = [UIColor whiteColor];
+		[_runButton setTitle:[NSString stringWithFormat:@"Enter Dungeon %d",[user difficulty]+1] forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+	}
+	else if( [playableHand numberOfCards] == 0){
+		[_runButton setTitle:[NSString stringWithFormat:@"Enter Room %d",[user room]] forState:UIControlStateNormal];
+		[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
+	}
 	else if([user escaped] == 1 && (int)[discardPile count] != 0){
 		_runButton.enabled = false;
 		_optionJewelView.backgroundColor = [UIColor grayColor];
@@ -248,10 +371,7 @@
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	
-	if( [playableHand numberOfCards] == 0){
-		[_runButton setTitle:[NSString stringWithFormat:@"Enter Room %d",[user room]] forState:UIControlStateNormal];
-		[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
-	}
+	
 }
 
 # pragma mark - Cards Effects
@@ -331,6 +451,8 @@
 	
 	// Draw 4 cards
 	
+	NSLog(@"%d", (int)[[playableDeck cards] count]);
+	 
 	if( [playableHand numberOfCards] == 0){
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
@@ -348,7 +470,7 @@
 	}
 	else if( [playableHand numberOfCards] == 3){
 		[playableHand pickCard:[playableDeck pickCard]];
-	}
+	}	
 	
 	[self updateStage];
 }

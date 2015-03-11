@@ -24,6 +24,10 @@
 
 -(void)pickCard:(NSString*)card
 {
+	if( card == nil ){
+		return;
+	}
+	
 	int index = 0;
 	for (NSString* card in cardsInHand) {
 		if( [card isEqualToString:@"--"] ){ break; }
