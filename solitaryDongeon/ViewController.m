@@ -171,7 +171,7 @@
 	
 	self.swordValueLabel.text = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	self.lifeValueLabel.text = [NSString stringWithFormat:@"%d",[user life]];
-	self.discardValueLabel.text = [NSString stringWithFormat:@"%d(%d)",[user experience], [user room]];
+	self.discardValueLabel.text = [NSString stringWithFormat:@"%d(%d)",(int)[discardPile count], [user room]];
 	
 	self.swordBar.clipsToBounds = true;
 	
@@ -187,25 +187,36 @@
 		self.discardBar.frame = CGRectMake(0, 0, discardBar, self.swordBarWrapper.frame.size.height);
 	} completion:^(BOOL finished){}];
 	
+	[self jewelUpdate];
+	
+}
+
+-(void)jewelUpdate
+{
 	if([user escaped] == 1 && (int)[discardPile count] != 0){
 		_runButton.enabled = false;
+		_optionJewelView.backgroundColor = [UIColor grayColor];
+		[_runButton setTitle:@"Cannot run away" forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
-	else if( [playableHand numberOfCards] < 2){
+	else if( [playableHand numberOfCards] < 2 || [playableHand numberOfCards] == 4){
 		_runButton.enabled = true;
-	}
-	else if( [playableHand numberOfCards] == 4){
-		_runButton.enabled = true;
+		_optionJewelView.backgroundColor = [UIColor cyanColor];
+		[_runButton setTitle:@"Enter Room 4" forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else
 	{
 		_runButton.enabled = false;
+		_optionJewelView.backgroundColor = [UIColor grayColor];
+		[_runButton setTitle:@"Cannot run away" forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	
 	if( [playableHand numberOfCards] == 0){
 		[_runButton setTitle:@"Enter room 4" forState:UIControlStateNormal];
 		[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
 	}
-	
 }
 
 # pragma mark - Cards Effects
@@ -223,6 +234,8 @@
 	[user gainEquip:[card value]];
 	[user setMalus:25];
 	justHealed = 0;
+	
+	[self updateSword:[card value]];
 }
 
 -(void)monsterCard :(Card*)card
@@ -233,8 +246,17 @@
 	}
 	
 	int battleDamage = ( [card value] - [user equip]) ;
-	if( battleDamage < 0 ){ battleDamage = 0; }
-	if( battleDamage > 0 ){ [user looseLife:battleDamage]; }
+	
+	if( battleDamage < 0 ){
+		battleDamage = 0;
+	}
+	if( battleDamage > 0 ){
+		[user looseLife:battleDamage];
+		[self updateHealth:battleDamage*-1];
+	}
+	
+	int malusChange = [card value] - [user equip];
+	if( malusChange < 0 ){ [self updateSword:(malusChange)]; }
 	
 	[user setMalus:[card value]];
 	justHealed = 0;
@@ -258,6 +280,8 @@
 	
 	[discardPile addObject:[playableHand cardValue:cardNumber]];
 	[playableHand discard:cardNumber];
+	
+	[self updateExperience:1];
 	
 	[user setEscape:0];
 	[self updateStage];
@@ -392,7 +416,14 @@
 	NSLog(@"   VIEW | Run Away! Discard %lu cards",(unsigned long)[[playableHand cards] count]);
 	
 	[user nextRoom];
-	[user setEscape:1];
+	
+	if( [playableHand numberOfCards] == 0){
+		[user setEscape:0];
+	}
+	else{
+		[user setEscape:1];
+	}
+	
 	
 	// Put the cards in hand, back in the deck
 	
@@ -479,9 +510,19 @@
 
 -(void)updateHealth:(int)change
 {
-	if(change > 0){ _lifeUpdateLabel.textColor = [UIColor cyanColor]; }
+	if(change > 0){
+		_lifeUpdateLabel.textColor = [UIColor cyanColor];
+		_lifeUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
+	}
+	else if( change < 0 ){
+		_lifeUpdateLabel.textColor = [UIColor redColor];
+		_lifeUpdateLabel.text = [NSString stringWithFormat:@"%d",change];
+	}
+	else{
+		_lifeUpdateLabel.text = @"";
+	}
+	
 	_lifeUpdateLabel.alpha = 1;
-	_lifeUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
 	
 	[UIView animateWithDuration:0.5 delay:3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		_lifeUpdateLabel.alpha = 0;
@@ -490,10 +531,44 @@
 }
 -(void)updateSword:(int)change
 {
+	if(change > 0){
+		_swordUpdateLabel.textColor = [UIColor cyanColor];
+		_swordUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
+	}
+	else if( change < 0 ){
+		_swordUpdateLabel.textColor = [UIColor redColor];
+		_swordUpdateLabel.text = [NSString stringWithFormat:@"%d",change];
+	}
+	else{
+		_swordUpdateLabel.text = @"";
+	}
+	
+	_swordUpdateLabel.alpha = 1;
+	
+	[UIView animateWithDuration:0.5 delay:3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		_swordUpdateLabel.alpha = 0;
+	} completion:^(BOOL finished){}];
 	
 }
 -(void)updateExperience:(int)change
 {
+	if(change > 0){
+		_discardUpdateLabel.textColor = [UIColor cyanColor];
+		_discardUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
+	}
+	else if( change < 0 ){
+		_discardUpdateLabel.textColor = [UIColor redColor];
+		_discardUpdateLabel.text = [NSString stringWithFormat:@"%d",change];
+	}
+	else{
+		_discardUpdateLabel.text = @"";
+	}
+	
+	_discardUpdateLabel.alpha = 1;
+	
+	[UIView animateWithDuration:0.5 delay:3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		_discardUpdateLabel.alpha = 0;
+	} completion:^(BOOL finished){}];
 	
 }
 
