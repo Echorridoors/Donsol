@@ -136,7 +136,6 @@
 	
 	_discardBar.backgroundColor = [UIColor redColor];
 	
-	
 	//
 	
 	_optionToggleButton.frame = CGRectMake((screen.size.width/2)-margin, _card1Wrapper.frame.origin.y + _card1Wrapper.frame.size.height - (margin*0.75), margin*2, margin*2);
@@ -169,9 +168,23 @@
 	_card3Image.image = [[playableHand card:2] image];
 	_card4Image.image = [[playableHand card:3] image];
 	
-	self.swordValueLabel.text = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
+	NSString * swordValue = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
+	
+	if( [user equip] == 0 ){
+		swordValue = @"0";
+	}
+	else if( [user malus] < [user equip] )
+	{
+		swordValue = [NSString stringWithFormat:@"%d",[user malus]];
+	}
+	else if( [user malus] == 25 )
+	{
+		swordValue = [NSString stringWithFormat:@"%d",[user equip]];
+	}
+	
+	self.swordValueLabel.text = swordValue;
 	self.lifeValueLabel.text = [NSString stringWithFormat:@"%d",[user life]];
-	self.discardValueLabel.text = [NSString stringWithFormat:@"%d(%d)",(int)[discardPile count], [user room]];
+	self.discardValueLabel.text = [NSString stringWithFormat:@"%d",(int)[discardPile count]];
 	
 	self.swordBar.clipsToBounds = true;
 	
@@ -189,11 +202,33 @@
 	
 	[self jewelUpdate];
 	
+	// Highlight HP is just healed
+	
+	if( justHealed == 1 ){
+		_lifeLabel.textColor = [UIColor cyanColor];
+	}
+	else if( [user life] < 6 ){
+		_lifeLabel.textColor = [UIColor redColor];
+	}
+	else{
+		_lifeLabel.textColor = [UIColor whiteColor];
+	}
+	
+	// Death
+	
+	if([user life] < 1){
+		[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(death) userInfo:nil repeats:NO];
+		return;
+	}
 }
 
 -(void)jewelUpdate
 {
-	if([user escaped] == 1 && (int)[discardPile count] != 0){
+	if( [user life] < 1 ){
+		[_runButton setTitle:[NSString stringWithFormat:@"You died in room %d",[user room]] forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+	}
+	else if([user escaped] == 1 && (int)[discardPile count] != 0){
 		_runButton.enabled = false;
 		_optionJewelView.backgroundColor = [UIColor grayColor];
 		[_runButton setTitle:@"Cannot run away" forState:UIControlStateNormal];
@@ -202,7 +237,7 @@
 	else if( [playableHand numberOfCards] < 2 || [playableHand numberOfCards] == 4){
 		_runButton.enabled = true;
 		_optionJewelView.backgroundColor = [UIColor cyanColor];
-		[_runButton setTitle:@"Enter Room 4" forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"Run Away"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else
@@ -214,7 +249,7 @@
 	}
 	
 	if( [playableHand numberOfCards] == 0){
-		[_runButton setTitle:@"Enter room 4" forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"Enter Room %d",[user room]] forState:UIControlStateNormal];
 		[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
 	}
 }
@@ -316,6 +351,30 @@
 	}
 	
 	[self updateStage];
+}
+
+-(void)death
+{
+	NSLog(@"DEATH!");
+	[NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
+	
+	[UIView animateWithDuration:0.25 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card1Wrapper.frame = CGRectOffset(card1Origin, 0, margin*-1);
+		_card1Wrapper.alpha = 0;
+	} completion:^(BOOL finished){ }];
+	[UIView animateWithDuration:0.25 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card2Wrapper.frame = CGRectOffset(card2Origin, 0, margin*-1);
+		_card2Wrapper.alpha = 0;
+	} completion:^(BOOL finished){ }];
+	[UIView animateWithDuration:0.25 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card3Wrapper.frame = CGRectOffset(card3Origin, 0, margin*-1);
+		_card3Wrapper.alpha = 0;
+	} completion:^(BOOL finished){ }];
+	[UIView animateWithDuration:0.25 delay:0.4 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card4Wrapper.frame = CGRectOffset(card4Origin, 0, margin*-1);
+		_card4Wrapper.alpha = 0;
+	} completion:^(BOOL finished){ }];
+	
 }
 
 # pragma mark - Interactions

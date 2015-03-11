@@ -83,6 +83,10 @@
 		cardValue = 0;
 	}
 	
+	if( [[self symbol] isEqualToString:@"J"] ){
+		cardValue = 21;
+	}
+	
 	return cardValue;
 }
 

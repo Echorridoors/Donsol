@@ -16,6 +16,7 @@
 	life = 21;
 	malus = 25;
 	escaped = 0;
+	room = 1;
 	return self;
 }
 
