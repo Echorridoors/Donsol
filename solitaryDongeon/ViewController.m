@@ -14,50 +14,6 @@
 
 @interface ViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *runButton;
-- (IBAction)runButton:(id)sender;
-
-
-// Card 1
-@property (weak, nonatomic) IBOutlet UIView *card1Wrapper;
-@property (weak, nonatomic) IBOutlet UIButton *card1Button;
-@property (weak, nonatomic) IBOutlet UIImageView *card1Image;
-
-// Card 2
-@property (weak, nonatomic) IBOutlet UIView *card2Wrapper;
-@property (weak, nonatomic) IBOutlet UIButton *card2Button;
-@property (weak, nonatomic) IBOutlet UIImageView *card2Image;
-
-// Card 3
-@property (weak, nonatomic) IBOutlet UIView *card3Wrapper;
-@property (weak, nonatomic) IBOutlet UIButton *card3Button;
-@property (weak, nonatomic) IBOutlet UIImageView *card3Image;
-
-// Card 4
-@property (weak, nonatomic) IBOutlet UIView *card4Wrapper;
-@property (weak, nonatomic) IBOutlet UIButton *card4Button;
-@property (weak, nonatomic) IBOutlet UIImageView *card4Image;
-
-// Details
-@property (weak, nonatomic) IBOutlet UILabel *lifeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *swordLabel;
-@property (weak, nonatomic) IBOutlet UILabel *discardLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *swordValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lifeValueLabel;
-@property (weak, nonatomic) IBOutlet UILabel *discardValueLabel;
-
-@property (weak, nonatomic) IBOutlet UIView *lifeBarWrapper;
-@property (weak, nonatomic) IBOutlet UIView *swordBarWrapper;
-@property (weak, nonatomic) IBOutlet UIView *discardBarWrapper;
-
-@property (weak, nonatomic) IBOutlet UIView *lifeBar;
-@property (weak, nonatomic) IBOutlet UIView *swordBar;
-@property (weak, nonatomic) IBOutlet UIView *discardBar;
-@property (weak, nonatomic) IBOutlet UIView *swordMalusBar;
-
-@property (weak, nonatomic) IBOutlet UIView *cardsWrapper;
-
 
 @end
 
@@ -67,11 +23,11 @@
 	[super viewDidLoad];
 	
 	[self newGame];
-	
+	[self templateStart];
 	[self template];
 	[self draw];
 	[self updateStage];
-	
+	[self hideMenu];
 }
 
 -(void)newGame
@@ -83,37 +39,54 @@
 	user = [[User alloc] init];
 }
 
+-(void)templateStart
+{
+	CGRect screen = self.view.frame;
+	margin = self.view.frame.size.width/16;
+	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
+	CGFloat cardHeight =(cardWidth * 88)/56;
+	CGFloat verticalOffset = margin * 1.5;
+	
+	card1Origin = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
+	card2Origin = CGRectMake((margin*1.5) + cardWidth, margin+verticalOffset, cardWidth, cardHeight);
+	card3Origin = CGRectMake(margin, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
+	card4Origin = CGRectMake((margin*1.5) + cardWidth, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
+	jewelOrigin = CGRectMake((screen.size.width/2)-(margin/4), card1Origin.origin.y + card1Origin.size.height, margin/2, margin/2);
+	
+	quitButtonOrigin = CGRectMake(margin, jewelOrigin.origin.y-(margin*0.25), cardWidth-(margin*0.5), margin*2);
+	runButtonOrigin  = CGRectMake(jewelOrigin.origin.x+(1.25*margin), jewelOrigin.origin.y-(margin*0.25), cardWidth-(margin), margin*2);
+}
+
 -(void)template
 {
 	CGRect screen = self.view.frame;
 	margin = self.view.frame.size.width/16;
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
-	CGFloat verticalOffset = margin * 1;
 	CGFloat third = (screen.size.width-(2*margin))/3;
 	
-	_card1Wrapper.frame = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
+	_card1Wrapper.frame = card1Origin;
 	_card1Wrapper.backgroundColor = [UIColor whiteColor];
 	_card1Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Wrapper.layer.cornerRadius = 10;
 	_card1Wrapper.clipsToBounds = YES;
 	
-	_card2Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, margin+verticalOffset, cardWidth, cardHeight);
+	_card2Wrapper.frame = card2Origin;
 	_card2Wrapper.backgroundColor = [UIColor whiteColor];
 	_card2Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card2Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card2Wrapper.layer.cornerRadius = 10;
 	_card2Wrapper.clipsToBounds = YES;
 	
-	_card3Wrapper.frame = CGRectMake(margin, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
+	_card3Wrapper.frame = card3Origin;
 	_card3Wrapper.backgroundColor = [UIColor whiteColor];
 	_card3Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card3Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card3Wrapper.layer.cornerRadius = 10;
 	_card3Wrapper.clipsToBounds = YES;
 	
-	_card4Wrapper.frame = CGRectMake((margin*1.5) + cardWidth, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
+	_card4Wrapper.frame = card4Origin;
 	_card4Wrapper.backgroundColor = [UIColor whiteColor];
 	_card4Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card4Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
@@ -131,10 +104,6 @@
 	_lifeValueLabel.frame = CGRectMake(margin*2, margin*0.5, margin * 3, margin);
 	_swordValueLabel.frame = CGRectMake((margin*2.25)+third, (margin*0.5), margin * 3, margin);
 	_discardValueLabel.frame = CGRectMake((margin*2.5)+(third*2), (margin*0.5), margin * 3, margin);
-	
-	_runButton.frame = CGRectMake(margin, screen.size.height-(2*margin), margin* 4, margin);
-	_runButton.backgroundColor = [UIColor whiteColor];
-	_runButton.layer.cornerRadius = margin/4;
 	
 	_lifeBarWrapper.frame = CGRectMake(margin, margin*1.5, third-(margin/2), 1);
 	_lifeBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
@@ -154,17 +123,24 @@
 	
 	_discardBar.backgroundColor = [UIColor redColor];
 	
+	
+	//
+	
+	_optionToggleButton.frame = CGRectMake((screen.size.width/2)-margin, _card1Wrapper.frame.origin.y + _card1Wrapper.frame.size.height - (margin*0.75), margin*2, margin*2);
+	_quitButton.frame = quitButtonOrigin;
+	_runButton.frame = runButtonOrigin;
+	
+	//
+	
+	_optionJewelView.backgroundColor = [UIColor redColor];
+	_optionJewelView.frame = jewelOrigin;
+	_optionJewelView.layer.cornerRadius = _optionJewelView.frame.size.width/2;
+	
 	_cardsWrapper.frame = self.view.frame;
 }
 
 -(void)updateStage
 {
-	// TODO
-	if( [[playableHand cards] count] < 1 ){
-//		[user nextRoom];
-//		[self draw];
-	}
-	
 	[self.card1Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:0] number],[[playableHand card:0] symbol]] forState:UIControlStateNormal];
 	[self.card2Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:1] number],[[playableHand card:1] symbol]] forState:UIControlStateNormal];
 	[self.card3Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:2] number],[[playableHand card:2] symbol]] forState:UIControlStateNormal];
@@ -200,24 +176,21 @@
 	
 	if([user escaped] == 1 && (int)[discardPile count] != 0){
 		_runButton.enabled = false;
-		[_runButton setAlpha:0.5];
 	}
 	else if( [playableHand numberOfCards] < 2){
 		_runButton.enabled = true;
-		[_runButton setAlpha:1];
 	}
 	else if( [playableHand numberOfCards] == 4){
 		_runButton.enabled = true;
-		[_runButton setAlpha:1];
 	}
 	else
 	{
 		_runButton.enabled = false;
-		[_runButton setAlpha:0.5];
 	}
 	
 	if( [playableHand numberOfCards] == 0){
 		[_runButton setTitle:@"Enter room 4" forState:UIControlStateNormal];
+		[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
 	}
 	
 }
@@ -296,6 +269,9 @@
 {
 	NSLog(@"   VIEW | Draw");
 	
+	menuIsOpen = 0;
+	[self hideMenu];
+	
 	// Draw 4 cards
 	
 	if( [playableHand numberOfCards] == 0){
@@ -321,6 +297,72 @@
 }
 
 # pragma mark - Interactions
+
+- (IBAction)optionToggleButton:(id)sender
+{
+	if( menuIsOpen == 1 ){
+		[self hideMenu];
+		menuIsOpen = 0;
+	}
+	else{
+		[self showMenu];
+		menuIsOpen = 1;
+	}
+}
+
+-(void)showMenu
+{
+	_quitButton.alpha = 0;
+	_runButton.alpha = 0;
+	
+	[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		
+		_card3Wrapper.frame = CGRectOffset(card3Origin, 0, margin);
+		_card4Wrapper.frame = CGRectOffset(card4Origin, 0, margin);
+		_optionJewelView.frame = CGRectOffset(jewelOrigin, 0, margin/2);
+		
+	} completion:^(BOOL finished){
+		
+		[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+			
+			_quitButton.frame = CGRectOffset(quitButtonOrigin, -10, 0);
+			_runButton.frame = CGRectOffset(runButtonOrigin, 10, 0);
+			_quitButton.alpha = 1;
+			_runButton.alpha = 1;
+			
+		} completion:^(BOOL finished){
+		}];
+		
+	}];
+}
+
+-(void)hideMenu
+{
+	[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		
+		_quitButton.frame = quitButtonOrigin;
+		_runButton.frame = runButtonOrigin;
+		_quitButton.alpha = 0;
+		_runButton.alpha = 0;
+		
+	} completion:^(BOOL finished){
+		
+		[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+			_card3Wrapper.frame = card3Origin;
+			_card4Wrapper.frame = card4Origin;
+			_optionJewelView.frame = jewelOrigin;
+		} completion:^(BOOL finished){
+			
+		}];
+		
+	}];
+}
+
+
+- (IBAction)quitButton:(id)sender
+{
+	
+}
 
 - (IBAction)runButton:(id)sender
 {
@@ -358,16 +400,12 @@
 		}
 	}
 	
-	CGRect card1Origin = _card1Wrapper.frame;
 	_card1Wrapper.frame = CGRectOffset(card1Origin, 0, -10);
 	_card1Wrapper.alpha = 0;
-	CGRect card2Origin = _card2Wrapper.frame;
 	_card2Wrapper.frame = CGRectOffset(card2Origin, 0, -10);
 	_card2Wrapper.alpha = 0;
-	CGRect card3Origin = _card3Wrapper.frame;
 	_card3Wrapper.frame = CGRectOffset(card3Origin, 0, -10);
 	_card3Wrapper.alpha = 0;
-	CGRect card4Origin = _card4Wrapper.frame;
 	_card4Wrapper.frame = CGRectOffset(card4Origin, 0, -10);
 	_card4Wrapper.alpha = 0;
 	

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -149,15 +149,44 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Alx-Ge-hKo" userLabel="runButton">
+                            <view contentMode="scaleToFill" id="e3K-Ql-q3L" userLabel="optionJewelView">
+                                <rect key="frame" x="80" y="142" width="160" height="284"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Alx-Ge-hKo" userLabel="runButton">
                                 <rect key="frame" x="24" y="50" width="204" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Run">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.010051519906341788" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="11"/>
+                                <state key="normal" title="Enter Room #4">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="runButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7yb-1p-FB4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pPW-fv-dbN" userLabel="quitButton">
+                                <rect key="frame" x="58" y="269" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="11"/>
+                                <state key="normal" title="Return to Menu">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="quitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ED-A6-iZ9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ekQ-6c-RYk" userLabel="optionToggleButton">
+                                <rect key="frame" x="58" y="269" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.010051519910000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="optionToggleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rvt-fK-Gw2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="USy-8C-5Vf" userLabel="lifeLabel">
@@ -227,6 +256,9 @@
                         <outlet property="lifeBarWrapper" destination="4jm-yy-IyK" id="Tyu-z9-bqz"/>
                         <outlet property="lifeLabel" destination="USy-8C-5Vf" id="wUx-C6-CoT"/>
                         <outlet property="lifeValueLabel" destination="MLH-Lt-aGR" id="6y8-ZS-plo"/>
+                        <outlet property="optionJewelView" destination="e3K-Ql-q3L" id="h58-5V-YxH"/>
+                        <outlet property="optionToggleButton" destination="ekQ-6c-RYk" id="ivf-kC-B9U"/>
+                        <outlet property="quitButton" destination="pPW-fv-dbN" id="d2u-9f-g3V"/>
                         <outlet property="runButton" destination="Alx-Ge-hKo" id="qrq-BB-BJM"/>
                         <outlet property="swordBar" destination="zhh-z3-rTR" id="SyA-ws-9q9"/>
                         <outlet property="swordBarWrapper" destination="jLf-5s-tgL" id="cTx-mQ-4ym"/>
