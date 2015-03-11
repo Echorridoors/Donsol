@@ -46,6 +46,7 @@
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
 	CGFloat verticalOffset = margin * 1.5;
+	CGFloat third = (screen.size.width-(2*margin))/3;
 	
 	card1Origin = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
 	card2Origin = CGRectMake((margin*1.5) + cardWidth, margin+verticalOffset, cardWidth, cardHeight);
@@ -55,6 +56,18 @@
 	
 	quitButtonOrigin = CGRectMake(margin, jewelOrigin.origin.y-(margin*0.25), cardWidth-(margin*0.5), margin*2);
 	runButtonOrigin  = CGRectMake(jewelOrigin.origin.x+(1.25*margin), jewelOrigin.origin.y-(margin*0.25), cardWidth-(margin), margin*2);
+	
+	_lifeUpdateLabel.text = @"0";
+	_lifeUpdateLabel.frame = CGRectMake(margin, margin*0.5, third-(margin/2), margin);
+	_lifeUpdateLabel.alpha = 0;
+	
+	_swordUpdateLabel.text = @"0";
+	_swordUpdateLabel.frame = CGRectMake((margin*2.25)+third, margin*0.5, third-(margin*1.5), margin);
+	_swordUpdateLabel.alpha = 0;
+	
+	_discardUpdateLabel.text = @"0";
+	_discardUpdateLabel.frame = CGRectMake((margin*3)+(third*2), margin*0.5, third-(margin*2), margin);
+	_discardUpdateLabel.alpha = 0;
 }
 
 -(void)template
@@ -137,20 +150,20 @@
 	_optionJewelView.layer.cornerRadius = _optionJewelView.frame.size.width/2;
 	
 	_cardsWrapper.frame = self.view.frame;
+	
+	_card1Backdrop.frame = card1Origin;
+	_card2Backdrop.frame = card2Origin;
+	_card3Backdrop.frame = card3Origin;
+	_card4Backdrop.frame = card4Origin;
+	
+	_card1Backdrop.image = [UIImage imageNamed:@"card.0060"];
+	_card2Backdrop.image = [UIImage imageNamed:@"card.0060"];
+	_card3Backdrop.image = [UIImage imageNamed:@"card.0060"];
+	_card4Backdrop.image = [UIImage imageNamed:@"card.0060"];
 }
 
 -(void)updateStage
 {
-	[self.card1Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:0] number],[[playableHand card:0] symbol]] forState:UIControlStateNormal];
-	[self.card2Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:1] number],[[playableHand card:1] symbol]] forState:UIControlStateNormal];
-	[self.card3Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:2] number],[[playableHand card:2] symbol]] forState:UIControlStateNormal];
-	[self.card4Button setTitle:[NSString stringWithFormat:@"%d%@",[[playableHand card:3] number],[[playableHand card:3] symbol]] forState:UIControlStateNormal];
-	
-	[self.card1Button setTitleColor:[[playableHand card:0] color] forState:UIControlStateNormal];
-	[self.card2Button setTitleColor:[[playableHand card:1] color] forState:UIControlStateNormal];
-	[self.card3Button setTitleColor:[[playableHand card:2] color] forState:UIControlStateNormal];
-	[self.card4Button setTitleColor:[[playableHand card:3] color] forState:UIControlStateNormal];
-	
 	_card1Image.image = [[playableHand card:0] image];
 	_card2Image.image = [[playableHand card:1] image];
 	_card3Image.image = [[playableHand card:2] image];
@@ -202,11 +215,30 @@
 	int lifeBefore = [user life];
 	[user gainLife:[card value]];
 	justHealed = 1;
-	// Exp
-	[user gainExperience:([user life]-lifeBefore)];
+	[self updateHealth:([user life]-lifeBefore)];
 }
 
+-(void)swordCard :(Card*)card
+{
+	[user gainEquip:[card value]];
+	[user setMalus:25];
+	justHealed = 0;
+}
 
+-(void)monsterCard :(Card*)card
+{
+	// Malus
+	if( [card value] >= [user malus] ){
+		[user looseEquip];
+	}
+	
+	int battleDamage = ( [card value] - [user equip]) ;
+	if( battleDamage < 0 ){ battleDamage = 0; }
+	if( battleDamage > 0 ){ [user looseLife:battleDamage]; }
+	
+	[user setMalus:[card value]];
+	justHealed = 0;
+}
 
 # pragma mark - Choice
 
@@ -219,47 +251,13 @@
 	NSLog(@"!  CARD | %@ %d", [card type], [card number]);
 	NSLog(@"--------+-------------------");
 	
-	// Check for trying to heal twice
-	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){
-		NSLog(@"x  HEAL | Cannot heal twice!");
-		[discardPile addObject:[playableHand cardValue:cardNumber]];
-		[playableHand discard:cardNumber];
-		justHealed = 1;
-	}
-	else if( [[card type] isEqualToString:@"H"] ){
-		
-		[self healCard:card];
-		
-		// Manip cards
-		[discardPile addObject:[playableHand cardValue:cardNumber]];
-		[playableHand discard:cardNumber];
-		
-	}
-	else if( [[card type] isEqualToString:@"D"] ){
-		[user gainEquip:[card value]];
-		// Manip cards
-		[discardPile addObject:[playableHand cardValue:cardNumber]];
-		[playableHand discard:cardNumber];
-		[user setMalus:25];
-		justHealed = 0;
-	}
-	else{
-		// Malus
-		if( [card value] >= [user malus] ){
-			[user looseEquip];
-		}
-		
-		int battleDamage = ( [card value] - [user equip]) ;
-		if( battleDamage < 0 ){ battleDamage = 0; }
-		if( battleDamage > 0 ){ [user looseLife:battleDamage]; }
-		
-		[user setMalus:[card value]];
-		
-		// Manip cards
-		[discardPile addObject:[playableHand cardValue:cardNumber]];
-		[playableHand discard:cardNumber];
-		justHealed = 0;
-	}
+	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; }
+	else if( [[card type] isEqualToString:@"H"] ){ [self healCard:card]; }
+	else if( [[card type] isEqualToString:@"D"] ){[self swordCard:card]; }
+	else{ [self monsterCard:card]; }
+	
+	[discardPile addObject:[playableHand cardValue:cardNumber]];
+	[playableHand discard:cardNumber];
 	
 	[user setEscape:0];
 	[self updateStage];
@@ -319,6 +317,8 @@
 		
 		_card3Wrapper.frame = CGRectOffset(card3Origin, 0, margin);
 		_card4Wrapper.frame = CGRectOffset(card4Origin, 0, margin);
+		_card3Backdrop.frame = CGRectOffset(card3Origin, 0, margin);
+		_card4Backdrop.frame = CGRectOffset(card4Origin, 0, margin);
 		_optionJewelView.frame = CGRectOffset(jewelOrigin, 0, margin/2);
 		
 	} completion:^(BOOL finished){
@@ -350,6 +350,8 @@
 		[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			_card3Wrapper.frame = card3Origin;
 			_card4Wrapper.frame = card4Origin;
+			_card3Backdrop.frame = card3Origin;
+			_card4Backdrop.frame = card4Origin;
 			_optionJewelView.frame = jewelOrigin;
 		} completion:^(BOOL finished){
 			
@@ -453,18 +455,46 @@
 	if( sender.tag == 204 ){ targetWrapper = _card4Wrapper; }
 	
 	CGRect cardOrigin = targetWrapper.frame;
-	[UIView animateWithDuration:0.15 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
 		targetWrapper.frame = CGRectOffset(cardOrigin, 0, -10);
 		targetWrapper.alpha = 0;
 	} completion:^(BOOL finished){
 		
 		[self choice:((int)sender.tag-201)];
+		[self battleResults:((int)sender.tag-201)];
 	
-		[UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		[UIView animateWithDuration:0.5 delay:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 			targetWrapper.frame = cardOrigin;
 			targetWrapper.alpha = 1;
 		} completion:^(BOOL finished){}];
 	}];
+}
+
+-(void)battleResults :(int)cardPosition
+{
+	NSLog(@"Battle result");
+}
+
+# pragma mark - Stats
+
+-(void)updateHealth:(int)change
+{
+	if(change > 0){ _lifeUpdateLabel.textColor = [UIColor cyanColor]; }
+	_lifeUpdateLabel.alpha = 1;
+	_lifeUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
+	
+	[UIView animateWithDuration:0.5 delay:3 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		_lifeUpdateLabel.alpha = 0;
+	} completion:^(BOOL finished){}];
+	
+}
+-(void)updateSword:(int)change
+{
+	
+}
+-(void)updateExperience:(int)change
+{
+	
 }
 
 # pragma mark - Defaults

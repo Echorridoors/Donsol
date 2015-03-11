@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5780562D1AB09AAC007296E4 /* card.0056 in Resources */ = {isa = PBXBuildFile; fileRef = 578056281AB09AAC007296E4 /* card.0056 */; };
+		5780562E1AB09AAC007296E4 /* card.0057 in Resources */ = {isa = PBXBuildFile; fileRef = 578056291AB09AAC007296E4 /* card.0057 */; };
+		5780562F1AB09AAC007296E4 /* card.0058 in Resources */ = {isa = PBXBuildFile; fileRef = 5780562A1AB09AAC007296E4 /* card.0058 */; };
+		578056301AB09AAC007296E4 /* card.0059 in Resources */ = {isa = PBXBuildFile; fileRef = 5780562B1AB09AAC007296E4 /* card.0059 */; };
+		578056311AB09AAC007296E4 /* card.0060 in Resources */ = {isa = PBXBuildFile; fileRef = 5780562C1AB09AAC007296E4 /* card.0060 */; };
 		57B172541AA1807800DE1796 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B172531AA1807800DE1796 /* Card.m */; };
 		57B172571AA182FD00DE1796 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B172561AA182FD00DE1796 /* User.m */; };
 		57BC29CD1AA162BA00098150 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BC29CC1AA162BA00098150 /* main.m */; };
@@ -87,6 +92,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		578056281AB09AAC007296E4 /* card.0056 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0056; sourceTree = "<group>"; };
+		578056291AB09AAC007296E4 /* card.0057 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0057; sourceTree = "<group>"; };
+		5780562A1AB09AAC007296E4 /* card.0058 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0058; sourceTree = "<group>"; };
+		5780562B1AB09AAC007296E4 /* card.0059 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0059; sourceTree = "<group>"; };
+		5780562C1AB09AAC007296E4 /* card.0060 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0060; sourceTree = "<group>"; };
 		57B172521AA1807800DE1796 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		57B172531AA1807800DE1796 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		57B172551AA182FD00DE1796 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -255,6 +265,11 @@
 		57C386191AAD6A8B0080F31D /* assets.cards */ = {
 			isa = PBXGroup;
 			children = (
+				578056281AB09AAC007296E4 /* card.0056 */,
+				578056291AB09AAC007296E4 /* card.0057 */,
+				5780562A1AB09AAC007296E4 /* card.0058 */,
+				5780562B1AB09AAC007296E4 /* card.0059 */,
+				5780562C1AB09AAC007296E4 /* card.0060 */,
 				57C386881AAD729A0080F31D /* card.0055 */,
 				57C3861A1AAD6A8B0080F31D /* card.0000 */,
 				57C3861B1AAD6A8B0080F31D /* card.0001 */,
@@ -412,11 +427,13 @@
 				57C386731AAD6A8B0080F31D /* card.0034 in Resources */,
 				57C386801AAD6A8B0080F31D /* card.0047 in Resources */,
 				57C3866B1AAD6A8B0080F31D /* card.0026 in Resources */,
+				5780562E1AB09AAC007296E4 /* card.0057 in Resources */,
 				57C3866A1AAD6A8B0080F31D /* card.0025 in Resources */,
 				57C3865D1AAD6A8B0080F31D /* card.0012 in Resources */,
 				57C386521AAD6A8B0080F31D /* card.0001 in Resources */,
 				57C3865B1AAD6A8B0080F31D /* card.0010 in Resources */,
 				57C3866C1AAD6A8B0080F31D /* card.0027 in Resources */,
+				578056311AB09AAC007296E4 /* card.0060 in Resources */,
 				57C386601AAD6A8B0080F31D /* card.0015 in Resources */,
 				57C386811AAD6A8B0080F31D /* card.0048 in Resources */,
 				57C386531AAD6A8B0080F31D /* card.0002 in Resources */,
@@ -428,6 +445,7 @@
 				57C3866F1AAD6A8B0080F31D /* card.0030 in Resources */,
 				57C3867D1AAD6A8B0080F31D /* card.0044 in Resources */,
 				57C386571AAD6A8B0080F31D /* card.0006 in Resources */,
+				578056301AB09AAC007296E4 /* card.0059 in Resources */,
 				57C386821AAD6A8B0080F31D /* card.0049 in Resources */,
 				57C3865A1AAD6A8B0080F31D /* card.0009 in Resources */,
 				57C386891AAD729A0080F31D /* card.0055 in Resources */,
@@ -435,6 +453,7 @@
 				57C386721AAD6A8B0080F31D /* card.0033 in Resources */,
 				57BC29DB1AA162BA00098150 /* LaunchScreen.xib in Resources */,
 				57C386641AAD6A8B0080F31D /* card.0019 in Resources */,
+				5780562D1AB09AAC007296E4 /* card.0056 in Resources */,
 				57C386651AAD6A8B0080F31D /* card.0020 in Resources */,
 				57C386671AAD6A8B0080F31D /* card.0022 in Resources */,
 				57C386611AAD6A8B0080F31D /* card.0016 in Resources */,
@@ -447,6 +466,7 @@
 				57C386781AAD6A8B0080F31D /* card.0039 in Resources */,
 				57C386761AAD6A8B0080F31D /* card.0037 in Resources */,
 				57C386851AAD6A8B0080F31D /* card.0052 in Resources */,
+				5780562F1AB09AAC007296E4 /* card.0058 in Resources */,
 				57C386681AAD6A8B0080F31D /* card.0023 in Resources */,
 				57C386701AAD6A8B0080F31D /* card.0031 in Resources */,
 				57C386711AAD6A8B0080F31D /* card.0032 in Resources */,

@@ -16,6 +16,22 @@
                                 <rect key="frame" x="80" y="142" width="160" height="284"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="5di-tF-No3" userLabel="card1Backdrop">
+                                        <rect key="frame" x="40" y="71" width="80" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0or-XS-Gfa" userLabel="card2Backdrop">
+                                        <rect key="frame" x="40" y="71" width="80" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uqh-Xd-yZQ" userLabel="card3Backdrop">
+                                        <rect key="frame" x="40" y="71" width="80" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="id5-22-Zrl" userLabel="card4Backdrop">
+                                        <rect key="frame" x="40" y="71" width="80" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" id="N5c-yI-nj1" userLabel="card1Wrapper">
                                         <rect key="frame" x="-70" y="-8" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -196,15 +212,22 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Equipment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XHp-CC-qCb" userLabel="swordLabel">
-                                <rect key="frame" x="24" y="314" width="204" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MLH-Lt-aGR" userLabel="lifeValueLabel">
+                                <rect key="frame" x="51" y="274" width="217" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4JF-G5-eyL" userLabel="discardLabel">
-                                <rect key="frame" x="24" y="343" width="204" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qlu-pE-V8c" userLabel="lifeUpdateLabel">
+                                <rect key="frame" x="51" y="274" width="217" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.77818035507665861" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Equipment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XHp-CC-qCb" userLabel="swordLabel">
+                                <rect key="frame" x="24" y="314" width="204" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -217,8 +240,15 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MLH-Lt-aGR" userLabel="lifeValueLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="w5r-Qu-o54" userLabel="swordUpdateLabel">
                                 <rect key="frame" x="51" y="274" width="217" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.77818035507665861" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4JF-G5-eyL" userLabel="discardLabel">
+                                <rect key="frame" x="24" y="343" width="204" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -231,19 +261,30 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="af4-W7-y0Q" userLabel="discardUpdateLabel">
+                                <rect key="frame" x="51" y="274" width="217" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="1" blue="0.77818035507665861" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="card1Backdrop" destination="5di-tF-No3" id="X1D-44-UUH"/>
                         <outlet property="card1Button" destination="VKo-qz-ap3" id="5ah-5f-1l9"/>
                         <outlet property="card1Image" destination="26v-9R-686" id="5sP-Ci-Gmz"/>
                         <outlet property="card1Wrapper" destination="N5c-yI-nj1" id="Qb8-ec-FgU"/>
+                        <outlet property="card2Backdrop" destination="0or-XS-Gfa" id="YDh-gg-QDk"/>
                         <outlet property="card2Button" destination="Q5f-0L-7kH" id="7VM-Re-U5o"/>
                         <outlet property="card2Image" destination="t1Z-l8-u0m" id="FwP-xx-uwq"/>
                         <outlet property="card2Wrapper" destination="9xo-GV-iYE" id="ASY-oi-QHh"/>
+                        <outlet property="card3Backdrop" destination="uqh-Xd-yZQ" id="P1I-IU-pHe"/>
                         <outlet property="card3Button" destination="IHT-YR-OlO" id="V9e-rm-7Bw"/>
                         <outlet property="card3Image" destination="9gZ-d8-fsr" id="A1f-Vw-Z6e"/>
                         <outlet property="card3Wrapper" destination="Yvi-DR-OXV" id="qNN-Cg-tLf"/>
+                        <outlet property="card4Backdrop" destination="id5-22-Zrl" id="Hzl-hG-MIs"/>
                         <outlet property="card4Button" destination="qFG-1V-dN7" id="adW-zC-3wW"/>
                         <outlet property="card4Image" destination="XRj-uu-Ofx" id="AGw-D7-j1k"/>
                         <outlet property="card4Wrapper" destination="OMg-ox-JEN" id="dOM-HA-act"/>
@@ -251,10 +292,12 @@
                         <outlet property="discardBar" destination="iGh-VD-NDc" id="y9f-Y4-0Jt"/>
                         <outlet property="discardBarWrapper" destination="A7P-s7-Ank" id="qpy-Nk-LDg"/>
                         <outlet property="discardLabel" destination="4JF-G5-eyL" id="JfH-Zp-Hhk"/>
+                        <outlet property="discardUpdateLabel" destination="af4-W7-y0Q" id="66b-sh-aV5"/>
                         <outlet property="discardValueLabel" destination="nI8-sk-tBO" id="o2D-Dj-a9V"/>
                         <outlet property="lifeBar" destination="au7-zc-q2F" id="I65-CR-mRI"/>
                         <outlet property="lifeBarWrapper" destination="4jm-yy-IyK" id="Tyu-z9-bqz"/>
                         <outlet property="lifeLabel" destination="USy-8C-5Vf" id="wUx-C6-CoT"/>
+                        <outlet property="lifeUpdateLabel" destination="Qlu-pE-V8c" id="Hom-WM-Pwp"/>
                         <outlet property="lifeValueLabel" destination="MLH-Lt-aGR" id="6y8-ZS-plo"/>
                         <outlet property="optionJewelView" destination="e3K-Ql-q3L" id="h58-5V-YxH"/>
                         <outlet property="optionToggleButton" destination="ekQ-6c-RYk" id="ivf-kC-B9U"/>
@@ -264,6 +307,7 @@
                         <outlet property="swordBarWrapper" destination="jLf-5s-tgL" id="cTx-mQ-4ym"/>
                         <outlet property="swordLabel" destination="XHp-CC-qCb" id="I0m-h3-hRA"/>
                         <outlet property="swordMalusBar" destination="AB5-Vu-kPZ" id="4Zr-nJ-gr2"/>
+                        <outlet property="swordUpdateLabel" destination="w5r-Qu-o54" id="4Zv-dh-1dt"/>
                         <outlet property="swordValueLabel" destination="Iuc-cn-P8X" id="cK7-iS-mtR"/>
                     </connections>
                 </viewController>

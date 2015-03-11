@@ -23,6 +23,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *optionToggleButton;
 - (IBAction)optionToggleButton:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIImageView *card1Backdrop;
+@property (weak, nonatomic) IBOutlet UIImageView *card2Backdrop;
+@property (weak, nonatomic) IBOutlet UIImageView *card3Backdrop;
+@property (weak, nonatomic) IBOutlet UIImageView *card4Backdrop;
+
 // Card 1
 @property (weak, nonatomic) IBOutlet UIView *card1Wrapper;
 @property (weak, nonatomic) IBOutlet UIButton *card1Button;
@@ -60,6 +65,10 @@
 @property (weak, nonatomic) IBOutlet UIView *swordBar;
 @property (weak, nonatomic) IBOutlet UIView *discardBar;
 @property (weak, nonatomic) IBOutlet UIView *swordMalusBar;
+
+@property (weak, nonatomic) IBOutlet UILabel *lifeUpdateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *swordUpdateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *discardUpdateLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *cardsWrapper;
 
