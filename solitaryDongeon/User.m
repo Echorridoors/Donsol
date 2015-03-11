@@ -60,6 +60,8 @@
 	NSLog(@": MALUS | %d", malus);
 }
 
+# pragma mark Life -
+
 -(void)gainLife :(int)value
 {
 	life = life + value;
@@ -75,6 +77,8 @@
 	NSLog(@":  USER | Life: %d", life);
 }
 
+# pragma mark Equip -
+
 -(void)gainEquip :(int)value
 {
 	NSLog(@":  USER | Equip: %d", value);
@@ -86,5 +90,20 @@
 	NSLog(@":  USER | Equip: Lost!");
 	equip = 0;
 }
+
+# pragma mark Experience -
+
+-(void)gainExperience :(int)value
+{
+	if( value < 0 ){ value = 0; }
+	experience = experience + value;
+	NSLog(@":  USER | Experience: Gained %dXP", experience);
+}
+
+-(int)experience
+{
+	return experience;
+}
+
 
 @end

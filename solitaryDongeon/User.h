@@ -24,6 +24,9 @@
 -(void)setEscape :(int)value;
 -(int)escaped;
 
+-(void)gainExperience :(int)value;
+-(int)experience;
+
 @end
 
 int life;
@@ -32,3 +35,4 @@ int room;
 int malus;
 int escaped;
 int isHealing;
+int experience;

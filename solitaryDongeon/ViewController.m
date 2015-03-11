@@ -89,7 +89,8 @@
 	margin = self.view.frame.size.width/16;
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
-	CGFloat verticalOffset = margin * 3;
+	CGFloat verticalOffset = margin * 1;
+	CGFloat third = (screen.size.width-(2*margin))/3;
 	
 	_card1Wrapper.frame = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
 	_card1Wrapper.backgroundColor = [UIColor whiteColor];
@@ -120,39 +121,36 @@
 	_card4Wrapper.clipsToBounds = YES;
 	
 	_lifeLabel.frame = CGRectMake(margin, margin*0.5, margin * 3, margin);
-	_swordLabel.frame = CGRectMake(margin, (margin*1.5), margin * 3, margin);
-	_discardLabel.frame = CGRectMake(margin, (margin*2.5), margin * 3, margin);
+	_swordLabel.frame = CGRectMake((margin*1.25)+third, (margin*0.5), margin * 3, margin);
+	_discardLabel.frame = CGRectMake((margin*1.5)+(third*2), (margin*0.5), margin * 3, margin);
 	
 	_lifeLabel.text = @"HP";
 	_swordLabel.text = @"AP";
 	_discardLabel.text = @"XP";
 	
 	_lifeValueLabel.frame = CGRectMake(margin*2, margin*0.5, margin * 3, margin);
-	_swordValueLabel.frame = CGRectMake(margin*2, (margin*1.5), margin * 3, margin);
-	_discardValueLabel.frame = CGRectMake(margin*2, (margin*2.5), margin * 3, margin);
+	_swordValueLabel.frame = CGRectMake((margin*2.25)+third, (margin*0.5), margin * 3, margin);
+	_discardValueLabel.frame = CGRectMake((margin*2.5)+(third*2), (margin*0.5), margin * 3, margin);
 	
-	_runButton.frame = CGRectMake(screen.size.width-(4*margin), (margin*0.5), margin*3, margin*3);
+	_runButton.frame = CGRectMake(margin, screen.size.height-(2*margin), margin* 4, margin);
 	_runButton.backgroundColor = [UIColor whiteColor];
-	_runButton.layer.cornerRadius = 10;
+	_runButton.layer.cornerRadius = margin/4;
 	
-	_lifeBarWrapper.frame = CGRectMake(margin*4, margin-(margin/8), screen.size.width-(2*margin)-(margin*7), margin/4);
+	_lifeBarWrapper.frame = CGRectMake(margin, margin*1.5, third-(margin/2), 1);
 	_lifeBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_lifeBarWrapper.clipsToBounds = YES;
-	_lifeBarWrapper.layer.cornerRadius = margin/8;
 	
 	_lifeBar.backgroundColor = [UIColor redColor];
 	
-	_swordBarWrapper.frame = CGRectMake(margin*4, margin*2-(margin/8), screen.size.width-(2*margin)-(margin*7), margin/4);
+	_swordBarWrapper.frame = CGRectMake((margin*1.25)+third, margin*1.5, third-(margin/2), 1);
 	_swordBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_swordBarWrapper.clipsToBounds = YES;
-	_swordBarWrapper.layer.cornerRadius = margin/8;
 	
 	_swordBar.backgroundColor = [UIColor redColor];
 	
-	_discardBarWrapper.frame = CGRectMake(margin*4, margin*3-(margin/8), screen.size.width-(2*margin)-(margin*7), margin/4);
+	_discardBarWrapper.frame = CGRectMake((margin*1.5)+(third*2), margin*1.5, third-(margin/2), 1);
 	_discardBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_discardBarWrapper.clipsToBounds = YES;
-	_discardBarWrapper.layer.cornerRadius = margin/8;
 	
 	_discardBar.backgroundColor = [UIColor redColor];
 	
@@ -182,11 +180,9 @@
 	_card3Image.image = [[playableHand card:2] image];
 	_card4Image.image = [[playableHand card:3] image];
 	
-	_card4Image.backgroundColor = [UIColor redColor];
-	
 	self.swordValueLabel.text = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	self.lifeValueLabel.text = [NSString stringWithFormat:@"%d",[user life]];
-	self.discardValueLabel.text = [NSString stringWithFormat:@"%d(%d)",(int)[discardPile count], [user room]];
+	self.discardValueLabel.text = [NSString stringWithFormat:@"%d(%d)",[user experience], [user room]];
 	
 	self.swordBar.clipsToBounds = true;
 	
@@ -201,7 +197,6 @@
 		self.swordMalusBar.frame = CGRectMake(0, 0, swordMalusBar, self.swordBarWrapper.frame.size.height);
 		self.discardBar.frame = CGRectMake(0, 0, discardBar, self.swordBarWrapper.frame.size.height);
 	} completion:^(BOOL finished){}];
-	
 	
 	if([user escaped] == 1 && (int)[discardPile count] != 0){
 		_runButton.enabled = false;
@@ -221,7 +216,24 @@
 		[_runButton setAlpha:0.5];
 	}
 	
+	if( [playableHand numberOfCards] == 0){
+		[_runButton setTitle:@"Enter room 4" forState:UIControlStateNormal];
+	}
+	
 }
+
+# pragma mark - Cards Effects
+
+-(void)healCard :(Card*)card
+{
+	int lifeBefore = [user life];
+	[user gainLife:[card value]];
+	justHealed = 1;
+	// Exp
+	[user gainExperience:([user life]-lifeBefore)];
+}
+
+
 
 # pragma mark - Choice
 
@@ -242,11 +254,12 @@
 		justHealed = 1;
 	}
 	else if( [[card type] isEqualToString:@"H"] ){
-		[user gainLife:[card value]];
+		
+		[self healCard:card];
+		
 		// Manip cards
 		[discardPile addObject:[playableHand cardValue:cardNumber]];
 		[playableHand discard:cardNumber];
-		justHealed = 1;
 		
 	}
 	else if( [[card type] isEqualToString:@"D"] ){
@@ -261,7 +274,6 @@
 		// Malus
 		if( [card value] >= [user malus] ){
 			[user looseEquip];
-			[self updateStage];
 		}
 		
 		int battleDamage = ( [card value] - [user equip]) ;
@@ -389,6 +401,12 @@
 
 - (IBAction)cardPressed:(UIButton*)sender
 {
+	// Do nothing if the card is blank
+	NSString * cardData = [playableHand cardValue:((int)sender.tag-201)];
+	Card * card = [[Card alloc] initWithString:cardData];
+	if( [card number] == 0 ){ return; }
+	
+	// Click
 	UIView * targetWrapper = _card1Wrapper;
 	
 	if( sender.tag == 201 ){ targetWrapper = _card1Wrapper; }
@@ -402,19 +420,14 @@
 		targetWrapper.alpha = 0;
 	} completion:^(BOOL finished){
 		
-		if( sender.tag == 201 ){ [self choice:0]; }
-		if( sender.tag == 202 ){ [self choice:1]; }
-		if( sender.tag == 203 ){ [self choice:2]; }
-		if( sender.tag == 204 ){ [self choice:3]; }
+		[self choice:((int)sender.tag-201)];
 	
 		[UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 			targetWrapper.frame = cardOrigin;
 			targetWrapper.alpha = 1;
 		} completion:^(BOOL finished){}];
 	}];
-	
 }
-
 
 # pragma mark - Defaults
 
