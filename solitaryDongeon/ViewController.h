@@ -98,3 +98,6 @@ CGRect quitButtonOrigin;
 CGRect runButtonOrigin;
 
 int menuIsOpen;
+
+NSTimer * blinkHealthTimer;
+
