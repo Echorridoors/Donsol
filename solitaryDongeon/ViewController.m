@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 Devine Lu Linvega. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+
 #import "ViewController.h"
 #import "Deck.h"
 #import "Hand.h"
@@ -51,7 +54,7 @@
 	playableDeck = [[Deck alloc] init];
 	discardPile = [[NSMutableArray alloc] init];
 	
-	if(!user || [user life] < 1 ){ user = [[User alloc] init]; }
+	if(!user || [user life] < 1 || [user difficulty] == 1 ){ user = [[User alloc] init]; }
 }
 
 -(void)templateStart
@@ -142,12 +145,14 @@
 	_swordBarWrapper.clipsToBounds = YES;
 	
 	_swordBar.backgroundColor = [UIColor redColor];
+	_swordBar.frame = CGRectMake(0, 0, 0, 0);
 	
 	_discardBarWrapper.frame = CGRectMake((margin*1.5)+(third*2), margin*1.5, third-(margin/2), 1);
 	_discardBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_discardBarWrapper.clipsToBounds = YES;
 	
 	_discardBar.backgroundColor = [UIColor redColor];
+	_discardBar.frame = CGRectMake(0, 0, 0, 0);
 	
 	//
 	
@@ -374,7 +379,6 @@
 	
 	[user setEscape:0];
 	[self updateStage];
-	
 }
 
 -(void)draw
@@ -471,13 +475,16 @@
 			_runButton.alpha = 1;
 			
 		} completion:^(BOOL finished){
+			[self playSoundNamed:@"click.3"];
 		}];
 		
 	}];
+	[self playSoundNamed:@"click.1"];
 }
 
 -(void)hideMenu
 {
+	[self playSoundNamed:@"click.1"];
 	[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		
 		_quitButton.frame = quitButtonOrigin;
@@ -503,11 +510,13 @@
 
 - (IBAction)quitButton:(id)sender
 {
-	
+	[self playSoundNamed:@"click.1"];
 }
 
 - (IBAction)runButton:(id)sender
 {
+	[self playSoundNamed:@"click.1"];
+	
 	if( (int)[discardPile count] == 0){
 		[self newGame];
 	}
@@ -565,22 +574,22 @@
 	[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		_card1Wrapper.frame = card1Origin;
 		_card1Wrapper.alpha = 1;
-	} completion:^(BOOL finished){}];
+	} completion:^(BOOL finished){ [self playSoundNamed:@"click.4"]; }];
 	
 	[UIView animateWithDuration:0.25 delay:0.05 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		_card2Wrapper.frame = card2Origin;
 		_card2Wrapper.alpha = 1;
-	} completion:^(BOOL finished){}];
+	} completion:^(BOOL finished){ [self playSoundNamed:@"click.4"]; }];
 	
 	[UIView animateWithDuration:0.25 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		_card3Wrapper.frame = card3Origin;
 		_card3Wrapper.alpha = 1;
-	} completion:^(BOOL finished){}];
+	} completion:^(BOOL finished){ [self playSoundNamed:@"click.4"]; }];
 	
 	[UIView animateWithDuration:0.25 delay:0.15 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		_card4Wrapper.frame = card4Origin;
 		_card4Wrapper.alpha = 1;
-	} completion:^(BOOL finished){}];
+	} completion:^(BOOL finished){ [self playSoundNamed:@"click.4"];  }];
 	
 	[playableHand discard:0];
 	[playableHand discard:1];
@@ -598,6 +607,7 @@
 	if( [card number] == 0 ){ return; }
 	
 	// Click
+	[self playSoundNamed:@"click.2"];
 	UIView * targetWrapper = _card1Wrapper;
 	
 	if( sender.tag == 201 ){ targetWrapper = _card1Wrapper; }
@@ -617,7 +627,11 @@
 		[UIView animateWithDuration:0.5 delay:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 			targetWrapper.frame = cardOrigin;
 			targetWrapper.alpha = 1;
-		} completion:^(BOOL finished){}];
+		} completion:^(BOOL finished){
+			
+			[self playSoundNamed:@"click.3"];
+		
+		}];
 	}];
 }
 
@@ -718,7 +732,7 @@
 	_modalView.frame = self.view.frame;
 	_modalView.alpha = 0;
 	
-	_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.5*margin), self.view.frame.size.width-(4*margin), margin*5);
+	_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.25*margin), self.view.frame.size.width-(4*margin), margin*5);
 	_modalWrapperView.alpha = 0;
 	_modalWrapperView.layer.cornerRadius = margin/2;
 	
@@ -729,32 +743,46 @@
 	_modalTextLabel.text = text;
 	_modalTextLabel.frame = CGRectMake(margin, margin*2, _modalWrapperView.frame.size.width-(2*margin), margin*2);
 	
-	[UIView animateWithDuration:0.25 delay:0.75 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+	[UIView animateWithDuration:0.1 delay:0.75 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		_modalView.alpha = 1;
 	} completion:^(BOOL finished){
-		[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		[UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 			_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3*margin), self.view.frame.size.width-(4*margin), margin*5);
 			_modalWrapperView.alpha = 1;
 		} completion:^(BOOL finished){
 			
+			[self playSoundNamed:@"click.1"];
 		}];
 	}];
 }
 
 - (IBAction)modalCloseButton:(id)sender
 {
-	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.5*margin), self.view.frame.size.width-(4*margin), margin*5);
+	[UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.25*margin), self.view.frame.size.width-(4*margin), margin*5);
 		_modalWrapperView.alpha = 0;
 	} completion:^(BOOL finished){
-		[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		[UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 			_modalView.alpha = 0;
 		} completion:^(BOOL finished){
 			
 		}];
 	}];
+	
+	[self playSoundNamed:@"click.2"];
 }
 
+- (void)playSoundNamed:(NSString*)name
+{
+	NSLog(@" AUDIO | Playing sound: %@",name);
+	
+	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
+	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
+	audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioUrl error:nil];
+	audioPlayer.volume = 1;
+	[audioPlayer prepareToPlay];
+	[audioPlayer play];
+}
 
 # pragma mark - Defaults
 

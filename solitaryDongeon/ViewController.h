@@ -6,14 +6,16 @@
 //  Copyright (c) 2015 Devine Lu Linvega. All rights reserved.
 //
 
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
+
 #import "Deck.h"
 #import "Hand.h"
 #import "User.h"
 #import "Card.h"
 
 @interface ViewController : UIViewController
-
 
 @property (weak, nonatomic) IBOutlet UIView *optionJewelView;
 @property (weak, nonatomic) IBOutlet UIButton *runButton;
@@ -101,3 +103,4 @@ int menuIsOpen;
 
 NSTimer * blinkHealthTimer;
 
+AVAudioPlayer *audioPlayer;

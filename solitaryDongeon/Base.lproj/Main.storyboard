@@ -356,18 +356,20 @@
             </objects>
             <point key="canvasLocation" x="646" y="343"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu-->
         <scene sceneID="8xZ-5q-HdM">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dda-4h-R4V" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dda-4h-R4V" customClass="Menu" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9mg-Zk-Fs3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lE1-0G-LiR">
-                                <rect key="frame" x="88" y="269" width="145" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lE1-0G-LiR" userLabel="enterButton">
+                                <rect key="frame" x="16" y="269" width="217" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Enter Dungeon 1">
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                <state key="normal" title="ENTER THE DUNGEON">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -379,6 +381,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="DXO-I3-ADc"/>
+                    <connections>
+                        <outlet property="enterButton" destination="lE1-0G-LiR" id="7La-Up-iA9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3i-iB-Ws8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -412,6 +417,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="KpF-my-x3u"/>
+        <segue reference="VLb-jo-ETX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -79,6 +79,12 @@
 		57C386861AAD6A8B0080F31D /* card.0053 in Resources */ = {isa = PBXBuildFile; fileRef = 57C3864F1AAD6A8B0080F31D /* card.0053 */; };
 		57C386871AAD6A8B0080F31D /* card.0054 in Resources */ = {isa = PBXBuildFile; fileRef = 57C386501AAD6A8B0080F31D /* card.0054 */; };
 		57C386891AAD729A0080F31D /* card.0055 in Resources */ = {isa = PBXBuildFile; fileRef = 57C386881AAD729A0080F31D /* card.0055 */; };
+		57C722721AB22FE2005F70B6 /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C722711AB22FE2005F70B6 /* Menu.m */; };
+		57C722741AB23473005F70B6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C722731AB23473005F70B6 /* AVFoundation.framework */; };
+		57C7227A1AB23521005F70B6 /* click.1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722761AB23521005F70B6 /* click.1.wav */; };
+		57C7227B1AB23521005F70B6 /* click.2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722771AB23521005F70B6 /* click.2.wav */; };
+		57C7227C1AB23521005F70B6 /* click.3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722781AB23521005F70B6 /* click.3.wav */; };
+		57C7227D1AB23521005F70B6 /* click.4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722791AB23521005F70B6 /* click.4.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +180,13 @@
 		57C3864F1AAD6A8B0080F31D /* card.0053 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0053; sourceTree = "<group>"; };
 		57C386501AAD6A8B0080F31D /* card.0054 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0054; sourceTree = "<group>"; };
 		57C386881AAD729A0080F31D /* card.0055 */ = {isa = PBXFileReference; lastKnownFileType = file; path = card.0055; sourceTree = "<group>"; };
+		57C722701AB22FE2005F70B6 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
+		57C722711AB22FE2005F70B6 /* Menu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Menu.m; sourceTree = "<group>"; };
+		57C722731AB23473005F70B6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		57C722761AB23521005F70B6 /* click.1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.1.wav; sourceTree = "<group>"; };
+		57C722771AB23521005F70B6 /* click.2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.2.wav; sourceTree = "<group>"; };
+		57C722781AB23521005F70B6 /* click.3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.3.wav; sourceTree = "<group>"; };
+		57C722791AB23521005F70B6 /* click.4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.4.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57C722741AB23473005F70B6 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +211,7 @@
 		57BC29BE1AA162BA00098150 = {
 			isa = PBXGroup;
 			children = (
+				57C722731AB23473005F70B6 /* AVFoundation.framework */,
 				57BC29C91AA162BA00098150 /* solitaryDongeon */,
 				57BC29E31AA162BA00098150 /* solitaryDongeonTests */,
 				57BC29C81AA162BA00098150 /* Products */,
@@ -215,6 +230,7 @@
 		57BC29C91AA162BA00098150 /* solitaryDongeon */ = {
 			isa = PBXGroup;
 			children = (
+				57C722751AB23521005F70B6 /* assets.sounds */,
 				57C386191AAD6A8B0080F31D /* assets.cards */,
 				57BC29CE1AA162BA00098150 /* AppDelegate.h */,
 				57BC29CF1AA162BA00098150 /* AppDelegate.m */,
@@ -229,6 +245,8 @@
 				57B172551AA182FD00DE1796 /* User.h */,
 				57B172561AA182FD00DE1796 /* User.m */,
 				57BC29D41AA162BA00098150 /* Main.storyboard */,
+				57C722701AB22FE2005F70B6 /* Menu.h */,
+				57C722711AB22FE2005F70B6 /* Menu.m */,
 				57BC29D71AA162BA00098150 /* Images.xcassets */,
 				57BC29D91AA162BA00098150 /* LaunchScreen.xib */,
 				57BC29CA1AA162BA00098150 /* Supporting Files */,
@@ -330,6 +348,17 @@
 			path = assets.cards;
 			sourceTree = "<group>";
 		};
+		57C722751AB23521005F70B6 /* assets.sounds */ = {
+			isa = PBXGroup;
+			children = (
+				57C722761AB23521005F70B6 /* click.1.wav */,
+				57C722771AB23521005F70B6 /* click.2.wav */,
+				57C722781AB23521005F70B6 /* click.3.wav */,
+				57C722791AB23521005F70B6 /* click.4.wav */,
+			);
+			path = assets.sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -415,6 +444,7 @@
 				57C3867E1AAD6A8B0080F31D /* card.0045 in Resources */,
 				57C386631AAD6A8B0080F31D /* card.0018 in Resources */,
 				57C3867C1AAD6A8B0080F31D /* card.0043 in Resources */,
+				57C7227B1AB23521005F70B6 /* click.2.wav in Resources */,
 				57C3865C1AAD6A8B0080F31D /* card.0011 in Resources */,
 				57C3866E1AAD6A8B0080F31D /* card.0029 in Resources */,
 				57C386591AAD6A8B0080F31D /* card.0008 in Resources */,
@@ -442,6 +472,7 @@
 				57BC29D61AA162BA00098150 /* Main.storyboard in Resources */,
 				57C386511AAD6A8B0080F31D /* card.0000 in Resources */,
 				57C386691AAD6A8B0080F31D /* card.0024 in Resources */,
+				57C7227D1AB23521005F70B6 /* click.4.wav in Resources */,
 				57C3866F1AAD6A8B0080F31D /* card.0030 in Resources */,
 				57C3867D1AAD6A8B0080F31D /* card.0044 in Resources */,
 				57C386571AAD6A8B0080F31D /* card.0006 in Resources */,
@@ -451,9 +482,11 @@
 				57C386891AAD729A0080F31D /* card.0055 in Resources */,
 				57C386551AAD6A8B0080F31D /* card.0004 in Resources */,
 				57C386721AAD6A8B0080F31D /* card.0033 in Resources */,
+				57C7227C1AB23521005F70B6 /* click.3.wav in Resources */,
 				57BC29DB1AA162BA00098150 /* LaunchScreen.xib in Resources */,
 				57C386641AAD6A8B0080F31D /* card.0019 in Resources */,
 				5780562D1AB09AAC007296E4 /* card.0056 in Resources */,
+				57C7227A1AB23521005F70B6 /* click.1.wav in Resources */,
 				57C386651AAD6A8B0080F31D /* card.0020 in Resources */,
 				57C386671AAD6A8B0080F31D /* card.0022 in Resources */,
 				57C386611AAD6A8B0080F31D /* card.0016 in Resources */,
@@ -497,6 +530,7 @@
 				57BC29D31AA162BA00098150 /* ViewController.m in Sources */,
 				57BC29D01AA162BA00098150 /* AppDelegate.m in Sources */,
 				57BC29CD1AA162BA00098150 /* main.m in Sources */,
+				57C722721AB22FE2005F70B6 /* Menu.m in Sources */,
 				57B172541AA1807800DE1796 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
