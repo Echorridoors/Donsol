@@ -20,6 +20,11 @@
 	difficulty = 1;
 	return self;
 }
+-(int)lifeMaximum
+{
+	return 21+(difficulty-1);
+}
+
 -(int)difficulty
 {
 	return difficulty;
@@ -75,7 +80,7 @@
 -(void)gainLife :(int)value
 {
 	life = life + value;
-	if( (int)life > 21 ){ life = 21; }
+	if( (int)life > [self lifeMaximum] ){ life = [self lifeMaximum]; }
 	
 	NSLog(@":  USER | Life: %d", life);
 }

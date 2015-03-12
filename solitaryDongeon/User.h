@@ -11,11 +11,14 @@
 
 @interface User : NSObject
 
--(void)gainLife :(int)value;
--(void)gainEquip :(int)value;
--(void)looseLife :(int)value;
 -(int)life;
+-(int)lifeMaximum;
+-(void)gainLife :(int)value;
+-(void)looseLife :(int)value;
+
 -(int)equip;
+-(void)gainEquip :(int)value;
+
 -(int)room;
 -(void)nextRoom;
 -(int)malus;

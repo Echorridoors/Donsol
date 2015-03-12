@@ -14,7 +14,6 @@
 
 @interface ViewController ()
 
-
 @end
 
 @implementation ViewController
@@ -22,14 +21,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	[self newGame];
-	[self templateStart];
-	[self template];
-	[self draw];
-	[self updateStage];
-	[self hideMenu];
+	[self start];
 	
-	/*
 	// START
 	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
 	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
@@ -141,7 +134,24 @@
 	
 	[self updateStage];
 	// END
-	 */
+}
+
+-(void)start
+{
+	[self newGame];
+	[self templateStart];
+	[self template];
+	[self draw];
+	[self updateStage];
+	[self hideMenu];
+	
+	if( [user difficulty] == 1 ){
+		[self modal:[NSString stringWithFormat:@"dungeon %d",[user difficulty]]:@"You are walking into the abyss of the dungeon, clear each room and exit alive."];
+	}
+	else{
+		[self modal:[NSString stringWithFormat:@"dungeon %d",[user difficulty]]:[NSString stringWithFormat:@"Your maximum HP has increased to %dHP, but the monsters are growing stronger.",[user lifeMaximum]]];
+	}
+	
 }
 
 -(void)newGame
@@ -150,7 +160,8 @@
 	playableHand = [[Hand alloc] init];
 	playableDeck = [[Deck alloc] init];
 	discardPile = [[NSMutableArray alloc] init];
-	user = [[User alloc] init];
+	
+	if(!user || [user life] < 1 ){ user = [[User alloc] init]; }
 }
 
 -(void)templateStart
@@ -304,7 +315,7 @@
 	
 	self.swordBar.clipsToBounds = true;
 	
-	CGFloat healthBar = (([user life] * self.lifeBarWrapper.frame.size.width)/21);
+	CGFloat healthBar = (([user life] * self.lifeBarWrapper.frame.size.width)/[user lifeMaximum]);
 	CGFloat swordBar = (([user equip] * self.lifeBarWrapper.frame.size.width)/15);
 	CGFloat swordMalusBar = (([user malus] * self.lifeBarWrapper.frame.size.width)/15);
 	CGFloat discardBar = (((int)[discardPile count] * self.lifeBarWrapper.frame.size.width)/52);
@@ -321,7 +332,7 @@
 	// Highlight HP is just healed
 	
 	if( justHealed == 1 ){
-		_lifeLabel.textColor = [UIColor cyanColor];
+		_lifeLabel.textColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
 	}
 	else if( [user life] < 6 ){
 		_lifeLabel.textColor = [UIColor redColor];
@@ -338,6 +349,13 @@
 		float percentage = ((float)[discardPile count] / 54.0) * 100;
 		[self modal:@"A monster killed you":[NSString stringWithFormat:@"You explored %d%% the dungeon before succumbing to your wounds.",(int)percentage]];
 		return;
+	}
+	
+	// Finished Dungeon
+	
+	if( (int)[discardPile count] == 54 ){
+		[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
+		[self modal:@"Dungeon complete":@"You have reached the end of the dongeon."];
 	}
 }
 
@@ -371,7 +389,7 @@
 	}
 	else if( [playableHand numberOfCards] < 2 || [playableHand numberOfCards] == 4){
 		_runButton.enabled = true;
-		_optionJewelView.backgroundColor = [UIColor cyanColor];
+		_optionJewelView.backgroundColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
 		[_runButton setTitle:[NSString stringWithFormat:@"Run Away"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
@@ -592,6 +610,10 @@
 	if( (int)[discardPile count] == 0){
 		[self newGame];
 	}
+	if( (int)[discardPile count] == 54){
+		[user setDifficulty:[user difficulty]+1];
+		[self start];
+	}
 	
 	if([user escaped] == 1 && (int)[discardPile count] != 0){
 		NSLog(@"    RUN | Already escape");
@@ -708,7 +730,7 @@
 -(void)updateHealth:(int)change
 {
 	if(change > 0){
-		_lifeUpdateLabel.textColor = [UIColor cyanColor];
+		_lifeUpdateLabel.textColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
 		_lifeUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
 	}
 	else if( change < 0 ){
@@ -729,7 +751,7 @@
 -(void)updateSword:(int)change
 {
 	if(change > 0){
-		_swordUpdateLabel.textColor = [UIColor cyanColor];
+		_swordUpdateLabel.textColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
 		_swordUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
 	}
 	else if( change < 0 ){
@@ -750,7 +772,7 @@
 -(void)updateExperience:(int)change
 {
 	if(change > 0){
-		_discardUpdateLabel.textColor = [UIColor cyanColor];
+		_discardUpdateLabel.textColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
 		_discardUpdateLabel.text = [NSString stringWithFormat:@"+%d",change];
 	}
 	else if( change < 0 ){

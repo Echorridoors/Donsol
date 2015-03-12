@@ -8,6 +8,7 @@
 
 #import "Card.h"
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @implementation Card
 
@@ -70,6 +71,7 @@
 		if(cardValue == 1){ cardValue = 17;}
 		else if(cardValue == 12){ cardValue = 13;}
 		else if(cardValue == 13){ cardValue = 15;}
+		cardValue += difficulty-1;
 	}
 	
 	// Red Cards

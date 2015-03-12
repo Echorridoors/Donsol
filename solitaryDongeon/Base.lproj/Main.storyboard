@@ -273,16 +273,6 @@
                                 <rect key="frame" x="80" y="142" width="160" height="284"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Zw-9d-fYN" userLabel="modalCloseButton">
-                                        <rect key="frame" x="57" y="127" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="modalCloseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="29h-WG-yKv"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" id="k8o-O4-0Rz" userLabel="modalWrapperView">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="284"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -304,6 +294,16 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Zw-9d-fYN" userLabel="modalCloseButton">
+                                        <rect key="frame" x="57" y="127" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="modalCloseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="29h-WG-yKv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
