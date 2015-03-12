@@ -96,28 +96,24 @@
 	CGFloat third = (screen.size.width-(2*margin))/3;
 	
 	_card1Wrapper.frame = card1Origin;
-	_card1Wrapper.backgroundColor = [UIColor whiteColor];
 	_card1Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Wrapper.layer.cornerRadius = 10;
 	_card1Wrapper.clipsToBounds = YES;
 	
 	_card2Wrapper.frame = card2Origin;
-	_card2Wrapper.backgroundColor = [UIColor whiteColor];
 	_card2Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card2Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card2Wrapper.layer.cornerRadius = 10;
 	_card2Wrapper.clipsToBounds = YES;
 	
 	_card3Wrapper.frame = card3Origin;
-	_card3Wrapper.backgroundColor = [UIColor whiteColor];
 	_card3Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card3Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card3Wrapper.layer.cornerRadius = 10;
 	_card3Wrapper.clipsToBounds = YES;
 	
 	_card4Wrapper.frame = card4Origin;
-	_card4Wrapper.backgroundColor = [UIColor whiteColor];
 	_card4Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card4Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card4Wrapper.layer.cornerRadius = 10;
@@ -361,6 +357,11 @@
 	NSLog(@"!  CARD | %@ %d", [card type], [card number]);
 	NSLog(@"--------+-------------------");
 	
+	// Tutorials
+	if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions."]; }
+	if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
+	if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters."]; }
+	
 	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; }
 	else if( [[card type] isEqualToString:@"H"] ){ [self healCard:card]; }
 	else if( [[card type] isEqualToString:@"D"] ){[self swordCard:card]; }
@@ -373,6 +374,7 @@
 	
 	[user setEscape:0];
 	[self updateStage];
+	
 }
 
 -(void)draw
@@ -718,6 +720,7 @@
 	
 	_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.5*margin), self.view.frame.size.width-(4*margin), margin*5);
 	_modalWrapperView.alpha = 0;
+	_modalWrapperView.layer.cornerRadius = margin/2;
 	
 	_modalCloseButton.frame = self.view.frame;
 	
