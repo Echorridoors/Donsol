@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iF0-ZW-5UK">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -186,12 +186,13 @@
                                 <rect key="frame" x="58" y="269" width="204" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="11"/>
-                                <state key="normal" title="Return to Menu">
+                                <state key="normal" title="Leave Dungeon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="quitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ED-A6-iZ9"/>
+                                    <segue destination="dda-4h-R4V" kind="push" id="VLb-jo-ETX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ekQ-6c-RYk" userLabel="optionToggleButton">
@@ -268,9 +269,48 @@
                                 <color key="textColor" red="0.0" green="1" blue="0.77818035507665861" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" id="WQy-KL-ELT" userLabel="modalView">
+                                <rect key="frame" x="80" y="142" width="160" height="284"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2Zw-9d-fYN" userLabel="modalCloseButton">
+                                        <rect key="frame" x="57" y="127" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="modalCloseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="29h-WG-yKv"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" id="k8o-O4-0Rz" userLabel="modalWrapperView">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="284"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vGr-5M-jt9" userLabel="modalHeaderLabel">
+                                                <rect key="frame" x="59" y="132" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GRL-TB-RzK" userLabel="modalTextLabel">
+                                                <rect key="frame" x="59" y="132" width="42" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jpc-HK-6wJ"/>
                     <connections>
                         <outlet property="card1Backdrop" destination="5di-tF-No3" id="X1D-44-UUH"/>
                         <outlet property="card1Button" destination="VKo-qz-ap3" id="5ah-5f-1l9"/>
@@ -299,6 +339,11 @@
                         <outlet property="lifeLabel" destination="USy-8C-5Vf" id="wUx-C6-CoT"/>
                         <outlet property="lifeUpdateLabel" destination="Qlu-pE-V8c" id="Hom-WM-Pwp"/>
                         <outlet property="lifeValueLabel" destination="MLH-Lt-aGR" id="6y8-ZS-plo"/>
+                        <outlet property="modalCloseButton" destination="2Zw-9d-fYN" id="VHl-fE-nz1"/>
+                        <outlet property="modalHeaderLabel" destination="vGr-5M-jt9" id="Vjl-A8-b6d"/>
+                        <outlet property="modalTextLabel" destination="GRL-TB-RzK" id="nHk-u8-vcg"/>
+                        <outlet property="modalView" destination="WQy-KL-ELT" id="lOG-mi-zfV"/>
+                        <outlet property="modalWrapperView" destination="k8o-O4-0Rz" id="Nrk-2V-3J1"/>
                         <outlet property="optionJewelView" destination="e3K-Ql-q3L" id="h58-5V-YxH"/>
                         <outlet property="optionToggleButton" destination="ekQ-6c-RYk" id="ivf-kC-B9U"/>
                         <outlet property="quitButton" destination="pPW-fv-dbN" id="d2u-9f-g3V"/>
@@ -313,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114.66666666666667" y="343.63999999999999"/>
+            <point key="canvasLocation" x="646" y="343"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="8xZ-5q-HdM">
@@ -322,12 +367,47 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9mg-Zk-Fs3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lE1-0G-LiR">
+                                <rect key="frame" x="88" y="269" width="145" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Enter Dungeon 1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="push" id="4Mt-J3-2qs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="DXO-I3-ADc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I3i-iB-Ws8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="237" y="343"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m9W-1I-YMG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="iF0-ZW-5UK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Isa-3J-Ha3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dda-4h-R4V" kind="relationship" relationship="rootViewController" id="KpF-my-x3u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVc-nu-FC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-295" y="343"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -335,4 +415,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="KpF-my-x3u"/>
+    </inferredMetricsTieBreakers>
 </document>

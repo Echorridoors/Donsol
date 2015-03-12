@@ -29,7 +29,7 @@
 	[self updateStage];
 	[self hideMenu];
 	
-	
+	/*
 	// START
 	[discardPile addObject:[playableHand cardValue:0]]; [playableHand discard:0];
 	[discardPile addObject:[playableHand cardValue:1]]; [playableHand discard:1];
@@ -141,6 +141,7 @@
 	
 	[self updateStage];
 	// END
+	 */
 }
 
 -(void)newGame
@@ -181,6 +182,8 @@
 	_discardUpdateLabel.text = @"0";
 	_discardUpdateLabel.frame = CGRectMake((margin*3)+(third*2), margin*0.5, third-(margin*2), margin);
 	_discardUpdateLabel.alpha = 0;
+	
+	_modalView.hidden = true;
 }
 
 -(void)template
@@ -331,6 +334,9 @@
 	
 	if([user life] < 1){
 		[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(death) userInfo:nil repeats:NO];
+		// Percetn reached.
+		float percentage = ((float)[discardPile count] / 54.0) * 100;
+		[self modal:@"A monster killed you":[NSString stringWithFormat:@"You explored %d%% the dungeon before succumbing to your wounds.",(int)percentage]];
 		return;
 	}
 }
@@ -346,6 +352,12 @@
 		_optionJewelView.backgroundColor = [UIColor whiteColor];
 		[_runButton setTitle:[NSString stringWithFormat:@"Enter Dungeon %d",[user difficulty]+1] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+	}
+	else if( (int)[discardPile count] == 0 ){
+		_runButton.enabled = true;
+		_optionJewelView.backgroundColor = [UIColor whiteColor];
+		[_runButton setTitle:@"Enter Another Door" forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] == 0){
 		[_runButton setTitle:[NSString stringWithFormat:@"Enter Room %d",[user room]] forState:UIControlStateNormal];
@@ -397,9 +409,13 @@
 {
 	// Malus
 	if( [card value] >= [user malus] ){
+		if( [user equip] > 0 ){
+			[self modal:@"Your shield broke":@"Attacking increasingly harder monsters, with the same shield, will break it."];
+		}
 		[user looseEquip];
 	}
 	
+	// Battle
 	int battleDamage = ( [card value] - [user equip]) ;
 	
 	if( battleDamage < 0 ){
@@ -752,6 +768,53 @@
 	} completion:^(BOOL finished){}];
 	
 }
+
+-(void)modal :(NSString*)header :(NSString*)text
+{
+	NSLog(@"! MODAL | %@",header);
+	
+	_modalView.hidden = false;
+	
+	_modalView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
+	_modalView.frame = self.view.frame;
+	_modalView.alpha = 0;
+	
+	_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.5*margin), self.view.frame.size.width-(4*margin), margin*5);
+	_modalWrapperView.alpha = 0;
+	
+	_modalCloseButton.frame = self.view.frame;
+	
+	_modalHeaderLabel.text = [header uppercaseString];
+	_modalHeaderLabel.frame = CGRectMake(margin, margin, _modalWrapperView.frame.size.width-(2*margin), margin);
+	_modalTextLabel.text = text;
+	_modalTextLabel.frame = CGRectMake(margin, margin*2, _modalWrapperView.frame.size.width-(2*margin), margin*2);
+	
+	[UIView animateWithDuration:0.25 delay:0.75 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		_modalView.alpha = 1;
+	} completion:^(BOOL finished){
+		[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+			_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3*margin), self.view.frame.size.width-(4*margin), margin*5);
+			_modalWrapperView.alpha = 1;
+		} completion:^(BOOL finished){
+			
+		}];
+	}];
+}
+
+- (IBAction)modalCloseButton:(id)sender
+{
+	[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.5*margin), self.view.frame.size.width-(4*margin), margin*5);
+		_modalWrapperView.alpha = 0;
+	} completion:^(BOOL finished){
+		[UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+			_modalView.alpha = 0;
+		} completion:^(BOOL finished){
+			
+		}];
+	}];
+}
+
 
 # pragma mark - Defaults
 

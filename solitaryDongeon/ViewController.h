@@ -72,6 +72,12 @@
 
 @property (weak, nonatomic) IBOutlet UIView *cardsWrapper;
 
+@property (weak, nonatomic) IBOutlet UIView *modalView;
+@property (weak, nonatomic) IBOutlet UIButton *modalCloseButton;
+@property (weak, nonatomic) IBOutlet UIView *modalWrapperView;
+@property (weak, nonatomic) IBOutlet UILabel *modalHeaderLabel;
+@property (weak, nonatomic) IBOutlet UILabel *modalTextLabel;
+
 @end
 
 Deck * playableDeck;
