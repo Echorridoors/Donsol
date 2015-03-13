@@ -66,6 +66,13 @@
 	CGFloat verticalOffset = margin * 1.5;
 	CGFloat third = (screen.size.width-(2*margin))/3;
 	
+	// iPhone 4S
+	if( screen.size.height == 480 ){
+		verticalOffset = margin;
+	}
+	
+	NSLog(@"%f %f",screen.size.width,screen.size.height);
+	
 	card1Origin = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
 	card2Origin = CGRectMake((margin*1.5) + cardWidth, margin+verticalOffset, cardWidth, cardHeight);
 	card3Origin = CGRectMake(margin, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
@@ -367,7 +374,7 @@
 	if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
 	if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters."]; }
 	
-	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; }
+	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; [self modal:@"Feeling sick" :@"You may not consume 2 potions in a row."]; }
 	else if( [[card type] isEqualToString:@"H"] ){ [self healCard:card]; }
 	else if( [[card type] isEqualToString:@"D"] ){[self swordCard:card]; }
 	else{ [self monsterCard:card]; }
@@ -734,7 +741,7 @@
 	
 	_modalWrapperView.frame = CGRectMake(margin*2, (self.view.frame.size.height/2)-(3.25*margin), self.view.frame.size.width-(4*margin), margin*5);
 	_modalWrapperView.alpha = 0;
-	_modalWrapperView.layer.cornerRadius = margin/2;
+	_modalWrapperView.layer.cornerRadius = margin/4;
 	
 	_modalCloseButton.frame = self.view.frame;
 	
@@ -751,7 +758,7 @@
 			_modalWrapperView.alpha = 1;
 		} completion:^(BOOL finished){
 			
-			[self playSoundNamed:@"click.1"];
+			[self playSoundNamed:@"click.4"];
 		}];
 	}];
 }

@@ -85,6 +85,9 @@
 		57C7227B1AB23521005F70B6 /* click.2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722771AB23521005F70B6 /* click.2.wav */; };
 		57C7227C1AB23521005F70B6 /* click.3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722781AB23521005F70B6 /* click.3.wav */; };
 		57C7227D1AB23521005F70B6 /* click.4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722791AB23521005F70B6 /* click.4.wav */; };
+		57C722861AB23B6C005F70B6 /* segueFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C722841AB23B6C005F70B6 /* segueFade.m */; };
+		57C722871AB23B6C005F70B6 /* splash.logo.xxiivv.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C722851AB23B6C005F70B6 /* splash.logo.xxiivv.png */; };
+		57C722891AB23D84005F70B6 /* splash.logo.eternal.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C722881AB23D84005F70B6 /* splash.logo.eternal.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +110,7 @@
 		57B172531AA1807800DE1796 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		57B172551AA182FD00DE1796 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		57B172561AA182FD00DE1796 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		57BC29C71AA162BA00098150 /* solitaryDongeon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = solitaryDongeon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57BC29C71AA162BA00098150 /* Donsol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Donsol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BC29CB1AA162BA00098150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57BC29CC1AA162BA00098150 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		57BC29CE1AA162BA00098150 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -117,7 +120,7 @@
 		57BC29D51AA162BA00098150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57BC29D71AA162BA00098150 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57BC29DA1AA162BA00098150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		57BC29E01AA162BA00098150 /* solitaryDongeonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = solitaryDongeonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		57BC29E01AA162BA00098150 /* DonsolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonsolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57BC29E51AA162BA00098150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57BC29E61AA162BA00098150 /* solitaryDongeonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = solitaryDongeonTests.m; sourceTree = "<group>"; };
 		57BC29F01AA1653E00098150 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
@@ -187,6 +190,10 @@
 		57C722771AB23521005F70B6 /* click.2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.2.wav; sourceTree = "<group>"; };
 		57C722781AB23521005F70B6 /* click.3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.3.wav; sourceTree = "<group>"; };
 		57C722791AB23521005F70B6 /* click.4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.4.wav; sourceTree = "<group>"; };
+		57C722831AB23B6C005F70B6 /* segueFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = segueFade.h; sourceTree = "<group>"; };
+		57C722841AB23B6C005F70B6 /* segueFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = segueFade.m; sourceTree = "<group>"; };
+		57C722851AB23B6C005F70B6 /* splash.logo.xxiivv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.logo.xxiivv.png; sourceTree = "<group>"; };
+		57C722881AB23D84005F70B6 /* splash.logo.eternal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.logo.eternal.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,8 +228,8 @@
 		57BC29C81AA162BA00098150 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				57BC29C71AA162BA00098150 /* solitaryDongeon.app */,
-				57BC29E01AA162BA00098150 /* solitaryDongeonTests.xctest */,
+				57BC29C71AA162BA00098150 /* Donsol.app */,
+				57BC29E01AA162BA00098150 /* DonsolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,6 +237,7 @@
 		57BC29C91AA162BA00098150 /* solitaryDongeon */ = {
 			isa = PBXGroup;
 			children = (
+				57C722801AB23B47005F70B6 /* assets.splash */,
 				57C722751AB23521005F70B6 /* assets.sounds */,
 				57C386191AAD6A8B0080F31D /* assets.cards */,
 				57BC29CE1AA162BA00098150 /* AppDelegate.h */,
@@ -359,12 +367,23 @@
 			path = assets.sounds;
 			sourceTree = "<group>";
 		};
+		57C722801AB23B47005F70B6 /* assets.splash */ = {
+			isa = PBXGroup;
+			children = (
+				57C722881AB23D84005F70B6 /* splash.logo.eternal.png */,
+				57C722831AB23B6C005F70B6 /* segueFade.h */,
+				57C722841AB23B6C005F70B6 /* segueFade.m */,
+				57C722851AB23B6C005F70B6 /* splash.logo.xxiivv.png */,
+			);
+			path = assets.splash;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		57BC29C61AA162BA00098150 /* solitaryDongeon */ = {
+		57BC29C61AA162BA00098150 /* Donsol */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 57BC29EA1AA162BA00098150 /* Build configuration list for PBXNativeTarget "solitaryDongeon" */;
+			buildConfigurationList = 57BC29EA1AA162BA00098150 /* Build configuration list for PBXNativeTarget "Donsol" */;
 			buildPhases = (
 				57BC29C31AA162BA00098150 /* Sources */,
 				57BC29C41AA162BA00098150 /* Frameworks */,
@@ -374,14 +393,14 @@
 			);
 			dependencies = (
 			);
-			name = solitaryDongeon;
+			name = Donsol;
 			productName = solitaryDongeon;
-			productReference = 57BC29C71AA162BA00098150 /* solitaryDongeon.app */;
+			productReference = 57BC29C71AA162BA00098150 /* Donsol.app */;
 			productType = "com.apple.product-type.application";
 		};
-		57BC29DF1AA162BA00098150 /* solitaryDongeonTests */ = {
+		57BC29DF1AA162BA00098150 /* DonsolTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 57BC29ED1AA162BA00098150 /* Build configuration list for PBXNativeTarget "solitaryDongeonTests" */;
+			buildConfigurationList = 57BC29ED1AA162BA00098150 /* Build configuration list for PBXNativeTarget "DonsolTests" */;
 			buildPhases = (
 				57BC29DC1AA162BA00098150 /* Sources */,
 				57BC29DD1AA162BA00098150 /* Frameworks */,
@@ -392,9 +411,9 @@
 			dependencies = (
 				57BC29E21AA162BA00098150 /* PBXTargetDependency */,
 			);
-			name = solitaryDongeonTests;
+			name = DonsolTests;
 			productName = solitaryDongeonTests;
-			productReference = 57BC29E01AA162BA00098150 /* solitaryDongeonTests.xctest */;
+			productReference = 57BC29E01AA162BA00098150 /* DonsolTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -415,7 +434,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 57BC29C21AA162BA00098150 /* Build configuration list for PBXProject "solitaryDongeon" */;
+			buildConfigurationList = 57BC29C21AA162BA00098150 /* Build configuration list for PBXProject "Donsol" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -428,8 +447,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				57BC29C61AA162BA00098150 /* solitaryDongeon */,
-				57BC29DF1AA162BA00098150 /* solitaryDongeonTests */,
+				57BC29C61AA162BA00098150 /* Donsol */,
+				57BC29DF1AA162BA00098150 /* DonsolTests */,
 			);
 		};
 /* End PBXProject section */
@@ -480,6 +499,7 @@
 				57C386821AAD6A8B0080F31D /* card.0049 in Resources */,
 				57C3865A1AAD6A8B0080F31D /* card.0009 in Resources */,
 				57C386891AAD729A0080F31D /* card.0055 in Resources */,
+				57C722871AB23B6C005F70B6 /* splash.logo.xxiivv.png in Resources */,
 				57C386551AAD6A8B0080F31D /* card.0004 in Resources */,
 				57C386721AAD6A8B0080F31D /* card.0033 in Resources */,
 				57C7227C1AB23521005F70B6 /* click.3.wav in Resources */,
@@ -487,6 +507,7 @@
 				57C386641AAD6A8B0080F31D /* card.0019 in Resources */,
 				5780562D1AB09AAC007296E4 /* card.0056 in Resources */,
 				57C7227A1AB23521005F70B6 /* click.1.wav in Resources */,
+				57C722891AB23D84005F70B6 /* splash.logo.eternal.png in Resources */,
 				57C386651AAD6A8B0080F31D /* card.0020 in Resources */,
 				57C386671AAD6A8B0080F31D /* card.0022 in Resources */,
 				57C386611AAD6A8B0080F31D /* card.0016 in Resources */,
@@ -528,6 +549,7 @@
 				57B172571AA182FD00DE1796 /* User.m in Sources */,
 				57BC29F21AA1653E00098150 /* Deck.m in Sources */,
 				57BC29D31AA162BA00098150 /* ViewController.m in Sources */,
+				57C722861AB23B6C005F70B6 /* segueFade.m in Sources */,
 				57BC29D01AA162BA00098150 /* AppDelegate.m in Sources */,
 				57BC29CD1AA162BA00098150 /* main.m in Sources */,
 				57C722721AB22FE2005F70B6 /* Menu.m in Sources */,
@@ -548,7 +570,7 @@
 /* Begin PBXTargetDependency section */
 		57BC29E21AA162BA00098150 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 57BC29C61AA162BA00098150 /* solitaryDongeon */;
+			target = 57BC29C61AA162BA00098150 /* Donsol */;
 			targetProxy = 57BC29E11AA162BA00098150 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -657,7 +679,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = solitaryDongeon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Donsol;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -668,7 +690,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = solitaryDongeon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Donsol;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -687,7 +709,7 @@
 				);
 				INFOPLIST_FILE = solitaryDongeonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DonsolTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/solitaryDongeon.app/solitaryDongeon";
 			};
 			name = Debug;
@@ -702,7 +724,7 @@
 				);
 				INFOPLIST_FILE = solitaryDongeonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DonsolTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/solitaryDongeon.app/solitaryDongeon";
 			};
 			name = Release;
@@ -710,7 +732,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		57BC29C21AA162BA00098150 /* Build configuration list for PBXProject "solitaryDongeon" */ = {
+		57BC29C21AA162BA00098150 /* Build configuration list for PBXProject "Donsol" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				57BC29E81AA162BA00098150 /* Debug */,
@@ -719,7 +741,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		57BC29EA1AA162BA00098150 /* Build configuration list for PBXNativeTarget "solitaryDongeon" */ = {
+		57BC29EA1AA162BA00098150 /* Build configuration list for PBXNativeTarget "Donsol" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				57BC29EB1AA162BA00098150 /* Debug */,
@@ -728,7 +750,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		57BC29ED1AA162BA00098150 /* Build configuration list for PBXNativeTarget "solitaryDongeonTests" */ = {
+		57BC29ED1AA162BA00098150 /* Build configuration list for PBXNativeTarget "DonsolTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				57BC29EE1AA162BA00098150 /* Debug */,
