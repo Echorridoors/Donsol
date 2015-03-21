@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *optionsButton;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *menuButton;
+@property (weak, nonatomic) IBOutlet UIView *castleView;
 
 @end

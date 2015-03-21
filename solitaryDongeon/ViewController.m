@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Devine Lu Linvega. All rights reserved.
 //
 
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
