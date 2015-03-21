@@ -9,6 +9,10 @@
 #import "ViewController.h"
 
 @interface Menu : ViewController
+
 @property (weak, nonatomic) IBOutlet UIButton *enterButton;
+@property (weak, nonatomic) IBOutlet UIButton *optionsButton;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 @end

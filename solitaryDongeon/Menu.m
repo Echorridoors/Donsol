@@ -32,6 +32,9 @@
 -(void)template
 {
 	_enterButton.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin);
+	_menuButton.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin);
+	_optionsButton.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), margin, margin);
+	_scoreLabel.frame = CGRectMake(margin, self.view.frame.size.height-(5*margin), self.view.frame.size.width-(2*margin), margin);
 }
 
 - (BOOL)prefersStatusBarHidden {
