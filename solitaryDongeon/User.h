@@ -33,6 +33,9 @@
 -(void)gainExperience :(int)value;
 -(int)experience;
 
+-(int)loadHighScore;
+-(void)setHighScore:(int)score;
+
 @end
 
 int life;

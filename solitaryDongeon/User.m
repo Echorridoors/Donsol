@@ -120,5 +120,18 @@
 	return experience;
 }
 
+-(void)setHighScore:(int)score
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:@(score) forKey:@"score"];
+	[defaults synchronize];
+}
+
+-(int)loadHighScore
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [[defaults objectForKey:@"score"] intValue];
+}
+
 
 @end

@@ -711,6 +711,20 @@
 		_discardUpdateLabel.alpha = 0;
 	} completion:^(BOOL finished){}];
 	
+	// HighScore
+	
+	int currentScore = ((int)[discardPile count] + (54 * ([user difficulty] - 1)) );
+	NSLog(@"$ SCORE | Score: %d Best: %d", currentScore, [user loadHighScore] );
+	
+	if( currentScore > [user loadHighScore] ){
+		NSLog(@"$ SCORE | New high score: %d!", currentScore );
+		self.discardLabel.textColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
+		[user setHighScore:currentScore];
+	}
+	else{
+		self.discardLabel.textColor = [UIColor whiteColor];
+	}
+	
 }
 
 -(void)blinkLife
