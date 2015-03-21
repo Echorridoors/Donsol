@@ -128,7 +128,7 @@
 		for (int x=0; x<8; x++)
 		{
 			if( matrix[x][y-1] > 0 && matrix[x][y] == 0 && y > 0 ){
-				matrix[x][y] = 6;
+				matrix[x][y] = 4;
 			}
 		}
 	}
@@ -201,6 +201,29 @@
 		}
 	}
 	
+	// Add windows(6)
+	
+	for (int y=0; y<8; y++)
+	{
+		for (int x=0; x<8; x++)
+		{
+			if( matrix[x][y-1] == 4 && matrix[x][y+1] == 4 && matrix[x-1][y] == 4 && matrix[x+1][y] == 4 ){
+				if( matrix[x-1][y-1] == 4 && matrix[x+1][y+1] == 4 && matrix[x-1][y+1] == 4 && matrix[x+1][y-1] == 4 ){
+					matrix[x][y] = 6;
+				}
+			}
+		}
+	}
+	
+	// Add grass(8)
+	
+	for (int x=0; x<8; x++)
+	{
+		if( matrix[x][7] == 0 ){
+			matrix[x][7] = 8;
+		}
+	}
+	
 	
 	// Print
 	
@@ -216,30 +239,33 @@
 		{
 			NSLog(@"x:%d y:%d - > %d", x,y,(int)matrix[x][y] );
 			
-			UIView * castleTile = [[UIView alloc] initWithFrame:CGRectMake(margin + (tileSize*x), margin + (tileSize*y), tileSize, tileSize)];
+			UIImageView * castleTile = [[UIImageView alloc] initWithFrame:CGRectMake(margin + (tileSize*x), margin + (tileSize*y), tileSize, tileSize)];
 			
-			castleTile.backgroundColor = [UIColor grayColor];
+			castleTile.backgroundColor = [UIColor blackColor];
 			
 			if( matrix[x][y] == 1 ){
-				castleTile.backgroundColor = [UIColor yellowColor];
+				castleTile.image = [UIImage imageNamed:@"piece.tower"];
 			}
 			if( matrix[x][y] == 2 ){
-				castleTile.backgroundColor = [UIColor purpleColor];
+				castleTile.image = [UIImage imageNamed:@"piece.vertical"];
 			}
 			if( matrix[x][y] == 3 ){
-				castleTile.backgroundColor = [UIColor blueColor];
+				castleTile.image = [UIImage imageNamed:@"piece.edge"];
 			}
 			if( matrix[x][y] == 4 ){
-				castleTile.backgroundColor = [UIColor redColor];
+				castleTile.image = [UIImage imageNamed:@"piece.fill.1"];
 			}
 			if( matrix[x][y] == 5 ){
-				castleTile.backgroundColor = [UIColor cyanColor];
+				castleTile.image = [UIImage imageNamed:@"piece.junction"];
 			}
 			if( matrix[x][y] == 6 ){
-				castleTile.backgroundColor = [UIColor brownColor];
+				castleTile.image = [UIImage imageNamed:@"piece.window"];
 			}
 			if( matrix[x][y] == 7 ){
-				castleTile.backgroundColor = [UIColor orangeColor];
+				castleTile.image = [UIImage imageNamed:@"piece.door"];
+			}
+			if( matrix[x][y] == 8 ){
+				castleTile.image = [UIImage imageNamed:@"piece.grass"];
 			}
 			
 			[self.castleView addSubview:castleTile];
