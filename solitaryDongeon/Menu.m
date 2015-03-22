@@ -254,32 +254,36 @@ typedef NS_ENUM(NSInteger, CastleTile) {
 			UIImageView * castleTile = [[UIImageView alloc] initWithFrame:CGRectMake(margin + (tileSize*x), margin + (tileSize*y), tileSize, tileSize)];
 			
 			castleTile.backgroundColor = [UIColor blackColor];
-			
-			if( matrix[x][y] == 1 ){
-				castleTile.image = [UIImage imageNamed:@"piece.tower"];
-			}
-			if( matrix[x][y] == 2 ){
-				castleTile.image = [UIImage imageNamed:@"piece.vertical"];
-			}
-			if( matrix[x][y] == 3 ){
-				castleTile.image = [UIImage imageNamed:@"piece.edge"];
-			}
-			if( matrix[x][y] == 4 ){
-				castleTile.image = [UIImage imageNamed:@"piece.fill.1"];
-			}
-			if( matrix[x][y] == 5 ){
-				castleTile.image = [UIImage imageNamed:@"piece.junction"];
-			}
-			if( matrix[x][y] == 6 ){
-				castleTile.image = [UIImage imageNamed:@"piece.window"];
-			}
-			if( matrix[x][y] == 7 ){
-				castleTile.image = [UIImage imageNamed:@"piece.door"];
-			}
-			if( matrix[x][y] == 8 ){
-				castleTile.image = [UIImage imageNamed:@"piece.grass"];
-			}
-			
+
+            switch ((int)matrix[x][y]) {
+                case CastlePeak:
+                    castleTile.image = [UIImage imageNamed:@"piece.tower"];
+                    break;
+                case CastleTower:
+                    castleTile.image = [UIImage imageNamed:@"piece.vertical"];
+                    break;
+                case CastleBridge:
+                    castleTile.image = [UIImage imageNamed:@"piece.edge"];
+                    break;
+                case CastleFort:
+                    castleTile.image = [UIImage imageNamed:@"piece.fill.1"];
+                    break;
+                case CastleJoint:
+                    castleTile.image = [UIImage imageNamed:@"piece.junction"];
+                    break;
+                case CastleFill:
+                    castleTile.image = [UIImage imageNamed:@"piece.window"];
+                    break;
+                case CastleDoor:
+                    castleTile.image = [UIImage imageNamed:@"piece.door"];
+                    break;
+                case CastleGrass:
+                    castleTile.image = [UIImage imageNamed:@"piece.grass"];
+                    break;
+                default:
+                    break;
+            }
+
 			[self.castleView addSubview:castleTile];
 		}
 	}
