@@ -743,7 +743,7 @@
 	blinkHealthTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(blinkLife) userInfo:nil repeats:NO];
 }
 
-# pragma Mark Modal -
+# pragma mark - Modal
 
 -(void)modal :(NSString*)header :(NSString*)text
 {
@@ -759,12 +759,14 @@
 	_modalWrapperView.alpha = 0;
 	_modalWrapperView.layer.cornerRadius = margin/4;
 	
-	_modalCloseButton.frame = self.view.frame;
 	
 	_modalHeaderLabel.text = [header uppercaseString];
 	_modalHeaderLabel.frame = CGRectMake(margin, margin, _modalWrapperView.frame.size.width-(2*margin), margin);
 	_modalTextLabel.text = text;
 	_modalTextLabel.frame = CGRectMake(margin, margin*2, _modalWrapperView.frame.size.width-(2*margin), margin*2);
+	
+	
+	_modalCloseButton.frame = CGRectMake(0, 0, 0, 0);
 	
 	[UIView animateWithDuration:0.1 delay:0.75 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		_modalView.alpha = 1;
@@ -774,6 +776,7 @@
 			_modalWrapperView.alpha = 1;
 		} completion:^(BOOL finished){
 			
+			_modalCloseButton.frame = self.view.frame;
 			[self playSoundNamed:@"click.4"];
 		}];
 	}];

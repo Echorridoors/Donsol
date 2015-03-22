@@ -29,13 +29,15 @@
 {
 	NSLog(@"Generate Castle");
 	
-	float matrix[8][8];
+	int verticalTilesCount = 9;
+	float matrix[8][verticalTilesCount];
+	int towersLength = 3;
 	
 	// Create Blank
 	
 	for (int x=0; x<8; x++)
 	{
-		for (int y=0; y<8; y++)
+		for (int y=0; y<verticalTilesCount; y++)
 		{
 			matrix[x][y] = 0;
 		}
@@ -45,7 +47,7 @@
 	
 	for (int x=0; x<8; x++)
 	{
-		for (int y=0; y<3; y++)
+		for (int y=0; y<towersLength; y++)
 		{
 			if( arc4random() % 5 == 0 ){
 				matrix[x][y] = 1;
@@ -56,9 +58,9 @@
 	
 	// Create Towers(2)
 	
-	for (int y=0; y<3; y++)
+	for (int y=0; y<towersLength; y++)
 	{
-		for (int x=0; x<8; x++)
+		for (int x=0; x<verticalTilesCount; x++)
 		{
 			if( (int)matrix[x][y] == 1 ){
 				
@@ -75,7 +77,7 @@
 	
 	// Create bridges(3)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -93,7 +95,7 @@
 	
 	// Create fort(4)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -111,7 +113,7 @@
 	
 	// Create joints-between fort and tower(5)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -123,7 +125,7 @@
 	
 	// Create fills(6)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -135,7 +137,7 @@
 	
 	// Correct towers(2)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -147,7 +149,7 @@
 	
 	// Correct forts(3)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -159,7 +161,7 @@
 	
 	// Correct joints(5)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -174,13 +176,13 @@
 	
 	// Add doors(7)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
 			if( matrix[x][y] == 1 ){
 				if(arc4random() % 4 == 0){
-					matrix[x][7] = 7;
+					matrix[x][verticalTilesCount-1] = 7;
 				}
 			}
 		}
@@ -188,7 +190,7 @@
 	
 	// Correct filling(5)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -203,7 +205,7 @@
 	
 	// Add windows(6)
 	
-	for (int y=0; y<8; y++)
+	for (int y=0; y<verticalTilesCount; y++)
 	{
 		for (int x=0; x<8; x++)
 		{
@@ -219,11 +221,49 @@
 	
 	for (int x=0; x<8; x++)
 	{
-		if( matrix[x][7] == 0 ){
-			matrix[x][7] = 8;
+		if( matrix[x][verticalTilesCount-1] == 0 ){
+			matrix[x][verticalTilesCount-1] = 8;
 		}
 	}
 	
+	// Add different fils(9)
+	
+	for (int y=0; y<verticalTilesCount; y++)
+	{
+		for (int x=0; x<8; x++)
+		{
+			if( matrix[x][y] == 4 && arc4random() % 3 == 0 ){
+				matrix[x][y] = 9;
+			}
+			if( matrix[x][y] == 4 && arc4random() % 13 == 0 ){
+				matrix[x][y] = 10;
+			}
+		}
+	}
+	
+	// Add stars
+	
+	for (int y=0; y<verticalTilesCount; y++)
+	{
+		for (int x=0; x<8; x++)
+		{
+			if( matrix[x][y-1] == 0 && matrix[x][y+1] == 0 && matrix[x-1][y] == 0 && matrix[x+1][y] == 0 ){
+				if( matrix[x-1][y-1] == 0 && matrix[x+1][y+1] == 0 && matrix[x-1][y+1] == 0 && matrix[x+1][y-1] == 0 ){
+					if (arc4random() % 4 == 0 ) {
+						matrix[x][y] = 11;
+					}
+					
+				}
+			}
+		}
+	}
+	
+	// Empty View
+	
+	NSArray *viewsToRemove = [self.castleView subviews];
+	for (UIView *v in viewsToRemove) {
+		[v removeFromSuperview];
+	}
 	
 	// Print
 	
@@ -235,7 +275,7 @@
 	
 	for (int x=0; x<8; x++)
 	{
-		for (int y=0; y<8; y++)
+		for (int y=0; y<verticalTilesCount; y++)
 		{
 			NSLog(@"x:%d y:%d - > %d", x,y,(int)matrix[x][y] );
 			
@@ -266,6 +306,15 @@
 			}
 			if( matrix[x][y] == 8 ){
 				castleTile.image = [UIImage imageNamed:@"piece.grass"];
+			}
+			if( matrix[x][y] == 9 ){
+				castleTile.image = [UIImage imageNamed:@"piece.fill.2"];
+			}
+			if( matrix[x][y] == 10 ){
+				castleTile.image = [UIImage imageNamed:@"piece.fill.3"];
+			}
+			if( matrix[x][y] == 11 ){
+				castleTile.image = [UIImage imageNamed:@"piece.star"];
 			}
 			
 			[self.castleView addSubview:castleTile];

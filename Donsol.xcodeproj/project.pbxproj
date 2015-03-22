@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		574CFC881ABF1AEB00717F08 /* piece.fill.3.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC871ABF1AEB00717F08 /* piece.fill.3.png */; };
+		574CFC8A1ABF1D2D00717F08 /* piece.star.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC891ABF1D2D00717F08 /* piece.star.png */; };
 		574F0A8F1ABE07C1008EAF3B /* piece.door.png in Resources */ = {isa = PBXBuildFile; fileRef = 574F0A871ABE07C1008EAF3B /* piece.door.png */; };
 		574F0A901ABE07C1008EAF3B /* piece.edge.png in Resources */ = {isa = PBXBuildFile; fileRef = 574F0A881ABE07C1008EAF3B /* piece.edge.png */; };
 		574F0A911ABE07C1008EAF3B /* piece.fill.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 574F0A891ABE07C1008EAF3B /* piece.fill.1.png */; };
@@ -111,6 +113,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		574CFC871ABF1AEB00717F08 /* piece.fill.3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.fill.3.png; sourceTree = "<group>"; };
+		574CFC891ABF1D2D00717F08 /* piece.star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.star.png; sourceTree = "<group>"; };
 		574F0A871ABE07C1008EAF3B /* piece.door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.door.png; sourceTree = "<group>"; };
 		574F0A881ABE07C1008EAF3B /* piece.edge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.edge.png; sourceTree = "<group>"; };
 		574F0A891ABE07C1008EAF3B /* piece.fill.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.fill.1.png; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 		574F0A861ABE07C1008EAF3B /* assets.castle */ = {
 			isa = PBXGroup;
 			children = (
+				574CFC891ABF1D2D00717F08 /* piece.star.png */,
+				574CFC871ABF1AEB00717F08 /* piece.fill.3.png */,
 				574F0A991ABE096C008EAF3B /* piece.grass.png */,
 				574F0A971ABE08AF008EAF3B /* piece.window.png */,
 				574F0A871ABE07C1008EAF3B /* piece.door.png */,
@@ -498,6 +504,8 @@
 			files = (
 				57C3865E1AAD6A8B0080F31D /* card.0013 in Resources */,
 				57C386581AAD6A8B0080F31D /* card.0007 in Resources */,
+				574CFC881ABF1AEB00717F08 /* piece.fill.3.png in Resources */,
+				574CFC8A1ABF1D2D00717F08 /* piece.star.png in Resources */,
 				574F0A901ABE07C1008EAF3B /* piece.edge.png in Resources */,
 				57C3867E1AAD6A8B0080F31D /* card.0045 in Resources */,
 				57C386631AAD6A8B0080F31D /* card.0018 in Resources */,
