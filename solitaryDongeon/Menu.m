@@ -25,6 +25,18 @@
 	
 }
 
+typedef NS_ENUM(NSInteger, CastleTile) {
+    CastleBlank,
+    CastlePeak,
+    CastleTower,
+    CastleBridge,
+    CastleFort,
+    CastleJoint,
+    CastleFill,
+    CastleDoor,
+    CastleGrass
+};
+
 -(void)generateCastle
 {
 	NSLog(@"Generate Castle");
@@ -37,7 +49,7 @@
 	{
 		for (int y=0; y<8; y++)
 		{
-			matrix[x][y] = 0;
+			matrix[x][y] = CastleBlank;
 		}
 	}
 	
@@ -48,7 +60,7 @@
 		for (int y=0; y<3; y++)
 		{
 			if( arc4random() % 5 == 0 ){
-				matrix[x][y] = 1;
+				matrix[x][y] = CastlePeak;
 			}
 			
 		}
@@ -60,14 +72,14 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( (int)matrix[x][y] == 1 ){
+			if( (int)matrix[x][y] == CastlePeak ){
 				
-				matrix[x][y+1] = 2;
+				matrix[x][y+1] = CastleTower;
 				if( arc4random() % 3 == 0 ){
-					matrix[x][y+2] = 2;
+					matrix[x][y+2] = CastleTower;
 				}
 				if( arc4random() % 4 == 0 ){
-					matrix[x][y+3] = 2;
+					matrix[x][y+3] = CastleTower;
 				}
 			}
 		}
@@ -79,13 +91,13 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] == 2 && matrix[x][y] == 0 ){
-				matrix[x][y] = 3;
+			if( matrix[x][y-1] == CastleTower && matrix[x][y] == CastleBlank ){
+				matrix[x][y] = CastleBridge;
 				if( x < 7){
-					matrix[x+1][y] = 3;
+					matrix[x+1][y] = CastleBridge;
 				}
 				if( x > 0){
-					matrix[x-1][y] = 3;
+					matrix[x-1][y] = CastleBridge;
 				}
 			}
 		}
@@ -97,13 +109,13 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( (matrix[x][y-1] == 3 && matrix[x][y] == 0) || (matrix[x][y-1] == 3 && matrix[x][y] == 4) ){
-				matrix[x][y] = 3;
+			if( (matrix[x][y-1] == CastleBridge && matrix[x][y] == CastleBlank) || (matrix[x][y-1] == CastleBridge && matrix[x][y] == CastleFort) ){
+				matrix[x][y] = CastleBridge;
 				if( x < 7){
-					matrix[x+1][y] = 4;
+					matrix[x+1][y] = CastleFort;
 				}
 				if( x > 0){
-					matrix[x-1][y] = 4;
+					matrix[x-1][y] = CastleFort;
 				}
 			}
 		}
@@ -115,8 +127,8 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] == 2 && matrix[x][y+1] == 4 ){
-				matrix[x][y] = 5;
+			if( matrix[x][y-1] == CastleTower && matrix[x][y+1] == CastleFort ){
+				matrix[x][y] = CastleJoint;
 			}
 		}
 	}
@@ -127,8 +139,8 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] > 0 && matrix[x][y] == 0 && y > 0 ){
-				matrix[x][y] = 4;
+			if( matrix[x][y-1] > CastleBlank && matrix[x][y] == CastleBlank && y > 0 ){
+				matrix[x][y] = CastleFort;
 			}
 		}
 	}
@@ -139,8 +151,8 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] == 2 && matrix[x][y+1] == 2 && matrix[x][y] == 1 ){
-				matrix[x][y] = 2;
+			if( matrix[x][y-1] == CastleTower && matrix[x][y+1] == CastleTower && matrix[x][y] == CastlePeak ){
+				matrix[x][y] = CastleTower;
 			}
 		}
 	}
@@ -151,8 +163,8 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] == 0 && matrix[x][y] == 4 ){
-				matrix[x][y] = 3;
+			if( matrix[x][y-1] == CastleBlank && matrix[x][y] == CastleFort ){
+				matrix[x][y] = CastleBridge;
 			}
 		}
 	}
@@ -163,11 +175,11 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] == 2 && matrix[x][y] == 3 ){
-				matrix[x][y] = 5;
+			if( matrix[x][y-1] == CastleTower && matrix[x][y] == CastleBridge ){
+				matrix[x][y] = CastleJoint;
 			}
-			if( matrix[x][y-1] == 1 && matrix[x][y] == 3 ){
-				matrix[x][y] = 5;
+			if( matrix[x][y-1] == CastlePeak && matrix[x][y] == CastleBridge ){
+				matrix[x][y] = CastleJoint;
 			}
 		}
 	}
@@ -178,9 +190,9 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y] == 1 ){
+			if( matrix[x][y] == CastlePeak ){
 				if(arc4random() % 4 == 0){
-					matrix[x][7] = 7;
+					matrix[x][7] = CastleDoor;
 				}
 			}
 		}
@@ -192,11 +204,11 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] == 3 && matrix[x][y] == 3 ){
-				matrix[x][y] = 4;
+			if( matrix[x][y-1] == CastleBridge && matrix[x][y] == CastleBridge ){
+				matrix[x][y] = CastleFort;
 			}
-			if( matrix[x][y-1] > 0 && matrix[x][y] == 3 ){
-				matrix[x][y] = 4;
+			if( matrix[x][y-1] > CastleBlank && matrix[x][y] == CastleBridge ){
+				matrix[x][y] = CastleFort;
 			}
 		}
 	}
@@ -207,9 +219,9 @@
 	{
 		for (int x=0; x<8; x++)
 		{
-			if( matrix[x][y-1] == 4 && matrix[x][y+1] == 4 && matrix[x-1][y] == 4 && matrix[x+1][y] == 4 ){
-				if( matrix[x-1][y-1] == 4 && matrix[x+1][y+1] == 4 && matrix[x-1][y+1] == 4 && matrix[x+1][y-1] == 4 ){
-					matrix[x][y] = 6;
+			if( matrix[x][y-1] == CastleFort && matrix[x][y+1] == CastleFort && matrix[x-1][y] == CastleFort && matrix[x+1][y] == CastleFort ){
+				if( matrix[x-1][y-1] == CastleFort && matrix[x+1][y+1] == CastleFort && matrix[x-1][y+1] == CastleFort && matrix[x+1][y-1] == CastleFort ){
+					matrix[x][y] = CastleFill;
 				}
 			}
 		}
@@ -219,8 +231,8 @@
 	
 	for (int x=0; x<8; x++)
 	{
-		if( matrix[x][7] == 0 ){
-			matrix[x][7] = 8;
+		if( matrix[x][7] == CastleBlank ){
+			matrix[x][7] = CastleGrass;
 		}
 	}
 	
