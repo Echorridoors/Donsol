@@ -17,13 +17,8 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *optionJewelView;
 @property (weak, nonatomic) IBOutlet UIButton *runButton;
 - (IBAction)runButton:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *quitButton;
-- (IBAction)quitButton:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *optionToggleButton;
-- (IBAction)optionToggleButton:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *card1Backdrop;
 @property (weak, nonatomic) IBOutlet UIImageView *card2Backdrop;
