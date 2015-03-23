@@ -269,16 +269,14 @@
 -(void)runButtonUpdate
 {
 	if( [user life] < 1 ){
-		[_runButton setTitle:[NSString stringWithFormat:@"DEAD",[user room]] forState:UIControlStateNormal];
-		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"DEAD"] forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 	}
 	else if( (int)[discardPile count] == 54 ){
-		_runButton.enabled = true;
 		[_runButton setTitle:[NSString stringWithFormat:@"DUNGEON%d",[user difficulty]+1] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 	}
 	else if( (int)[discardPile count] == 0 ){
-		_runButton.enabled = true;
 		[_runButton setTitle:@"NEXT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
@@ -286,18 +284,14 @@
 		[_runButton setTitle:[NSString stringWithFormat:@"WALKING"] forState:UIControlStateNormal];
 	}
 	else if([user escaped] == 1 && (int)[discardPile count] != 0){
-		_runButton.enabled = false;
 		[_runButton setTitle:@"FIGHT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] < 2 || [playableHand numberOfCards] == 4){
-		_runButton.enabled = true;
 		[_runButton setTitle:[NSString stringWithFormat:@"RUN"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
-	else
-	{
-		_runButton.enabled = false;
+	else {
 		[_runButton setTitle:@"FIGHT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
@@ -442,7 +436,13 @@
 - (IBAction)runButton:(id)sender
 {
 	[runHoldTimer invalidate];
-	[self runAction];
+	
+	if( [user life] < 1 ){
+		[self performSegueWithIdentifier: @"leave" sender: self];
+	}
+	else{
+		[self runAction];
+	}
 }
 
 - (IBAction)runButtonTouch2:(id)sender
@@ -469,7 +469,7 @@
 	}
 	
 	if([user escaped] == 1 && (int)[discardPile count] != 0){
-		NSLog(@"    RUN | Already escape");
+		[self modal:@"LOCKED":@"You may not run away twice in a row."];
 		return;
 	}
 	
@@ -481,7 +481,7 @@
 	}
 	else
 	{
-		NSLog(@"    RUN | too many cards left:%d",[playableHand numberOfCards]);
+		[self modal:@"LOCKED":@"You may not run away before a single card remains in the room."];
 		return;
 	}
 	
