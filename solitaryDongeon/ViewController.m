@@ -24,14 +24,12 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 	[super viewDidLoad];
-	
-	[self start];
-	
-	[self updateStage];
 	// END
 }
+
 
 -(void)start
 {
@@ -70,7 +68,7 @@
 	
 	// iPhone 4S
 	if( screen.size.height == 480 ){
-//		verticalOffset = 35;
+		//		verticalOffset = 35;
 	}
 	
 	card1Origin = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
@@ -185,7 +183,7 @@
 	_card1Image.image = [[playableHand card:0] image];
 	_card2Image.image = [[playableHand card:1] image];
 	_card3Image.image = [[playableHand card:2] image];
-	_card4Image.image = [[playableHand card:3] image];	
+	_card4Image.image = [[playableHand card:3] image];
 	
 	NSString * swordValue = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	
@@ -247,13 +245,15 @@
 		// Percetn reached.
 		float percentage = ((float)[discardPile count] / 54.0) * 100;
 		[self modal:@"A monster killed you":[NSString stringWithFormat:@"You explored %d%% the dungeon before succumbing to your wounds.",(int)percentage]];
+		[self playTuneNamed:@"tune.defeat"];
 		return;
 	}
 	
-	// Finished Dungeon
+	// Victory
 	
 	if( (int)[discardPile count] == 54 ){
 		[self modal:@"Dungeon complete":@"You have reached the end of the dongeon."];
+		[self playTuneNamed:@"tune.victory"];
 	}
 }
 
@@ -382,7 +382,7 @@
 	// Draw 4 cards
 	
 	NSLog(@"%d", (int)[[playableDeck cards] count]);
-	 
+	
 	if( [playableHand numberOfCards] == 0){
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
@@ -400,7 +400,7 @@
 	}
 	else if( [playableHand numberOfCards] == 3){
 		[playableHand pickCard:[playableDeck pickCard]];
-	}	
+	}
 	
 	[self updateStage];
 }
@@ -542,7 +542,7 @@
 		
 		[self choice:((int)sender.tag-201)];
 		[self battleResults:((int)sender.tag-201)];
-	
+		
 		[UIView animateWithDuration:0.5 delay:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 			targetWrapper.frame = cardOrigin;
 			targetWrapper.alpha = 1;
@@ -714,6 +714,8 @@
 	[self playSoundNamed:@"click.2"];
 }
 
+# pragma mark - Sounds
+
 - (void)playSoundNamed:(NSString*)name
 {
 	NSLog(@" AUDIO | Playing sound: %@",name);
@@ -724,6 +726,18 @@
 	audioPlayer.volume = 1;
 	[audioPlayer prepareToPlay];
 	[audioPlayer play];
+}
+
+- (void)playTuneNamed:(NSString*)name
+{
+	NSLog(@" AUDIO | Playing tune: %@",name);
+	
+	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
+	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
+	tunePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioUrl error:nil];
+	tunePlayer.volume = 1;
+	[tunePlayer prepareToPlay];
+	[tunePlayer play];
 }
 
 # pragma mark - Defaults

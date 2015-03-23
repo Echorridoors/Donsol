@@ -75,6 +75,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *modalHeaderLabel;
 @property (weak, nonatomic) IBOutlet UILabel *modalTextLabel;
 
+
+-(void)start;
+-(void)updateStage;
+- (void)playTuneNamed:(NSString*)name;
+
 @end
 
 Deck * playableDeck;
@@ -99,3 +104,4 @@ int menuIsOpen;
 NSTimer * blinkHealthTimer;
 
 AVAudioPlayer *audioPlayer;
+AVAudioPlayer *tunePlayer;

@@ -22,7 +22,6 @@
 	[self templateStart];
 	[self template];
 	[self generateCastle];
-	
 }
 
 -(void)generateCastle
@@ -342,6 +341,18 @@
 
 - (BOOL)prefersStatusBarHidden {
 	return YES;
+}
+
+- (void)playTuneNamed:(NSString*)name
+{
+	NSLog(@" AUDIO | Playing tune: %@",name);
+	
+	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
+	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
+	tunePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioUrl error:nil];
+	tunePlayer.volume = 1;
+	[tunePlayer prepareToPlay];
+	[tunePlayer play];
 }
 
 @end

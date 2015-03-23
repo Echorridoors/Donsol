@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571E42581ABFA7FE00898520 /* Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E42571ABFA7FE00898520 /* Splash.m */; };
+		571E425B1ABFA99200898520 /* tune.menu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571E42591ABFA99200898520 /* tune.menu.wav */; };
+		571E425C1ABFA99200898520 /* tune.intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571E425A1ABFA99200898520 /* tune.intro.wav */; };
+		571E425F1ABFAA0400898520 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E425E1ABFAA0400898520 /* GameViewController.m */; };
 		574CFC881ABF1AEB00717F08 /* piece.fill.3.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC871ABF1AEB00717F08 /* piece.fill.3.png */; };
 		574CFC8A1ABF1D2D00717F08 /* piece.star.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC891ABF1D2D00717F08 /* piece.star.png */; };
 		574CFC8E1ABF4E1900717F08 /* tune.defeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */; };
 		574CFC8F1ABF4E1900717F08 /* tune.victory.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC8C1ABF4E1900717F08 /* tune.victory.wav */; };
-		574CFC901ABF4E1900717F08 /* tune.menu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC8D1ABF4E1900717F08 /* tune.menu.wav */; };
 		574F0A8F1ABE07C1008EAF3B /* piece.door.png in Resources */ = {isa = PBXBuildFile; fileRef = 574F0A871ABE07C1008EAF3B /* piece.door.png */; };
 		574F0A901ABE07C1008EAF3B /* piece.edge.png in Resources */ = {isa = PBXBuildFile; fileRef = 574F0A881ABE07C1008EAF3B /* piece.edge.png */; };
 		574F0A911ABE07C1008EAF3B /* piece.fill.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 574F0A891ABE07C1008EAF3B /* piece.fill.1.png */; };
@@ -116,11 +119,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		571E42561ABFA7FE00898520 /* Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Splash.h; sourceTree = "<group>"; };
+		571E42571ABFA7FE00898520 /* Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Splash.m; sourceTree = "<group>"; };
+		571E42591ABFA99200898520 /* tune.menu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.menu.wav; sourceTree = "<group>"; };
+		571E425A1ABFA99200898520 /* tune.intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.intro.wav; sourceTree = "<group>"; };
+		571E425D1ABFAA0400898520 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		571E425E1ABFAA0400898520 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		574CFC871ABF1AEB00717F08 /* piece.fill.3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.fill.3.png; sourceTree = "<group>"; };
 		574CFC891ABF1D2D00717F08 /* piece.star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.star.png; sourceTree = "<group>"; };
 		574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.defeat.wav; sourceTree = "<group>"; };
 		574CFC8C1ABF4E1900717F08 /* tune.victory.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.victory.wav; sourceTree = "<group>"; };
-		574CFC8D1ABF4E1900717F08 /* tune.menu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.menu.wav; sourceTree = "<group>"; };
 		574F0A871ABE07C1008EAF3B /* piece.door.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.door.png; sourceTree = "<group>"; };
 		574F0A881ABE07C1008EAF3B /* piece.edge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.edge.png; sourceTree = "<group>"; };
 		574F0A891ABE07C1008EAF3B /* piece.fill.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.fill.1.png; sourceTree = "<group>"; };
@@ -294,6 +302,8 @@
 				57BC29CF1AA162BA00098150 /* AppDelegate.m */,
 				57BC29D11AA162BA00098150 /* ViewController.h */,
 				57BC29D21AA162BA00098150 /* ViewController.m */,
+				571E425D1ABFAA0400898520 /* GameViewController.h */,
+				571E425E1ABFAA0400898520 /* GameViewController.m */,
 				57B172521AA1807800DE1796 /* Card.h */,
 				57B172531AA1807800DE1796 /* Card.m */,
 				57BC29F31AA169E200098150 /* Hand.h */,
@@ -308,6 +318,8 @@
 				57BC29D71AA162BA00098150 /* Images.xcassets */,
 				57BC29D91AA162BA00098150 /* LaunchScreen.xib */,
 				57BC29CA1AA162BA00098150 /* Supporting Files */,
+				571E42561ABFA7FE00898520 /* Splash.h */,
+				571E42571ABFA7FE00898520 /* Splash.m */,
 			);
 			path = solitaryDongeon;
 			sourceTree = "<group>";
@@ -409,9 +421,10 @@
 		57C722751AB23521005F70B6 /* assets.sounds */ = {
 			isa = PBXGroup;
 			children = (
+				571E42591ABFA99200898520 /* tune.menu.wav */,
+				571E425A1ABFA99200898520 /* tune.intro.wav */,
 				574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */,
 				574CFC8C1ABF4E1900717F08 /* tune.victory.wav */,
-				574CFC8D1ABF4E1900717F08 /* tune.menu.wav */,
 				57C722761AB23521005F70B6 /* click.1.wav */,
 				57C722771AB23521005F70B6 /* click.2.wav */,
 				57C722781AB23521005F70B6 /* click.3.wav */,
@@ -515,6 +528,7 @@
 				57C386581AAD6A8B0080F31D /* card.0007 in Resources */,
 				574CFC881ABF1AEB00717F08 /* piece.fill.3.png in Resources */,
 				574CFC8A1ABF1D2D00717F08 /* piece.star.png in Resources */,
+				571E425C1ABFA99200898520 /* tune.intro.wav in Resources */,
 				574F0A901ABE07C1008EAF3B /* piece.edge.png in Resources */,
 				57C3867E1AAD6A8B0080F31D /* card.0045 in Resources */,
 				57C386631AAD6A8B0080F31D /* card.0018 in Resources */,
@@ -565,6 +579,7 @@
 				57C3865A1AAD6A8B0080F31D /* card.0009 in Resources */,
 				57C386891AAD729A0080F31D /* card.0055 in Resources */,
 				57C722871AB23B6C005F70B6 /* splash.logo.xxiivv.png in Resources */,
+				571E425B1ABFA99200898520 /* tune.menu.wav in Resources */,
 				574CFC8F1ABF4E1900717F08 /* tune.victory.wav in Resources */,
 				57C386551AAD6A8B0080F31D /* card.0004 in Resources */,
 				57C386721AAD6A8B0080F31D /* card.0033 in Resources */,
@@ -580,7 +595,6 @@
 				57C3866D1AAD6A8B0080F31D /* card.0028 in Resources */,
 				57C386561AAD6A8B0080F31D /* card.0005 in Resources */,
 				57C3867A1AAD6A8B0080F31D /* card.0041 in Resources */,
-				574CFC901ABF4E1900717F08 /* tune.menu.wav in Resources */,
 				57C3865F1AAD6A8B0080F31D /* card.0014 in Resources */,
 				57C386741AAD6A8B0080F31D /* card.0035 in Resources */,
 				57C386861AAD6A8B0080F31D /* card.0053 in Resources */,
@@ -614,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57BC29F51AA169E200098150 /* Hand.m in Sources */,
+				571E425F1ABFAA0400898520 /* GameViewController.m in Sources */,
 				57B172571AA182FD00DE1796 /* User.m in Sources */,
 				57BC29F21AA1653E00098150 /* Deck.m in Sources */,
 				57BC29D31AA162BA00098150 /* ViewController.m in Sources */,
@@ -621,6 +636,7 @@
 				57BC29D01AA162BA00098150 /* AppDelegate.m in Sources */,
 				57BC29CD1AA162BA00098150 /* main.m in Sources */,
 				57C722721AB22FE2005F70B6 /* Menu.m in Sources */,
+				571E42581ABFA7FE00898520 /* Splash.m in Sources */,
 				57B172541AA1807800DE1796 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

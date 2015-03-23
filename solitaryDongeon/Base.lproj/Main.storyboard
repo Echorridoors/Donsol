@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -325,10 +325,10 @@
             </objects>
             <point key="canvasLocation" x="1576" y="397"/>
         </scene>
-        <!--Menu-->
+        <!--Splash-->
         <scene sceneID="p2w-e7-W2y">
             <objects>
-                <viewController id="fkz-nh-6Yr" customClass="Menu" sceneMemberID="viewController">
+                <viewController id="fkz-nh-6Yr" customClass="Splash" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JEa-tT-14G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,7 +344,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bQz-MV-SwQ" kind="custom" customClass="segueFade" id="Yhf-xW-g3c"/>
+                                    <segue destination="bQz-MV-SwQ" kind="custom" identifier="skip" customClass="segueFade" id="Yhf-xW-g3c"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -356,10 +356,10 @@
             </objects>
             <point key="canvasLocation" x="233" y="461"/>
         </scene>
-        <!--Menu-->
+        <!--Splash-->
         <scene sceneID="Pn1-0f-qMu">
             <objects>
-                <viewController id="bQz-MV-SwQ" customClass="Menu" sceneMemberID="viewController">
+                <viewController id="bQz-MV-SwQ" customClass="Splash" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tOw-en-20F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +375,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="dda-4h-R4V" kind="custom" customClass="segueFade" id="PW5-r9-TkS"/>
+                                    <segue destination="dda-4h-R4V" kind="custom" identifier="skip" customClass="segueFade" id="PW5-r9-TkS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -509,6 +509,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hyT-DC-1NG"/>
+        <segue reference="PW5-r9-TkS"/>
     </inferredMetricsTieBreakers>
 </document>
