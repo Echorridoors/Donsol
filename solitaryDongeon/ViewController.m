@@ -577,7 +577,10 @@
 			// Automatically draw if the room is empty
 			
 			if( [[[playableHand card:0] type] isEqualToString:@"-"] && [[[playableHand card:1] type] isEqualToString:@"-"] && [[[playableHand card:2] type] isEqualToString:@"-"] && [[[playableHand card:3] type] isEqualToString:@"-"] ){
-				[self runAction];
+				if( [user life] > 0 ){
+					[self runAction];
+				}
+				
 			}
 			
 		}];
