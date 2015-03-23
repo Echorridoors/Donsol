@@ -10,6 +10,7 @@
 
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import <QuartzCore/QuartzCore.h>
 
 #import "ViewController.h"
 #import "Deck.h"
@@ -23,14 +24,12 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
 	[super viewDidLoad];
-	
-	[self start];
-	
-	[self updateStage];
 	// END
 }
+
 
 -(void)start
 {
@@ -39,7 +38,6 @@
 	[self template];
 	[self draw];
 	[self updateStage];
-	[self hideMenu];
 	
 	if( [user difficulty] == 1 ){
 		[self modal:[NSString stringWithFormat:@"dungeon %d",[user difficulty]]:@"You are walking into the abyss of the dungeon, clear each room and exit alive."];
@@ -65,15 +63,12 @@
 	margin = self.view.frame.size.width/16;
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
-	CGFloat verticalOffset = margin * 1.5;
-	CGFloat third = (screen.size.width-(2*margin))/3;
+	CGFloat verticalOffset = 35;
 	
 	// iPhone 4S
 	if( screen.size.height == 480 ){
-		verticalOffset = margin;
+		//		verticalOffset = 35;
 	}
-	
-	NSLog(@"%f %f",screen.size.width,screen.size.height);
 	
 	card1Origin = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
 	card2Origin = CGRectMake((margin*1.5) + cardWidth, margin+verticalOffset, cardWidth, cardHeight);
@@ -82,19 +77,19 @@
 	jewelOrigin = CGRectMake((screen.size.width/2)-(margin/4), card1Origin.origin.y + card1Origin.size.height, margin/2, margin/2);
 	
 	quitButtonOrigin = CGRectMake(margin, jewelOrigin.origin.y-(margin*0.25), cardWidth-(margin*0.5), margin*2);
-	runButtonOrigin  = CGRectMake(jewelOrigin.origin.x+(1.25*margin), jewelOrigin.origin.y-(margin*0.25), cardWidth-(margin), margin*2);
 	
-	_lifeUpdateLabel.text = @"0";
-	_lifeUpdateLabel.frame = CGRectMake(margin, margin*0.5, third-(margin/2), margin);
+	_lifeUpdateLabel.text = @"";
 	_lifeUpdateLabel.alpha = 0;
 	
-	_swordUpdateLabel.text = @"0";
-	_swordUpdateLabel.frame = CGRectMake((margin*2.25)+third, margin*0.5, third-(margin*1.5), margin);
+	_swordUpdateLabel.text = @"";
 	_swordUpdateLabel.alpha = 0;
 	
-	_discardUpdateLabel.text = @"0";
-	_discardUpdateLabel.frame = CGRectMake((margin*3)+(third*2), margin*0.5, third-(margin*2), margin);
+	_discardUpdateLabel.text = @"";
 	_discardUpdateLabel.alpha = 0;
+	
+	_lifeUpdateLabel.frame = CGRectMake(margin, margin*0.5, (margin * 3)-3, margin);
+	_swordUpdateLabel.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), (margin*0.5), (margin * 3)-3, margin);
+	_discardUpdateLabel.frame = CGRectMake(card2Origin.origin.x, (margin*0.5), (margin * 3)-3, margin);
 	
 	_modalView.hidden = true;
 }
@@ -105,7 +100,6 @@
 	margin = self.view.frame.size.width/16;
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
-	CGFloat third = (screen.size.width-(2*margin))/3;
 	
 	_card1Wrapper.frame = card1Origin;
 	_card1Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
@@ -131,49 +125,44 @@
 	_card4Wrapper.layer.cornerRadius = 10;
 	_card4Wrapper.clipsToBounds = YES;
 	
-	_lifeLabel.frame = CGRectMake(margin, margin*0.5, margin * 3, margin);
-	_swordLabel.frame = CGRectMake((margin*1.25)+third, (margin*0.5), margin * 3, margin);
-	_discardLabel.frame = CGRectMake((margin*1.5)+(third*2), (margin*0.5), margin * 3, margin);
+	_lifeLabel.frame = CGRectMake(margin, margin*1.5, margin * 3, margin);
+	_swordLabel.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), (margin*1.5), margin * 3, margin);
+	_discardLabel.frame = CGRectMake(card2Origin.origin.x, (margin*1.5), margin * 3, margin);
 	
-	_lifeLabel.text = @"HP";
-	_swordLabel.text = @"AP";
-	_discardLabel.text = @"XP";
+	_lifeLabel.text = @"HEALTH";
+	_swordLabel.text = @"SHIELD";
+	_discardLabel.text = @"DEPTH";
 	
-	_lifeValueLabel.frame = CGRectMake(margin*2, margin*0.5, margin * 3, margin);
-	_swordValueLabel.frame = CGRectMake((margin*2.25)+third, (margin*0.5), margin * 3, margin);
-	_discardValueLabel.frame = CGRectMake((margin*2.5)+(third*2), (margin*0.5), margin * 3, margin);
+	_lifeValueLabel.frame = CGRectMake(margin, margin*0.5, margin * 3, margin);
+	_swordValueLabel.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), (margin*0.5), margin * 3, margin);
+	_discardValueLabel.frame = CGRectMake(card2Origin.origin.x, (margin*0.5), margin * 3, margin);
 	
-	_lifeBarWrapper.frame = CGRectMake(margin, margin*1.5, third-(margin/2), 1);
+	_lifeBarWrapper.frame = CGRectMake(margin, margin*1.5, (cardWidth-margin)/2, 1);
 	_lifeBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_lifeBarWrapper.clipsToBounds = YES;
 	
 	_lifeBar.backgroundColor = [UIColor redColor];
 	
-	_swordBarWrapper.frame = CGRectMake((margin*1.25)+third, margin*1.5, third-(margin/2), 1);
+	_swordBarWrapper.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), margin*1.5, (cardWidth-margin)/2, 1);
 	_swordBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_swordBarWrapper.clipsToBounds = YES;
 	
 	_swordBar.backgroundColor = [UIColor redColor];
 	_swordBar.frame = CGRectMake(0, 0, 0, 0);
 	
-	_discardBarWrapper.frame = CGRectMake((margin*1.5)+(third*2), margin*1.5, third-(margin/2), 1);
+	_discardBarWrapper.frame = CGRectMake(card2Origin.origin.x, margin*1.5, (cardWidth-margin)/2, 1);
 	_discardBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_discardBarWrapper.clipsToBounds = YES;
 	
 	_discardBar.backgroundColor = [UIColor redColor];
 	_discardBar.frame = CGRectMake(0, 0, 0, 0);
 	
-	//
+	_runButton.frame = CGRectMake(card2Origin.origin.x+((cardWidth-margin)/2)+margin, (margin*0.5), (margin * 3)-2, margin*1.70);
+	_runButton.backgroundColor = [UIColor blackColor];
+	_runButton.layer.cornerRadius = margin/4;
+	_runButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+	_runButton.layer.borderWidth = 1;
 	
-	_optionToggleButton.frame = CGRectMake((screen.size.width/2)-margin, _card1Wrapper.frame.origin.y + _card1Wrapper.frame.size.height - (margin*0.75), margin*2, margin*2);
-	_quitButton.frame = quitButtonOrigin;
-	_runButton.frame = runButtonOrigin;
-	
-	//
-	
-	_optionJewelView.backgroundColor = [UIColor redColor];
-	_optionJewelView.frame = jewelOrigin;
-	_optionJewelView.layer.cornerRadius = _optionJewelView.frame.size.width/2;
 	
 	_cardsWrapper.frame = self.view.frame;
 	
@@ -193,7 +182,7 @@
 	_card1Image.image = [[playableHand card:0] image];
 	_card2Image.image = [[playableHand card:1] image];
 	_card3Image.image = [[playableHand card:2] image];
-	_card4Image.image = [[playableHand card:3] image];	
+	_card4Image.image = [[playableHand card:3] image];
 	
 	NSString * swordValue = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	
@@ -227,8 +216,6 @@
 		self.discardBar.frame = CGRectMake(0, 0, discardBar, self.swordBarWrapper.frame.size.height);
 	} completion:^(BOOL finished){}];
 	
-	[self jewelUpdate];
-	
 	// Highlight HP is just healed
 	
 	if( justHealed == 1 ){
@@ -257,14 +244,15 @@
 		// Percetn reached.
 		float percentage = ((float)[discardPile count] / 54.0) * 100;
 		[self modal:@"A monster killed you":[NSString stringWithFormat:@"You explored %d%% the dungeon before succumbing to your wounds.",(int)percentage]];
+		[self playTuneNamed:@"tune.defeat"];
 		return;
 	}
 	
-	// Finished Dungeon
+	// Victory
 	
 	if( (int)[discardPile count] == 54 ){
-		[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
 		[self modal:@"Dungeon complete":@"You have reached the end of the dongeon."];
+		[self playTuneNamed:@"tune.victory"];
 	}
 }
 
@@ -276,36 +264,30 @@
 	}
 	else if( (int)[discardPile count] == 54 ){
 		_runButton.enabled = true;
-		_optionJewelView.backgroundColor = [UIColor whiteColor];
 		[_runButton setTitle:[NSString stringWithFormat:@"Enter Dungeon %d",[user difficulty]+1] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 	}
 	else if( (int)[discardPile count] == 0 ){
 		_runButton.enabled = true;
-		_optionJewelView.backgroundColor = [UIColor whiteColor];
 		[_runButton setTitle:@"Enter Another Door" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] == 0){
 		[_runButton setTitle:[NSString stringWithFormat:@"Enter Room %d",[user room]] forState:UIControlStateNormal];
-		[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
 	}
 	else if([user escaped] == 1 && (int)[discardPile count] != 0){
 		_runButton.enabled = false;
-		_optionJewelView.backgroundColor = [UIColor grayColor];
 		[_runButton setTitle:@"Cannot run away" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] < 2 || [playableHand numberOfCards] == 4){
 		_runButton.enabled = true;
-		_optionJewelView.backgroundColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
 		[_runButton setTitle:[NSString stringWithFormat:@"Run Away"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else
 	{
 		_runButton.enabled = false;
-		_optionJewelView.backgroundColor = [UIColor grayColor];
 		[_runButton setTitle:@"Cannot run away" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
@@ -372,9 +354,12 @@
 	NSLog(@"--------+-------------------");
 	
 	// Tutorials
-	if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions."]; }
-	if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
-	if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters."]; }
+	if( [user loadHighScore] < 54 )
+	{
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions."]; }
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters."]; }
+	}
 	
 	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; [self modal:@"Feeling sick" :@"You may not consume 2 potions in a row."]; }
 	else if( [[card type] isEqualToString:@"H"] ){ [self healCard:card]; }
@@ -395,12 +380,11 @@
 	NSLog(@"   VIEW | Draw");
 	
 	menuIsOpen = 0;
-	[self hideMenu];
 	
 	// Draw 4 cards
 	
 	NSLog(@"%d", (int)[[playableDeck cards] count]);
-	 
+	
 	if( [playableHand numberOfCards] == 0){
 		[playableHand pickCard:[playableDeck pickCard]];
 		[playableHand pickCard:[playableDeck pickCard]];
@@ -418,16 +402,13 @@
 	}
 	else if( [playableHand numberOfCards] == 3){
 		[playableHand pickCard:[playableDeck pickCard]];
-	}	
+	}
 	
 	[self updateStage];
 }
 
 -(void)death
 {
-	NSLog(@"DEATH!");
-	[NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(showMenu) userInfo:nil repeats:NO];
-	
 	[UIView animateWithDuration:0.25 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
 		_card1Wrapper.frame = CGRectOffset(card1Origin, 0, margin*-1);
 		_card1Wrapper.alpha = 0;
@@ -444,85 +425,16 @@
 		_card4Wrapper.frame = CGRectOffset(card4Origin, 0, margin*-1);
 		_card4Wrapper.alpha = 0;
 	} completion:^(BOOL finished){ }];
-	
 }
 
 # pragma mark - Interactions
 
-- (IBAction)optionToggleButton:(id)sender
-{
-	if( menuIsOpen == 1 ){
-		[self hideMenu];
-		menuIsOpen = 0;
-	}
-	else{
-		[self showMenu];
-		menuIsOpen = 1;
-	}
-}
-
--(void)showMenu
-{
-	_quitButton.alpha = 0;
-	_runButton.alpha = 0;
-	
-	[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-		
-		_card3Wrapper.frame = CGRectOffset(card3Origin, 0, margin);
-		_card4Wrapper.frame = CGRectOffset(card4Origin, 0, margin);
-		_card3Backdrop.frame = CGRectOffset(card3Origin, 0, margin);
-		_card4Backdrop.frame = CGRectOffset(card4Origin, 0, margin);
-		_optionJewelView.frame = CGRectOffset(jewelOrigin, 0, margin/2);
-		
-	} completion:^(BOOL finished){
-		
-		[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-			
-			_quitButton.frame = CGRectOffset(quitButtonOrigin, -10, 0);
-			_runButton.frame = CGRectOffset(runButtonOrigin, 10, 0);
-			_quitButton.alpha = 1;
-			_runButton.alpha = 1;
-			
-		} completion:^(BOOL finished){
-			[self playSoundNamed:@"click.3"];
-		}];
-		
-	}];
-	[self playSoundNamed:@"click.1"];
-}
-
--(void)hideMenu
-{
-	[self playSoundNamed:@"click.1"];
-	[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-		
-		_quitButton.frame = quitButtonOrigin;
-		_runButton.frame = runButtonOrigin;
-		_quitButton.alpha = 0;
-		_runButton.alpha = 0;
-		
-	} completion:^(BOOL finished){
-		
-		[UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-			_card3Wrapper.frame = card3Origin;
-			_card4Wrapper.frame = card4Origin;
-			_card3Backdrop.frame = card3Origin;
-			_card4Backdrop.frame = card4Origin;
-			_optionJewelView.frame = jewelOrigin;
-		} completion:^(BOOL finished){
-			
-		}];
-		
-	}];
-}
-
-
-- (IBAction)quitButton:(id)sender
-{
-	[self playSoundNamed:@"click.1"];
-}
-
 - (IBAction)runButton:(id)sender
+{
+	[self runAction];
+}
+
+-(void)runAction
 {
 	[self playSoundNamed:@"click.1"];
 	
@@ -632,14 +544,20 @@
 		
 		[self choice:((int)sender.tag-201)];
 		[self battleResults:((int)sender.tag-201)];
-	
+		
 		[UIView animateWithDuration:0.5 delay:0.25 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 			targetWrapper.frame = cardOrigin;
 			targetWrapper.alpha = 1;
 		} completion:^(BOOL finished){
 			
 			[self playSoundNamed:@"click.3"];
-		
+			
+			// Automatically draw if the room is empty
+			
+			if( [[[playableHand card:0] type] isEqualToString:@"-"] && [[[playableHand card:1] type] isEqualToString:@"-"] && [[[playableHand card:2] type] isEqualToString:@"-"] && [[[playableHand card:3] type] isEqualToString:@"-"] ){
+				[self runAction];
+			}
+			
 		}];
 	}];
 }
@@ -743,7 +661,7 @@
 	blinkHealthTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(blinkLife) userInfo:nil repeats:NO];
 }
 
-# pragma Mark Modal -
+# pragma mark - Modal
 
 -(void)modal :(NSString*)header :(NSString*)text
 {
@@ -759,12 +677,14 @@
 	_modalWrapperView.alpha = 0;
 	_modalWrapperView.layer.cornerRadius = margin/4;
 	
-	_modalCloseButton.frame = self.view.frame;
 	
 	_modalHeaderLabel.text = [header uppercaseString];
 	_modalHeaderLabel.frame = CGRectMake(margin, margin, _modalWrapperView.frame.size.width-(2*margin), margin);
 	_modalTextLabel.text = text;
 	_modalTextLabel.frame = CGRectMake(margin, margin*2, _modalWrapperView.frame.size.width-(2*margin), margin*2);
+	
+	
+	_modalCloseButton.frame = CGRectMake(0, 0, 0, 0);
 	
 	[UIView animateWithDuration:0.1 delay:0.75 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		_modalView.alpha = 1;
@@ -774,6 +694,7 @@
 			_modalWrapperView.alpha = 1;
 		} completion:^(BOOL finished){
 			
+			_modalCloseButton.frame = self.view.frame;
 			[self playSoundNamed:@"click.4"];
 		}];
 	}];
@@ -795,6 +716,8 @@
 	[self playSoundNamed:@"click.2"];
 }
 
+# pragma mark - Sounds
+
 - (void)playSoundNamed:(NSString*)name
 {
 	NSLog(@" AUDIO | Playing sound: %@",name);
@@ -805,6 +728,18 @@
 	audioPlayer.volume = 1;
 	[audioPlayer prepareToPlay];
 	[audioPlayer play];
+}
+
+- (void)playTuneNamed:(NSString*)name
+{
+	NSLog(@" AUDIO | Playing tune: %@",name);
+	
+	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
+	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
+	tunePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioUrl error:nil];
+	tunePlayer.volume = 1;
+	[tunePlayer prepareToPlay];
+	[tunePlayer play];
 }
 
 # pragma mark - Defaults
