@@ -186,6 +186,11 @@
 	
 	NSString * swordValue = [NSString stringWithFormat:@"%d(%d)",[user equip], [user malus]];
 	
+	if( [user equip] > 0 ){
+		_swordLabel.text = [NSString stringWithFormat:@"SHIELD %d",[user equip]];
+	}
+	
+	
 	if( [user equip] == 0 ){
 		swordValue = @"0";
 	}
@@ -228,7 +233,12 @@
 		_lifeLabel.textColor = [UIColor whiteColor];
 	}
 	
+	// runButtonUpdate
+	
+	[self runButtonUpdate];
+	
 	// Low Health Warning
+	
 	if( [user life] < 6 ){
 		[self blinkLife];
 	}
@@ -256,39 +266,39 @@
 	}
 }
 
--(void)jewelUpdate
+-(void)runButtonUpdate
 {
 	if( [user life] < 1 ){
-		[_runButton setTitle:[NSString stringWithFormat:@"You died in room %d",[user room]] forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"DEAD",[user room]] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	else if( (int)[discardPile count] == 54 ){
 		_runButton.enabled = true;
-		[_runButton setTitle:[NSString stringWithFormat:@"Enter Dungeon %d",[user difficulty]+1] forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"DUNGEON%d",[user difficulty]+1] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 	}
 	else if( (int)[discardPile count] == 0 ){
 		_runButton.enabled = true;
-		[_runButton setTitle:@"Enter Another Door" forState:UIControlStateNormal];
+		[_runButton setTitle:@"NEXT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] == 0){
-		[_runButton setTitle:[NSString stringWithFormat:@"Enter Room %d",[user room]] forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"WALKING"] forState:UIControlStateNormal];
 	}
 	else if([user escaped] == 1 && (int)[discardPile count] != 0){
 		_runButton.enabled = false;
-		[_runButton setTitle:@"Cannot run away" forState:UIControlStateNormal];
+		[_runButton setTitle:@"FIGHT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] < 2 || [playableHand numberOfCards] == 4){
 		_runButton.enabled = true;
-		[_runButton setTitle:[NSString stringWithFormat:@"Run Away"] forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"RUN"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else
 	{
 		_runButton.enabled = false;
-		[_runButton setTitle:@"Cannot run away" forState:UIControlStateNormal];
+		[_runButton setTitle:@"FIGHT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	
@@ -431,7 +441,19 @@
 
 - (IBAction)runButton:(id)sender
 {
+	[runHoldTimer invalidate];
 	[self runAction];
+}
+
+- (IBAction)runButtonTouch2:(id)sender
+{
+	runHoldTimer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(leaveDungeon) userInfo:nil repeats:NO];
+}
+
+-(void)leaveDungeon
+{
+	[self playSoundNamed:@"click.1"];
+	[self performSegueWithIdentifier: @"leave" sender: self];
 }
 
 -(void)runAction
@@ -752,5 +774,8 @@
 - (BOOL)prefersStatusBarHidden {
 	return YES;
 }
+
+
+
 
 @end

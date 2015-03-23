@@ -172,6 +172,7 @@
                                 </state>
                                 <connections>
                                     <action selector="runButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7yb-1p-FB4"/>
+                                    <action selector="runButtonTouch2:" destination="BYZ-38-t0r" eventType="touchDown" id="tC7-0L-zg9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="USy-8C-5Vf" userLabel="lifeLabel">
@@ -319,11 +320,12 @@
                         <outlet property="swordMalusBar" destination="AB5-Vu-kPZ" id="4Zr-nJ-gr2"/>
                         <outlet property="swordUpdateLabel" destination="w5r-Qu-o54" id="4Zv-dh-1dt"/>
                         <outlet property="swordValueLabel" destination="Iuc-cn-P8X" id="cK7-iS-mtR"/>
+                        <segue destination="dda-4h-R4V" kind="custom" identifier="leave" customClass="segueFade" id="tht-BV-ezE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="397"/>
+            <point key="canvasLocation" x="1562" y="397"/>
         </scene>
         <!--Splash-->
         <scene sceneID="p2w-e7-W2y">
@@ -470,4 +472,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="tht-BV-ezE"/>
+    </inferredMetricsTieBreakers>
 </document>
