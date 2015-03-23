@@ -9,11 +9,13 @@
 #import "Menu.h"
 #import "ViewController.h"
 #import "User.h"
+#import "Splash.h"
 
 @implementation Menu
 
 -(void)viewDidLoad
 {
+	[slideTimer invalidate];
 	[self start];
 }
 
@@ -22,6 +24,7 @@
 	[self templateStart];
 	[self template];
 	[self generateCastle];
+	[self template];
 }
 
 -(void)generateCastle
@@ -269,7 +272,7 @@
 	CGFloat margin = self.view.frame.size.width/16;
 	CGFloat tileSize = (self.view.frame.size.width - (2*margin))/8;
 	
-	self.castleView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+	self.castleView.frame = CGRectMake(0, 0, self.view.frame.size.width, tileSize * verticalTilesCount + margin);
 	self.castleView.backgroundColor = [UIColor clearColor];
 	
 	for (int x=0; x<8; x++)
@@ -330,29 +333,19 @@
 
 -(void)template
 {
-	_enterButton.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin);
-	_menuButton.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin);
-	_optionsButton.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), margin, margin);
-	_scoreLabel.frame = CGRectMake(margin, self.view.frame.size.height-(7*margin), self.view.frame.size.width-(2*margin), margin*2);
+	_enterButton.frame = CGRectMake(margin, self.castleView.frame.size.height + margin, self.view.frame.size.width-(2*margin), margin);
 	
-	_scoreLabel.text = [NSString stringWithFormat:@"%d",[user loadHighScore]];
+	_scoreLabel.frame = CGRectMake(margin, self.castleView.frame.size.height + margin, self.view.frame.size.width-(2*margin), margin);
+	_scoreLabel.text = [NSString stringWithFormat:@"BEST SCORE %d",[user loadHighScore]];
 	_scoreLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
+	
+	_thanksLabel.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin*2);
+	_thanksLabel.text = @"SPECIAL THANKS\nJOHN ETERNAL, ZACH GAGE, KURT BIEG";
+	_thanksLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
 }
 
 - (BOOL)prefersStatusBarHidden {
 	return YES;
-}
-
-- (void)playTuneNamed:(NSString*)name
-{
-	NSLog(@" AUDIO | Playing tune: %@",name);
-	
-	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
-	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
-	tunePlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioUrl error:nil];
-	tunePlayer.volume = 1;
-	[tunePlayer prepareToPlay];
-	[tunePlayer play];
 }
 
 @end

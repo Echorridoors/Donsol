@@ -64,7 +64,6 @@
 	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
 	CGFloat cardHeight =(cardWidth * 88)/56;
 	CGFloat verticalOffset = 35;
-	CGFloat third = (screen.size.width-(2*margin))/3;
 	
 	// iPhone 4S
 	if( screen.size.height == 480 ){
@@ -355,9 +354,12 @@
 	NSLog(@"--------+-------------------");
 	
 	// Tutorials
-	if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions."]; }
-	if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
-	if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters."]; }
+	if( [user loadHighScore] < 54 )
+	{
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions."]; }
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters."]; }
+	}
 	
 	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; [self modal:@"Feeling sick" :@"You may not consume 2 potions in a row."]; }
 	else if( [[card type] isEqualToString:@"H"] ){ [self healCard:card]; }
