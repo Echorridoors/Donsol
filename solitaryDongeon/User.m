@@ -18,6 +18,7 @@
 	escaped = 0;
 	room = 1;
 	difficulty = 1;
+	equip = 0;
 	return self;
 }
 -(int)lifeMaximum

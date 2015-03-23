@@ -102,6 +102,7 @@ CGRect runButtonOrigin;
 int menuIsOpen;
 
 NSTimer * blinkHealthTimer;
+NSTimer * runHoldTimer;
 
 AVAudioPlayer *audioPlayer;
 AVAudioPlayer *tunePlayer;
