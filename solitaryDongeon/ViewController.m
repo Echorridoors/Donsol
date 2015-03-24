@@ -389,24 +389,12 @@
 	
 	NSLog(@"%d", (int)[[playableDeck cards] count]);
 	
-	if( [playableHand numberOfCards] == 0){
-		[playableHand pickCard:[playableDeck pickCard]];
-		[playableHand pickCard:[playableDeck pickCard]];
-		[playableHand pickCard:[playableDeck pickCard]];
-		[playableHand pickCard:[playableDeck pickCard]];
-	}
-	else if( [playableHand numberOfCards] == 1){
-		[playableHand pickCard:[playableDeck pickCard]];
-		[playableHand pickCard:[playableDeck pickCard]];
-		[playableHand pickCard:[playableDeck pickCard]];
-	}
-	else if( [playableHand numberOfCards] == 2){
-		[playableHand pickCard:[playableDeck pickCard]];
-		[playableHand pickCard:[playableDeck pickCard]];
-	}
-	else if( [playableHand numberOfCards] == 3){
-		[playableHand pickCard:[playableDeck pickCard]];
-	}
+    // pick (4 - numberOfCards) cards
+    int cardsToDraw = 4 - [playableHand numberOfCards];
+    
+    for (int i = 0; i < cardsToDraw; i += 1) {
+        [playableHand pickCard:[playableDeck pickCard]];
+    }
 	
 	[self updateStage];
 }
