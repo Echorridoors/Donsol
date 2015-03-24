@@ -38,7 +38,6 @@
 		57BC29D61AA162BA00098150 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57BC29D41AA162BA00098150 /* Main.storyboard */; };
 		57BC29D81AA162BA00098150 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57BC29D71AA162BA00098150 /* Images.xcassets */; };
 		57BC29DB1AA162BA00098150 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57BC29D91AA162BA00098150 /* LaunchScreen.xib */; };
-		57BC29E71AA162BA00098150 /* solitaryDongeonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BC29E61AA162BA00098150 /* solitaryDongeonTests.m */; };
 		57BC29F21AA1653E00098150 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BC29F11AA1653E00098150 /* Deck.m */; };
 		57BC29F51AA169E200098150 /* Hand.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BC29F41AA169E200098150 /* Hand.m */; };
 		57C386511AAD6A8B0080F31D /* card.0000 in Resources */ = {isa = PBXBuildFile; fileRef = 57C3861A1AAD6A8B0080F31D /* card.0000 */; };
@@ -108,16 +107,6 @@
 		57C722891AB23D84005F70B6 /* splash.logo.eternal.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C722881AB23D84005F70B6 /* splash.logo.eternal.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		57BC29E11AA162BA00098150 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 57BC29BF1AA162BA00098150 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 57BC29C61AA162BA00098150;
-			remoteInfo = solitaryDongeon;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		571E42561ABFA7FE00898520 /* Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Splash.h; sourceTree = "<group>"; };
 		571E42571ABFA7FE00898520 /* Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Splash.m; sourceTree = "<group>"; };
@@ -158,9 +147,6 @@
 		57BC29D51AA162BA00098150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57BC29D71AA162BA00098150 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		57BC29DA1AA162BA00098150 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		57BC29E01AA162BA00098150 /* DonsolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DonsolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		57BC29E51AA162BA00098150 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57BC29E61AA162BA00098150 /* solitaryDongeonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = solitaryDongeonTests.m; sourceTree = "<group>"; };
 		57BC29F01AA1653E00098150 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
 		57BC29F11AA1653E00098150 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 		57BC29F31AA169E200098150 /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
@@ -243,13 +229,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		57BC29DD1AA162BA00098150 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -277,7 +256,6 @@
 			children = (
 				57C722731AB23473005F70B6 /* AVFoundation.framework */,
 				57BC29C91AA162BA00098150 /* solitaryDongeon */,
-				57BC29E31AA162BA00098150 /* solitaryDongeonTests */,
 				57BC29C81AA162BA00098150 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -286,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				57BC29C71AA162BA00098150 /* Donsol.app */,
-				57BC29E01AA162BA00098150 /* DonsolTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -329,23 +306,6 @@
 			children = (
 				57BC29CB1AA162BA00098150 /* Info.plist */,
 				57BC29CC1AA162BA00098150 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		57BC29E31AA162BA00098150 /* solitaryDongeonTests */ = {
-			isa = PBXGroup;
-			children = (
-				57BC29E61AA162BA00098150 /* solitaryDongeonTests.m */,
-				57BC29E41AA162BA00098150 /* Supporting Files */,
-			);
-			path = solitaryDongeonTests;
-			sourceTree = "<group>";
-		};
-		57BC29E41AA162BA00098150 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				57BC29E51AA162BA00098150 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -464,24 +424,6 @@
 			productReference = 57BC29C71AA162BA00098150 /* Donsol.app */;
 			productType = "com.apple.product-type.application";
 		};
-		57BC29DF1AA162BA00098150 /* DonsolTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 57BC29ED1AA162BA00098150 /* Build configuration list for PBXNativeTarget "DonsolTests" */;
-			buildPhases = (
-				57BC29DC1AA162BA00098150 /* Sources */,
-				57BC29DD1AA162BA00098150 /* Frameworks */,
-				57BC29DE1AA162BA00098150 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				57BC29E21AA162BA00098150 /* PBXTargetDependency */,
-			);
-			name = DonsolTests;
-			productName = solitaryDongeonTests;
-			productReference = 57BC29E01AA162BA00098150 /* DonsolTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -494,10 +436,6 @@
 					57BC29C61AA162BA00098150 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = B948MFAE5C;
-					};
-					57BC29DF1AA162BA00098150 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 57BC29C61AA162BA00098150;
 					};
 				};
 			};
@@ -515,7 +453,6 @@
 			projectRoot = "";
 			targets = (
 				57BC29C61AA162BA00098150 /* Donsol */,
-				57BC29DF1AA162BA00098150 /* DonsolTests */,
 			);
 		};
 /* End PBXProject section */
@@ -614,13 +551,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		57BC29DE1AA162BA00098150 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -642,23 +572,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		57BC29DC1AA162BA00098150 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				57BC29E71AA162BA00098150 /* solitaryDongeonTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		57BC29E21AA162BA00098150 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 57BC29C61AA162BA00098150 /* Donsol */;
-			targetProxy = 57BC29E11AA162BA00098150 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		57BC29D41AA162BA00098150 /* Main.storyboard */ = {
@@ -786,40 +700,6 @@
 			};
 			name = Release;
 		};
-		57BC29EE1AA162BA00098150 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = solitaryDongeonTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = DonsolTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/solitaryDongeon.app/solitaryDongeon";
-			};
-			name = Debug;
-		};
-		57BC29EF1AA162BA00098150 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = solitaryDongeonTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = DonsolTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/solitaryDongeon.app/solitaryDongeon";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -837,15 +717,6 @@
 			buildConfigurations = (
 				57BC29EB1AA162BA00098150 /* Debug */,
 				57BC29EC1AA162BA00098150 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		57BC29ED1AA162BA00098150 /* Build configuration list for PBXNativeTarget "DonsolTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				57BC29EE1AA162BA00098150 /* Debug */,
-				57BC29EF1AA162BA00098150 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
