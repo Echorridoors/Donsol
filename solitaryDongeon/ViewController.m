@@ -287,7 +287,11 @@
 		[_runButton setTitle:@"FIGHT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
-	else if( [playableHand numberOfCards] < 2 || [playableHand numberOfCards] == 4){
+	else if( [playableHand numberOfCards] == 4){
+		[_runButton setTitle:[NSString stringWithFormat:@"SKIP"] forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	}
+	else if( [playableHand numberOfCards] < 2){
 		[_runButton setTitle:[NSString stringWithFormat:@"RUN"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
