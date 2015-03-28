@@ -323,7 +323,7 @@
 	// Malus
 	if( [card value] >= [user malus] ){
 		if( [user equip] > 0 ){
-			[self modal:@"Your shield broke":@"Attacking increasingly harder monsters, with the same shield, will break it."];
+			[self modal:@"Your shield broke":@"Attacking monsters with the same or greater strength as your shield, will break it."];
 		}
 		[user looseEquip];
 	}
