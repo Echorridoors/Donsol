@@ -277,7 +277,7 @@
 		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 	}
 	else if( (int)[discardPile count] == 0 ){
-		[_runButton setTitle:@"NEXT" forState:UIControlStateNormal];
+		[_runButton setTitle:@"PASS" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] == 0){
