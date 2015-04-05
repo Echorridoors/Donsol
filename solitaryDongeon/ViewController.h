@@ -91,6 +91,13 @@ NSMutableArray * discardPile;
 int justHealed;
 CGFloat margin;
 
+
+CGRect screen;
+CGFloat margin;
+CGFloat cardWidth;
+CGFloat cardHeight;
+CGFloat verticalOffset;
+
 CGRect card1Origin;
 CGRect card2Origin;
 CGRect card3Origin;

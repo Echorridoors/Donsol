@@ -275,6 +275,8 @@
 				57C722801AB23B47005F70B6 /* assets.splash */,
 				57C722751AB23521005F70B6 /* assets.sounds */,
 				57C386191AAD6A8B0080F31D /* assets.cards */,
+				571E42561ABFA7FE00898520 /* Splash.h */,
+				571E42571ABFA7FE00898520 /* Splash.m */,
 				57BC29CE1AA162BA00098150 /* AppDelegate.h */,
 				57BC29CF1AA162BA00098150 /* AppDelegate.m */,
 				57BC29D11AA162BA00098150 /* ViewController.h */,
@@ -295,8 +297,6 @@
 				57BC29D71AA162BA00098150 /* Images.xcassets */,
 				57BC29D91AA162BA00098150 /* LaunchScreen.xib */,
 				57BC29CA1AA162BA00098150 /* Supporting Files */,
-				571E42561ABFA7FE00898520 /* Splash.h */,
-				571E42571ABFA7FE00898520 /* Splash.m */,
 			);
 			path = solitaryDongeon;
 			sourceTree = "<group>";
@@ -678,11 +678,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = solitaryDongeon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Donsol;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -692,11 +694,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = solitaryDongeon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Donsol;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

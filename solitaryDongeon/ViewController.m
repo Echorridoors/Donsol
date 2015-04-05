@@ -59,16 +59,11 @@
 
 -(void)templateStart
 {
-	CGRect screen = self.view.frame;
+	screen = self.view.frame;
 	margin = self.view.frame.size.width/16;
-	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
-	CGFloat cardHeight =(cardWidth * 88)/56;
-	CGFloat verticalOffset = 35;
-	
-	// iPhone 4S
-	if( screen.size.height == 480 ){
-		//		verticalOffset = 35;
-	}
+	cardWidth = (screen.size.width - (margin*2.5))/2;
+	cardHeight =(cardWidth * 88)/56;
+	verticalOffset = 35;
 	
 	card1Origin = CGRectMake(margin, margin+verticalOffset, cardWidth, cardHeight);
 	card2Origin = CGRectMake((margin*1.5) + cardWidth, margin+verticalOffset, cardWidth, cardHeight);
@@ -92,15 +87,39 @@
 	_discardUpdateLabel.frame = CGRectMake(card2Origin.origin.x, (margin*0.5), (margin * 3)-3, margin);
 	
 	_modalView.hidden = true;
+	
+	// iPhone 4S Template
+	
+	if( card4Origin.origin.y + cardHeight > self.view.frame.size.height ){
+		NSLog(@"Load iPhone 4S Layout");
+		
+		margin = self.view.frame.size.width/16;
+		cardWidth = (screen.size.width - (margin*3.5))/2;
+		cardHeight = (cardWidth * 88)/56;
+		
+		card1Origin = CGRectMake(margin*1.5, margin+verticalOffset, cardWidth, cardHeight);
+		card2Origin = CGRectMake(screen.size.width - (margin*1.5) - cardWidth, margin+verticalOffset, cardWidth, cardHeight);
+		card3Origin = CGRectMake(margin*1.5, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
+		card4Origin = CGRectMake(screen.size.width - (margin*1.5) - cardWidth, (margin*1.5)+cardHeight+verticalOffset, cardWidth, cardHeight);
+		
+	}
+	
+	_lifeLabel.frame = CGRectMake(card1Origin.origin.x, margin*1.5, margin * 3, margin);
+	_swordLabel.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), (margin*1.5), margin * 3, margin);
+	_discardLabel.frame = CGRectMake(card2Origin.origin.x, (margin*1.5), margin * 3, margin);
+	
+	_lifeValueLabel.frame = CGRectMake(card1Origin.origin.x, margin*0.5, margin * 3, margin);
+	_swordValueLabel.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), (margin*0.5), margin * 3, margin);
+	_discardValueLabel.frame = CGRectMake(card2Origin.origin.x, (margin*0.5), margin * 3, margin);
+	
+	_lifeBarWrapper.frame = CGRectMake(card1Origin.origin.x, margin*1.5, (cardWidth-margin)/2, 1);
+	_swordBarWrapper.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), margin*1.5, (cardWidth-margin)/2, 1);
+	_discardBarWrapper.frame = CGRectMake(card2Origin.origin.x, margin*1.5, (cardWidth-margin)/2, 1);
+	_runButton.frame = CGRectMake(card2Origin.origin.x+((cardWidth-margin)/2)+(margin*0.5), (margin*0.5), cardWidth/2, margin*1.70);
 }
 
 -(void)template
 {
-	CGRect screen = self.view.frame;
-	margin = self.view.frame.size.width/16;
-	CGFloat cardWidth = (screen.size.width - (margin*2.5))/2;
-	CGFloat cardHeight =(cardWidth * 88)/56;
-	
 	_card1Wrapper.frame = card1Origin;
 	_card1Image.frame = CGRectMake(0, 0, cardWidth, cardHeight);
 	_card1Button.frame = CGRectMake(0, 0, cardWidth, cardHeight);
@@ -125,44 +144,33 @@
 	_card4Wrapper.layer.cornerRadius = 10;
 	_card4Wrapper.clipsToBounds = YES;
 	
-	_lifeLabel.frame = CGRectMake(margin, margin*1.5, margin * 3, margin);
-	_swordLabel.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), (margin*1.5), margin * 3, margin);
-	_discardLabel.frame = CGRectMake(card2Origin.origin.x, (margin*1.5), margin * 3, margin);
 	
 	_lifeLabel.text = @"HEALTH";
 	_swordLabel.text = @"SHIELD";
 	_discardLabel.text = @"DEPTH";
 	
-	_lifeValueLabel.frame = CGRectMake(margin, margin*0.5, margin * 3, margin);
-	_swordValueLabel.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), (margin*0.5), margin * 3, margin);
-	_discardValueLabel.frame = CGRectMake(card2Origin.origin.x, (margin*0.5), margin * 3, margin);
 	
-	_lifeBarWrapper.frame = CGRectMake(margin, margin*1.5, (cardWidth-margin)/2, 1);
 	_lifeBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_lifeBarWrapper.clipsToBounds = YES;
 	
 	_lifeBar.backgroundColor = [UIColor redColor];
 	
-	_swordBarWrapper.frame = CGRectMake((margin*2)+((cardWidth-margin)/2), margin*1.5, (cardWidth-margin)/2, 1);
 	_swordBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_swordBarWrapper.clipsToBounds = YES;
 	
 	_swordBar.backgroundColor = [UIColor redColor];
 	_swordBar.frame = CGRectMake(0, 0, 0, 0);
 	
-	_discardBarWrapper.frame = CGRectMake(card2Origin.origin.x, margin*1.5, (cardWidth-margin)/2, 1);
 	_discardBarWrapper.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
 	_discardBarWrapper.clipsToBounds = YES;
 	
 	_discardBar.backgroundColor = [UIColor redColor];
 	_discardBar.frame = CGRectMake(0, 0, 0, 0);
 	
-	_runButton.frame = CGRectMake(card2Origin.origin.x+((cardWidth-margin)/2)+margin, (margin*0.5), (margin * 3)-2, margin*1.70);
 	_runButton.backgroundColor = [UIColor blackColor];
 	_runButton.layer.cornerRadius = margin/4;
 	_runButton.layer.borderColor = [[UIColor whiteColor] CGColor];
 	_runButton.layer.borderWidth = 1;
-	
 	
 	_cardsWrapper.frame = self.view.frame;
 	
