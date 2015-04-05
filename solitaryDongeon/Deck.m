@@ -36,11 +36,11 @@
 }
 
 -(int)starterHandContains:(NSString*)target
-{	
-	if( [cards[0] containsString:target] ){ return 1; }
-	if( [cards[1] containsString:target] ){ return 1; }
-	if( [cards[2] containsString:target] ){ return 1; }
-	if( [cards[3] containsString:target] ){ return 1; }
+{
+	if( [cards[0] rangeOfString:target].location != NSNotFound){ return 1; }
+	if( [cards[1] rangeOfString:target].location != NSNotFound){ return 1; }
+	if( [cards[2] rangeOfString:target].location != NSNotFound){ return 1; }
+	if( [cards[3] rangeOfString:target].location != NSNotFound){ return 1; }
 	
 	return 0;
 }
