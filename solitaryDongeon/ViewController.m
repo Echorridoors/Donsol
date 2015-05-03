@@ -276,7 +276,15 @@
 
 -(void)runButtonUpdate
 {
-	if( [user life] < 1 ){
+	if( (int)[discardPile count] == 0 ){
+		[_runButton setTitle:[NSString stringWithFormat:@"SHUFFLE"] forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	}
+	else if( [playableHand numberOfCards] == 1 ){
+		[_runButton setTitle:[NSString stringWithFormat:@"PASS"] forState:UIControlStateNormal];
+		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	}
+	else if( [user life] < 1 ){
 		[_runButton setTitle:[NSString stringWithFormat:@"DEAD"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 	}
@@ -296,7 +304,7 @@
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] == 4){
-		[_runButton setTitle:[NSString stringWithFormat:@"SKIP"] forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"RUN"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else if( [playableHand numberOfCards] < 2){
@@ -489,7 +497,10 @@
 	
 	[user nextRoom];
 	
-	if( [playableHand numberOfCards] == 0){
+	if( [playableHand numberOfCards] == 0 ){
+		[user setEscape:0];
+	}
+	else if( [playableHand numberOfCards] == 1 ){
 		[user setEscape:0];
 	}
 	else{
