@@ -158,9 +158,24 @@
 	
 	if(cardString == nil){ cardImageString = @"card.0053";}
 	
-	cardImageString = [NSString stringWithFormat:@"logan.%@",cardImageString];
+	cardImageString = [NSString stringWithFormat:@"%@.%@",[self loadPackDesign],cardImageString];
 	
 	return [UIImage imageNamed:cardImageString];
 }
+
+
+-(NSString*)loadPackDesign
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	if( ![defaults objectForKey:@"packDesign"]  ){
+		return @"default";
+	}
+	if( [[defaults objectForKey:@"packDesign"] isEqualToString:@""] ){
+		return @"default";
+	}
+	return [defaults objectForKey:@"packDesign"];
+}
+
 
 @end

@@ -294,8 +294,6 @@ typedef NS_ENUM(NSInteger, CastleTile) {
     {
         for (int y=0; y<verticalTilesCount; y++)
         {
-            NSLog(@"x:%d y:%d - > %d", x,y,(int)matrix[x][y] );
-
             UIImageView * castleTile = [[UIImageView alloc] initWithFrame:CGRectMake(margin + (tileSize*x), margin + (tileSize*y), tileSize, tileSize)];
 
             castleTile.backgroundColor = [UIColor blackColor];
@@ -357,12 +355,44 @@ typedef NS_ENUM(NSInteger, CastleTile) {
     _scoreLabel.frame = CGRectMake(margin, self.castleView.frame.size.height + margin, self.view.frame.size.width-(2*margin), margin);
     _scoreLabel.text = [NSString stringWithFormat:@"BEST SCORE %d",[self loadHighScore]];
     _scoreLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
-
+	
+	_packDesignButton.frame = CGRectMake(margin, self.castleView.frame.size.height + (margin*3), self.view.frame.size.width-(2*margin), margin);
+	_packDesignLabel.frame = CGRectMake(margin, self.castleView.frame.size.height + (margin*3), self.view.frame.size.width-(2*margin), margin);
+	
+	_packDesignLabel.text = [[self loadPackDesign] uppercaseString];
+	_packDesignLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
+	
     _thanksLabel.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin*2);
     _thanksLabel.text = @"SPECIAL THANKS\nJOHN ETERNAL, ZACH GAGE, KURT BIEG";
     _thanksLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
 }
 
+- (IBAction)packDesignButton:(id)sender
+{
+	NSLog(@"Change pack design");
+	
+	if( [[self loadPackDesign] isEqualToString:@"default"] ){
+		[self setPackDesign:@"logan"];
+	}
+	else{
+		[self setPackDesign:@"default"];
+	}
+	
+	_packDesignLabel.text = [[self loadPackDesign] uppercaseString];
+}
+
+-(void)setPackDesign:(NSString*)pack
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:pack forKey:@"packDesign"];
+	[defaults synchronize];
+}
+
+-(NSString*)loadPackDesign
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults objectForKey:@"packDesign"];
+}
 
 -(int)loadHighScore
 {

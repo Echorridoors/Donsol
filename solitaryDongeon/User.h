@@ -33,6 +33,7 @@
 -(void)gainExperience :(int)value;
 -(int)experience;
 
+
 @end
 
 int life;
