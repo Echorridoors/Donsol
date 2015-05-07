@@ -394,6 +394,13 @@ typedef NS_ENUM(NSInteger, CastleTile) {
 -(NSString*)loadPackDesign
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	if( ![defaults objectForKey:@"packDesign"]  ){
+		return @"default";
+	}
+	if( [[defaults objectForKey:@"packDesign"] isEqualToString:@""] ){
+		return @"default";
+	}
 	return [defaults objectForKey:@"packDesign"];
 }
 
