@@ -339,8 +339,6 @@ typedef NS_ENUM(NSInteger, CastleTile) {
             [self.castleView addSubview:castleTile];
         }
     }
-
-
 }
 
 -(void)templateStart
@@ -379,6 +377,11 @@ typedef NS_ENUM(NSInteger, CastleTile) {
 	}
 	
 	_packDesignLabel.text = [[self loadPackDesign] uppercaseString];
+}
+
+- (IBAction)enterButton:(id)sender
+{
+	[self playTuneNamed:@"tune.enter"];
 }
 
 -(void)setPackDesign:(NSString*)pack

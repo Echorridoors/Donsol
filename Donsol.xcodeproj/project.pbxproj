@@ -85,6 +85,12 @@
 		5766B7671AFB9BE5008A631D /* logan.card.0058 in Resources */ = {isa = PBXBuildFile; fileRef = 5766B72B1AFB9BE5008A631D /* logan.card.0058 */; };
 		5766B7681AFB9BE5008A631D /* logan.card.0059 in Resources */ = {isa = PBXBuildFile; fileRef = 5766B72C1AFB9BE5008A631D /* logan.card.0059 */; };
 		5766B7691AFB9BE5008A631D /* logan.card.0060 in Resources */ = {isa = PBXBuildFile; fileRef = 5766B72D1AFB9BE5008A631D /* logan.card.0060 */; };
+		5766B76C1AFBA4A5008A631D /* tune.shield.break.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5766B76A1AFBA4A5008A631D /* tune.shield.break.wav */; };
+		5766B76D1AFBA4A5008A631D /* tune.shield.gain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5766B76B1AFBA4A5008A631D /* tune.shield.gain.wav */; };
+		5766B7711AFBA65A008A631D /* tune.health.gain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5766B76E1AFBA65A008A631D /* tune.health.gain.wav */; };
+		5766B7721AFBA65A008A631D /* tune.health.loose.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5766B76F1AFBA65A008A631D /* tune.health.loose.wav */; };
+		5766B7731AFBA65A008A631D /* tune.health.unchanged.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5766B7701AFBA65A008A631D /* tune.health.unchanged.wav */; };
+		5766B7751AFBA98E008A631D /* tune.enter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5766B7741AFBA98E008A631D /* tune.enter.wav */; };
 		5780562D1AB09AAC007296E4 /* default.card.0056 in Resources */ = {isa = PBXBuildFile; fileRef = 578056281AB09AAC007296E4 /* default.card.0056 */; };
 		5780562E1AB09AAC007296E4 /* default.card.0057 in Resources */ = {isa = PBXBuildFile; fileRef = 578056291AB09AAC007296E4 /* default.card.0057 */; };
 		5780562F1AB09AAC007296E4 /* default.card.0058 in Resources */ = {isa = PBXBuildFile; fileRef = 5780562A1AB09AAC007296E4 /* default.card.0058 */; };
@@ -248,6 +254,12 @@
 		5766B72B1AFB9BE5008A631D /* logan.card.0058 */ = {isa = PBXFileReference; lastKnownFileType = file; path = logan.card.0058; sourceTree = "<group>"; };
 		5766B72C1AFB9BE5008A631D /* logan.card.0059 */ = {isa = PBXFileReference; lastKnownFileType = file; path = logan.card.0059; sourceTree = "<group>"; };
 		5766B72D1AFB9BE5008A631D /* logan.card.0060 */ = {isa = PBXFileReference; lastKnownFileType = file; path = logan.card.0060; sourceTree = "<group>"; };
+		5766B76A1AFBA4A5008A631D /* tune.shield.break.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.shield.break.wav; sourceTree = "<group>"; };
+		5766B76B1AFBA4A5008A631D /* tune.shield.gain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.shield.gain.wav; sourceTree = "<group>"; };
+		5766B76E1AFBA65A008A631D /* tune.health.gain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.health.gain.wav; sourceTree = "<group>"; };
+		5766B76F1AFBA65A008A631D /* tune.health.loose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.health.loose.wav; sourceTree = "<group>"; };
+		5766B7701AFBA65A008A631D /* tune.health.unchanged.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.health.unchanged.wav; sourceTree = "<group>"; };
+		5766B7741AFBA98E008A631D /* tune.enter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.enter.wav; sourceTree = "<group>"; };
 		578056281AB09AAC007296E4 /* default.card.0056 */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.card.0056; sourceTree = "<group>"; };
 		578056291AB09AAC007296E4 /* default.card.0057 */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.card.0057; sourceTree = "<group>"; };
 		5780562A1AB09AAC007296E4 /* default.card.0058 */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.card.0058; sourceTree = "<group>"; };
@@ -577,6 +589,12 @@
 		57C722751AB23521005F70B6 /* assets.sounds */ = {
 			isa = PBXGroup;
 			children = (
+				5766B7741AFBA98E008A631D /* tune.enter.wav */,
+				5766B76E1AFBA65A008A631D /* tune.health.gain.wav */,
+				5766B76F1AFBA65A008A631D /* tune.health.loose.wav */,
+				5766B7701AFBA65A008A631D /* tune.health.unchanged.wav */,
+				5766B76A1AFBA4A5008A631D /* tune.shield.break.wav */,
+				5766B76B1AFBA4A5008A631D /* tune.shield.gain.wav */,
 				571E42591ABFA99200898520 /* tune.menu.wav */,
 				571E425A1ABFA99200898520 /* tune.intro.wav */,
 				574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */,
@@ -711,8 +729,10 @@
 				5766B7611AFB9BE5008A631D /* logan.card.0051 in Resources */,
 				5766B75A1AFB9BE5008A631D /* logan.card.0044 in Resources */,
 				574F0A8F1ABE07C1008EAF3B /* piece.door.png in Resources */,
+				5766B7721AFBA65A008A631D /* tune.health.loose.wav in Resources */,
 				5766B7321AFB9BE5008A631D /* logan.card.0004 in Resources */,
 				5780562E1AB09AAC007296E4 /* default.card.0057 in Resources */,
+				5766B7711AFBA65A008A631D /* tune.health.gain.wav in Resources */,
 				5766B75B1AFB9BE5008A631D /* logan.card.0045 in Resources */,
 				57C3866A1AAD6A8B0080F31D /* default.card.0025 in Resources */,
 				57C3865D1AAD6A8B0080F31D /* default.card.0012 in Resources */,
@@ -734,6 +754,7 @@
 				5766B7391AFB9BE5008A631D /* logan.card.0011 in Resources */,
 				5766B7511AFB9BE5008A631D /* logan.card.0035 in Resources */,
 				57C386751AAD6A8B0080F31D /* default.card.0036 in Resources */,
+				5766B76D1AFBA4A5008A631D /* tune.shield.gain.wav in Resources */,
 				57BC29D61AA162BA00098150 /* Main.storyboard in Resources */,
 				5766B7431AFB9BE5008A631D /* logan.card.0021 in Resources */,
 				574F0A921ABE07C1008EAF3B /* piece.fill.2.png in Resources */,
@@ -753,7 +774,9 @@
 				57C386891AAD729A0080F31D /* default.card.0055 in Resources */,
 				57C722871AB23B6C005F70B6 /* splash.logo.xxiivv.png in Resources */,
 				5766B7371AFB9BE5008A631D /* logan.card.0009 in Resources */,
+				5766B76C1AFBA4A5008A631D /* tune.shield.break.wav in Resources */,
 				5766B7551AFB9BE5008A631D /* logan.card.0039 in Resources */,
+				5766B7731AFBA65A008A631D /* tune.health.unchanged.wav in Resources */,
 				571E425B1ABFA99200898520 /* tune.menu.wav in Resources */,
 				574CFC8F1ABF4E1900717F08 /* tune.victory.wav in Resources */,
 				5766B7461AFB9BE5008A631D /* logan.card.0024 in Resources */,
@@ -775,6 +798,7 @@
 				57C386611AAD6A8B0080F31D /* default.card.0016 in Resources */,
 				57C3866D1AAD6A8B0080F31D /* default.card.0028 in Resources */,
 				57C386561AAD6A8B0080F31D /* default.card.0005 in Resources */,
+				5766B7751AFBA98E008A631D /* tune.enter.wav in Resources */,
 				5766B75C1AFB9BE5008A631D /* logan.card.0046 in Resources */,
 				5766B7331AFB9BE5008A631D /* logan.card.0005 in Resources */,
 				5766B7661AFB9BE5008A631D /* logan.card.0057 in Resources */,

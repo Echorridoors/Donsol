@@ -326,6 +326,7 @@
 	int lifeBefore = [user life];
 	[user gainLife:[card value]];
 	justHealed = 1;
+	
 	[self updateHealth:([user life]-lifeBefore)];
 }
 
@@ -344,7 +345,7 @@
 	if( [card value] >= [user malus] ){
 		if( [user equip] > 0 ){
 			[self modal:@"Your shield broke":@"Attacking monsters with the same or greater strength as your shield, will break it."];
-			[self playSoundNamed:@"shield.break"]; // TODO
+			[self playTuneNamed:@"tune.shield.break"];
 		}
 		[user looseEquip];
 	}
@@ -447,6 +448,7 @@
 	[runHoldTimer invalidate];
 	
 	if( [user life] < 1 ){
+		[self playTuneNamed:@"tune.menu"];
 		[self performSegueWithIdentifier: @"leave" sender: self];
 	}
 	else{
@@ -462,6 +464,7 @@
 -(void)leaveDungeon
 {
 	[self playSoundNamed:@"click.1"];
+	[self playTuneNamed:@"tune.menu"];
 	[self performSegueWithIdentifier: @"leave" sender: self];
 }
 
@@ -757,7 +760,7 @@
 
 - (void)playSoundNamed:(NSString*)name
 {
-	NSLog(@" AUDIO | Playing sound: %@",name);
+	NSLog(@"$  AUDIO | Playing sound: %@",name);
 	
 	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
 	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
@@ -769,7 +772,7 @@
 
 - (void)playTuneNamed:(NSString*)name
 {
-	NSLog(@" AUDIO | Playing tune: %@",name);
+	NSLog(@"$  AUDIO | Playing tune: %@",name);
 	
 	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
 	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];

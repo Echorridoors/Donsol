@@ -430,6 +430,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="enterButton:" destination="dda-4h-R4V" eventType="touchUpInside" id="AyG-Rh-njj"/>
                                     <segue destination="BYZ-38-t0r" kind="custom" customClass="segueFade" id="S6W-8I-SXr"/>
                                 </connections>
                             </button>
