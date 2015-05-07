@@ -168,6 +168,7 @@
 	_discardBar.frame = CGRectMake(0, 0, 0, 0);
 	
 	_runButton.backgroundColor = [UIColor blackColor];
+	_runButton.titleEdgeInsets = UIEdgeInsetsMake(2.5, 0, 0, 0);
 	_runButton.layer.cornerRadius = margin/4;
 	_runButton.layer.borderColor = [[UIColor whiteColor] CGColor];
 	_runButton.layer.borderWidth = 1;
