@@ -158,6 +158,8 @@
 	
 	if(cardString == nil){ cardImageString = @"card.0053";}
 	
+	cardImageString = [NSString stringWithFormat:@"logan.%@",cardImageString];
+	
 	return [UIImage imageNamed:cardImageString];
 }
 
