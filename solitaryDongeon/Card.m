@@ -156,7 +156,6 @@
 	if([cardString isEqualToString:@"1J"]){ cardImageString = @"card.0052";}
 	if([cardString isEqualToString:@"2J"]){ cardImageString = @"card.0053";}
 	
-	NSLog(@"> !! %@",cardString);
 	if(cardString == nil){ cardImageString = @"card.0053";}
 	
 	return [UIImage imageNamed:cardImageString];

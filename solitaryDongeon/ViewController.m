@@ -344,6 +344,7 @@
 	if( [card value] >= [user malus] ){
 		if( [user equip] > 0 ){
 			[self modal:@"Your shield broke":@"Attacking monsters with the same or greater strength as your shield, will break it."];
+			[self playSoundNamed:@"shield.break"]; // TODO
 		}
 		[user looseEquip];
 	}
@@ -378,7 +379,7 @@
 	NSLog(@"--------+-------------------");
 	
 	// Tutorials
-	if( [user loadHighScore] < 54 )
+	if( [self loadHighScore] < 54 )
 	{
 		if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions."]; }
 		if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
@@ -670,12 +671,12 @@
 	// HighScore
 	
 	int currentScore = ((int)[discardPile count] + (54 * ([user difficulty] - 1)) );
-	NSLog(@"$ SCORE | Score: %d Best: %d", currentScore, [user loadHighScore] );
+	NSLog(@"$ SCORE | Score: %d Best: %d", currentScore, [self loadHighScore] );
 	
-	if( currentScore > [user loadHighScore] ){
+	if( currentScore > [self loadHighScore] ){
 		NSLog(@"$ SCORE | New high score: %d!", currentScore );
 		self.discardLabel.textColor = [UIColor colorWithRed:0.45 green:0.87 blue:0.76 alpha:1];
-		[user setHighScore:currentScore];
+		[self setHighScore:currentScore];
 	}
 	else{
 		self.discardLabel.textColor = [UIColor whiteColor];
@@ -776,6 +777,21 @@
 	tunePlayer.volume = 1;
 	[tunePlayer prepareToPlay];
 	[tunePlayer play];
+}
+
+# pragma mark - High Score
+
+-(void)setHighScore:(int)score
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:@(score) forKey:@"score"];
+	[defaults synchronize];
+}
+
+-(int)loadHighScore
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [[defaults objectForKey:@"score"] intValue];
 }
 
 # pragma mark - Defaults
