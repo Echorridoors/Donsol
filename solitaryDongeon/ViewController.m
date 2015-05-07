@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "ViewController.h"
+#import "Splash.h"
 #import "Deck.h"
 #import "Hand.h"
 #import "Card.h"
@@ -198,7 +199,6 @@
 	if( [user equip] > 0 ){
 		_swordLabel.text = [NSString stringWithFormat:@"SHIELD %d",[user equip]];
 	}
-	
 	
 	if( [user equip] == 0 ){
 		swordValue = @"0";
@@ -477,6 +477,7 @@
 		[self newGame];
 	}
 	if( (int)[discardPile count] == 54){
+		[self apiContact:@"donsol":@"analytics":@"dungeon":@"1"];
 		[user setDifficulty:[user difficulty]+1];
 		[self start];
 	}
@@ -761,7 +762,7 @@
 
 - (void)playSoundNamed:(NSString*)name
 {
-	NSLog(@"$  AUDIO | Playing sound: %@",name);
+	NSLog(@"$ AUDIO | Playing sound: %@",name);
 	
 	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
 	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
@@ -773,7 +774,7 @@
 
 - (void)playTuneNamed:(NSString*)name
 {
-	NSLog(@"$  AUDIO | Playing tune: %@",name);
+	NSLog(@"$ AUDIO | Playing tune: %@",name);
 	
 	NSString* audioPath = [[NSBundle mainBundle] pathForResource:name ofType:@"wav"];
 	NSURL* audioUrl = [NSURL fileURLWithPath:audioPath];
@@ -798,6 +799,28 @@
 	return [[defaults objectForKey:@"score"] intValue];
 }
 
+-(void)apiContact:(NSString*)source :(NSString*)method :(NSString*)term :(NSString*)value
+{
+	NSString *post = [NSString stringWithFormat:@"values={\"term\":\"%@\",\"value\":\"%@\"}",term,value];
+	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+	
+	NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+	
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+	[request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.xxiivv.com/%@/%@",source,method]]];
+	[request setHTTPMethod:@"POST"];
+	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+	[request setValue:@"application/x-www-form-urlencoded;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+	[request setHTTPBody:postData];
+	
+	NSURLResponse *response;
+	NSData *POSTReply = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+	NSString *theReply = [[NSString alloc] initWithBytes:[POSTReply bytes] length:[POSTReply length] encoding: NSASCIIStringEncoding];
+	NSLog(@"& API  | %@: %@",method, theReply);
+	
+	return;
+}
+
 # pragma mark - Defaults
 
 - (void)didReceiveMemoryWarning {
@@ -808,8 +831,5 @@
 - (BOOL)prefersStatusBarHidden {
 	return YES;
 }
-
-
-
 
 @end
