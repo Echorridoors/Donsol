@@ -12,11 +12,12 @@
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" id="aSp-fY-IN8">
                             <items>
-                                <group width="1" alignment="left" hidden="YES" layout="vertical" id="yL7-J8-YQh">
+                                <group width="1" alignment="left" layout="vertical" id="yL7-J8-YQh">
                                     <items>
                                         <label alignment="left" text="Donsol" id="rlH-fg-OwE">
                                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                         </label>
+                                        <label alignment="left" text="-1" id="srD-kZ-VGd"/>
                                         <button width="1" alignment="left" title="Enter" id="Dwb-b5-gfv">
                                             <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -191,6 +192,7 @@
                         <outlet property="DepthLabel" destination="QSI-jf-0je" id="fjM-td-AVi"/>
                         <outlet property="HealthHeart" destination="cfD-oM-SXZ" id="10D-T7-lRF"/>
                         <outlet property="HealthLabel" destination="4oG-TE-K8F" id="60h-Pk-nda"/>
+                        <outlet property="ScoreLabel" destination="srD-kZ-VGd" id="HFe-A2-PJB"/>
                         <outlet property="ShieldLabel" destination="2k7-oP-gYy" id="ddb-LP-seO"/>
                         <outlet property="TLBaseCard" destination="xmx-mf-LK1" id="MN9-da-fCz"/>
                         <outlet property="TLBaseInnerGroup" destination="rJt-RO-3u6" id="X1J-BE-h4z"/>
@@ -214,7 +216,7 @@
         <!--alertView-->
         <scene sceneID="180-LR-FRz">
             <objects>
-                <controller identifier="alertView" id="bmg-hh-XuU" customClass="alertView" customModule="cardTest_WatchKit_Extension">
+                <controller identifier="alertView" id="bmg-hh-XuU" customClass="alertView" customModule="Donsol_WatchKit_Extension">
                     <items>
                         <label alignment="left" text="You died" numberOfLines="0" id="IX3-CF-OWr"/>
                         <button width="1" alignment="left" title="Return" id="82I-sc-kRa">

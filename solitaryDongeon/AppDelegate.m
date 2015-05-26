@@ -44,5 +44,32 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application handleWatchKitExtensionRequest:(NSDictionary *)userInfo reply:(void (^)(NSDictionary *replyInfo))reply
+{
+    int currentScore = 0;
+    NSNumber * scoreValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"score"];
+    if(scoreValue != nil)
+    {
+        currentScore = [scoreValue intValue];
+    }
+    int watchScore = 0;
+    scoreValue = [userInfo objectForKey:@"score"];
+    if(scoreValue != nil)
+    {
+        watchScore = [scoreValue intValue];
+    }
+    
+    if (watchScore > currentScore)
+    {
+        currentScore = watchScore;
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@(currentScore) forKey:@"score"];
+        [defaults synchronize];
+    }
+    
+    reply(@{@"score" : @(currentScore)});
+    
+}
+
 
 @end

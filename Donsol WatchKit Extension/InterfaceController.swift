@@ -45,6 +45,8 @@ class InterfaceController: WKInterfaceController
     @IBOutlet var ShieldLabel:WKInterfaceLabel?
     @IBOutlet var DepthLabel:WKInterfaceLabel?
     
+    @IBOutlet var ScoreLabel:WKInterfaceLabel?
+    
     var TLCard:cardView!
     var TRCard:cardView!
     var BLCard:cardView!
@@ -75,6 +77,7 @@ class InterfaceController: WKInterfaceController
             self.gameGroup?.setHidden(true)
             self.titleGroup?.setHidden(false)
         }
+        self.setHighScore(0)
     }
     
     override func willActivate()
@@ -96,6 +99,39 @@ class InterfaceController: WKInterfaceController
         {
             NSUserDefaults.standardUserDefaults().removeObjectForKey("playerState")
         }
+        NSUserDefaults.standardUserDefaults().synchronize()
+    }
+    
+    func setHighScore(newScore: Int)
+    {
+        var currentScore = NSUserDefaults.standardUserDefaults().integerForKey("score")
+        
+        if (newScore > currentScore)
+        {
+            NSUserDefaults.standardUserDefaults().setInteger(newScore, forKey: "score")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            currentScore = newScore
+        }
+        self.syncScore()
+        
+        self.ScoreLabel?.setText(String(currentScore))
+    }
+    
+    func syncScore()
+    {
+        var highScore: Int = NSUserDefaults.standardUserDefaults().integerForKey("score")
+        WKInterfaceController.openParentApplication(["score":highScore], reply:
+        {
+            [weak self] (reply: [NSObject : AnyObject]!, error:NSError!) -> Void in
+            if let replyScore = reply["score"] as? Int
+            {
+                if(replyScore > highScore)
+                {
+                    self?.setHighScore(replyScore)
+                }
+            }
+            
+        })
     }
     
     func continueGame() -> Bool
@@ -131,6 +167,7 @@ class InterfaceController: WKInterfaceController
     func endGame()
     {
         NSUserDefaults.standardUserDefaults().removeObjectForKey("playerState")
+        self.setHighScore(self.currentPlayerState.score)
         self.currentPlayerState = playerState()
         self.gameGroup?.setHidden(true)
         self.titleGroup?.setHidden(false)
