@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>B57B7949-B3DA-4062-8284-70030B35F828</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Donsol</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>17D878BE0DB89D7B6ABE2B0701C3D26D51F3F2D7</key>
 		<string>https://github.com/aliceffekt/donsol.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Donsol.xcodeproj/project.xcworkspace</string>
+	<string>Donsol.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>17D878BE0DB89D7B6ABE2B0701C3D26D51F3F2D7</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>17D878BE0DB89D7B6ABE2B0701C3D26D51F3F2D7</string>
 			<key>IDESourceControlWCCName</key>
-			<string>donsolX</string>
+			<string>donsol</string>
 		</dict>
 	</array>
 </dict>

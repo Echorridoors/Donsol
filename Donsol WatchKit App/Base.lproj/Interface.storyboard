@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
         <!--Donsol-->
@@ -10,95 +10,41 @@
             <objects>
                 <controller title="Donsol" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Donsol_WatchKit_Extension">
                     <items>
-                        <group width="1" height="1" alignment="left" layout="vertical" id="aSp-fY-IN8">
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" layout="vertical" id="aSp-fY-IN8">
                             <items>
-                                <group width="1" alignment="left" layout="vertical" id="yL7-J8-YQh">
+                                <group width="0.94999999999999996" height="0.94999999999999996" alignment="center" verticalAlignment="center" hidden="YES" layout="vertical" id="yL7-J8-YQh">
                                     <items>
-                                        <label alignment="left" text="Donsol" id="rlH-fg-OwE">
-                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                        </label>
-                                        <label alignment="left" text="-1" id="srD-kZ-VGd"/>
-                                        <button width="1" alignment="left" title="Enter" id="Dwb-b5-gfv">
-                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <button width="1" height="0.84999999999999998" alignment="left" title="Enter Dungeon" id="Dwb-b5-gfv">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" type="system" weight="thin" pointSize="14"/>
                                             <connections>
                                                 <action selector="startGame" destination="AgC-eL-Hgc" id="OHE-ZI-i55"/>
                                             </connections>
                                         </button>
-                                        <group width="1" alignment="left" id="SHV-M7-KHQ">
+                                        <group width="1" alignment="center" verticalAlignment="center" id="SHV-M7-KHQ">
                                             <items>
-                                                <button width="0.5" alignment="left" title="How-to" id="Fzk-vg-O6q">
-                                                    <connections>
-                                                        <action selector="howTo" destination="AgC-eL-Hgc" id="EUv-XC-6SC"/>
-                                                    </connections>
-                                                </button>
-                                                <button width="0.5" alignment="left" title="About" id="5d7-4j-eCL">
-                                                    <connections>
-                                                        <action selector="about" destination="AgC-eL-Hgc" id="ebY-qD-Dx8"/>
-                                                    </connections>
-                                                </button>
+                                                <label width="0.5" height="1" alignment="right" verticalAlignment="center" text="Best" textAlignment="left" id="r0W-wy-7hx">
+                                                    <color key="textColor" red="0.57267992420000002" green="0.57267992420000002" blue="0.57267992420000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="font" type="system" weight="light" pointSize="12"/>
+                                                </label>
+                                                <label width="0.5" height="1" alignment="right" verticalAlignment="center" text="-1" textAlignment="right" id="srD-kZ-VGd">
+                                                    <color key="textColor" red="0.57267992420000002" green="0.57267992420000002" blue="0.57267992420000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="font" type="system" weight="light" pointSize="12"/>
+                                                </label>
                                             </items>
                                         </group>
                                     </items>
                                 </group>
-                                <group width="1" height="1" alignment="left" layout="vertical" id="Hiz-u7-UdC">
+                                <group width="1" height="1" alignment="center" layout="vertical" id="Hiz-u7-UdC">
                                     <items>
-                                        <group width="1" height="0.25" alignment="left" spacing="0.0" id="4bn-8X-RG0">
-                                            <items>
-                                                <group width="0.66000000000000003" alignment="left" verticalAlignment="center" spacing="2" id="eKj-bi-b2F">
-                                                    <items>
-                                                        <group width="0.33000000000000002" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="NbY-hq-8Mc">
-                                                            <items>
-                                                                <label alignment="center" text="21" textAlignment="center" minimumScaleFactor="0.5" id="4oG-TE-K8F">
-                                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="font" type="system" pointSize="12"/>
-                                                                </label>
-                                                                <label alignment="center" text="♥︎" textAlignment="center" id="cfD-oM-SXZ">
-                                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="font" type="system" pointSize="16"/>
-                                                                </label>
-                                                            </items>
-                                                        </group>
-                                                        <group width="0.33000000000000002" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="g1R-HW-ftr">
-                                                            <items>
-                                                                <label alignment="center" text="11/21" textAlignment="center" minimumScaleFactor="0.5" id="2k7-oP-gYy">
-                                                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="font" type="system" pointSize="12"/>
-                                                                </label>
-                                                                <label alignment="center" text="♦︎" textAlignment="center" id="0J8-jJ-bbs">
-                                                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="font" type="system" pointSize="16"/>
-                                                                </label>
-                                                            </items>
-                                                        </group>
-                                                        <group width="0.33000000000000002" alignment="center" layout="vertical" spacing="0.0" id="q21-cp-7sd">
-                                                            <items>
-                                                                <label alignment="center" text="1000" textAlignment="center" minimumScaleFactor="0.5" id="QSI-jf-0je">
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="font" type="system" pointSize="12"/>
-                                                                </label>
-                                                                <label alignment="center" text="●" textAlignment="center" id="QgF-2M-OLt">
-                                                                    <fontDescription key="font" type="system" pointSize="16"/>
-                                                                </label>
-                                                            </items>
-                                                        </group>
-                                                    </items>
-                                                </group>
-                                                <button width="0.33000000000000002" alignment="right" title="Pass" id="qBy-lE-Pzd">
-                                                    <fontDescription key="font" type="system" pointSize="13"/>
-                                                    <connections>
-                                                        <action selector="pass" destination="AgC-eL-Hgc" id="Dve-Xk-O32"/>
-                                                    </connections>
-                                                </button>
-                                            </items>
-                                        </group>
-                                        <group width="1" height="0.75" alignment="left" layout="vertical" id="RSc-Ec-F6P">
+                                        <group height="0.75" alignment="center" layout="vertical" id="RSc-Ec-F6P">
                                             <items>
                                                 <group width="1" height="0.5" alignment="left" id="OQ5-w1-UJ2">
                                                     <items>
                                                         <button alignment="left" id="xmx-mf-LK1">
-                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" id="gaZ-gQ-3aL">
+                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" radius="4" id="gaZ-gQ-3aL">
                                                                 <items>
-                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="6" id="rJt-RO-3u6">
+                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="3" id="rJt-RO-3u6">
                                                                         <items>
                                                                             <label width="20" alignment="left" text="21" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.5" id="Waa-Wg-LgL">
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -114,9 +60,9 @@
                                                             </connections>
                                                         </button>
                                                         <button alignment="left" id="yRH-cM-eZq">
-                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" id="HKy-du-Khc">
+                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" radius="4" id="HKy-du-Khc">
                                                                 <items>
-                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="6" id="7wy-EU-w3D">
+                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="3" id="7wy-EU-w3D">
                                                                         <items>
                                                                             <label width="20" alignment="left" text="21" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.5" id="O5u-BR-wTf">
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -136,9 +82,9 @@
                                                 <group width="1" height="0.5" alignment="left" id="O0T-86-QwH">
                                                     <items>
                                                         <button alignment="left" id="DxU-Ij-MPk">
-                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" id="cY6-J4-FLh">
+                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" radius="4" id="cY6-J4-FLh">
                                                                 <items>
-                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="6" id="nWF-f0-b1N">
+                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="3" id="nWF-f0-b1N">
                                                                         <items>
                                                                             <label width="20" alignment="left" text="21" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.5" id="W5s-ec-Kcw">
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,9 +100,9 @@
                                                             </connections>
                                                         </button>
                                                         <button alignment="left" id="cR3-mB-dMq">
-                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" id="tuP-6Q-7Wu">
+                                                            <group key="contentGroup" width="0.5" height="1" alignment="left" radius="4" id="tuP-6Q-7Wu">
                                                                 <items>
-                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="6" id="wOT-Jf-mr9">
+                                                                    <group width="1" widthAdjustment="-4" height="1" heightAdjustment="-4" alignment="center" verticalAlignment="center" radius="3" id="wOT-Jf-mr9">
                                                                         <items>
                                                                             <label width="20" alignment="left" text="21" textAlignment="center" numberOfLines="3" minimumScaleFactor="0.5" id="ZAl-P4-uOR">
                                                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -175,7 +121,57 @@
                                                 </group>
                                             </items>
                                         </group>
+                                        <group width="1" height="0.25" alignment="center" spacing="0.0" id="4bn-8X-RG0">
+                                            <items>
+                                                <group width="0.5" height="1" alignment="left" layout="vertical" spacing="2" id="eKj-bi-b2F">
+                                                    <items>
+                                                        <group width="1" height="0.33329999999999999" alignment="center" spacing="0.0" id="q21-cp-7sd">
+                                                            <items>
+                                                                <label width="0.20000000000000001" alignment="left" verticalAlignment="center" text="●" textAlignment="left" minimumScaleFactor="0.5" id="QgF-2M-OLt">
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                                <label alignment="left" verticalAlignment="center" text="1000" textAlignment="center" minimumScaleFactor="0.5" id="QSI-jf-0je">
+                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                            </items>
+                                                        </group>
+                                                        <group width="1" height="0.33329999999999999" alignment="left" verticalAlignment="center" spacing="0.0" id="NbY-hq-8Mc">
+                                                            <items>
+                                                                <label width="0.20000000000000001" alignment="left" verticalAlignment="center" text="♥︎" textAlignment="left" minimumScaleFactor="0.5" id="cfD-oM-SXZ">
+                                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                                <label alignment="left" verticalAlignment="center" text="21" textAlignment="center" minimumScaleFactor="0.5" id="4oG-TE-K8F">
+                                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                            </items>
+                                                        </group>
+                                                        <group width="1" height="0.33329999999999999" alignment="left" verticalAlignment="center" spacing="0.0" id="g1R-HW-ftr">
+                                                            <items>
+                                                                <label width="0.20000000000000001" alignment="left" verticalAlignment="center" text="♦︎" textAlignment="left" minimumScaleFactor="0.5" id="0J8-jJ-bbs">
+                                                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                                <label alignment="left" verticalAlignment="center" text="11/21" textAlignment="center" minimumScaleFactor="0.5" id="2k7-oP-gYy">
+                                                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                            </items>
+                                                        </group>
+                                                    </items>
+                                                </group>
+                                                <button width="0.5" height="1" alignment="left" verticalAlignment="center" title="Pass" id="qBy-lE-Pzd">
+                                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                                    <connections>
+                                                        <action selector="pass" destination="AgC-eL-Hgc" id="Dve-Xk-O32"/>
+                                                    </connections>
+                                                </button>
+                                            </items>
+                                        </group>
                                     </items>
+                                    <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
                                 </group>
                             </items>
                         </group>
@@ -202,9 +198,7 @@
                         <outlet property="TRBaseInnerGroup" destination="7wy-EU-w3D" id="mXo-F9-yCl"/>
                         <outlet property="TRBaseLabel" destination="O5u-BR-wTf" id="TWb-iY-ydO"/>
                         <outlet property="TRBaseOuterGroup" destination="HKy-du-Khc" id="sk8-Qg-IAG"/>
-                        <outlet property="aboutButton" destination="5d7-4j-eCL" id="q1v-KQ-dgu"/>
                         <outlet property="gameGroup" destination="Hiz-u7-UdC" id="ORg-3T-4Gz"/>
-                        <outlet property="howToButton" destination="Fzk-vg-O6q" id="655-fJ-cLv"/>
                         <outlet property="passButton" destination="qBy-lE-Pzd" id="Qov-f1-7M9"/>
                         <outlet property="startButton" destination="Dwb-b5-gfv" id="yvP-WV-dKH"/>
                         <outlet property="titleGroup" destination="yL7-J8-YQh" id="WIW-Iw-5wZ"/>
@@ -218,15 +212,27 @@
             <objects>
                 <controller identifier="alertView" id="bmg-hh-XuU" customClass="alertView" customModule="Donsol_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="You died" numberOfLines="0" id="IX3-CF-OWr"/>
-                        <button width="1" alignment="left" title="Return" id="82I-sc-kRa">
-                            <connections>
-                                <action selector="buttonPressed" destination="bmg-hh-XuU" id="sZx-47-Y92"/>
-                            </connections>
-                        </button>
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" layout="vertical" id="Maq-YO-gku">
+                            <items>
+                                <group width="1" alignment="center" verticalAlignment="center" id="dIe-wZ-Wfi">
+                                    <items>
+                                        <label width="0.5" height="1" alignment="left" verticalAlignment="center" text="You died.." textAlignment="left" id="S88-ti-jBP">
+                                            <color key="textColor" red="0.57267992420000002" green="0.57267992420000002" blue="0.57267992420000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" type="system" weight="light" pointSize="12"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <button width="1" height="0.84999999999999998" alignment="center" title="Return" id="82I-sc-kRa">
+                                    <fontDescription key="font" type="system" weight="thin" pointSize="14"/>
+                                    <connections>
+                                        <action selector="buttonPressed" destination="bmg-hh-XuU" id="sZx-47-Y92"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
+                        </group>
                     </items>
                     <connections>
-                        <outlet property="alertLabel" destination="IX3-CF-OWr" id="yYn-lc-sXx"/>
                         <outlet property="returnButton" destination="82I-sc-kRa" id="wTk-vc-reh"/>
                     </connections>
                 </controller>
@@ -234,4 +240,5 @@
             <point key="canvasLocation" x="485" y="389"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
