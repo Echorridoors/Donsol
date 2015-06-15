@@ -125,24 +125,17 @@
                                             <items>
                                                 <group width="0.5" height="1" alignment="left" layout="vertical" spacing="2" id="eKj-bi-b2F">
                                                     <items>
-                                                        <group width="1" height="0.33329999999999999" alignment="center" spacing="0.0" id="q21-cp-7sd">
+                                                        <group width="1" height="0.33329999999999999" alignment="left" spacing="0.0" id="NbY-hq-8Mc">
                                                             <items>
-                                                                <label width="0.20000000000000001" alignment="left" verticalAlignment="center" text="●" textAlignment="left" minimumScaleFactor="0.5" id="QgF-2M-OLt">
-                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
-                                                                </label>
-                                                                <label alignment="left" verticalAlignment="center" text="1000" textAlignment="center" minimumScaleFactor="0.5" id="QSI-jf-0je">
-                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
-                                                                </label>
-                                                            </items>
-                                                        </group>
-                                                        <group width="1" height="0.33329999999999999" alignment="left" verticalAlignment="center" spacing="0.0" id="NbY-hq-8Mc">
-                                                            <items>
-                                                                <label width="0.20000000000000001" alignment="left" verticalAlignment="center" text="♥︎" textAlignment="left" minimumScaleFactor="0.5" id="cfD-oM-SXZ">
+                                                                <label width="0.14999999999999999" alignment="left" verticalAlignment="center" text="♥︎" textAlignment="left" minimumScaleFactor="0.5" id="cfD-oM-SXZ">
                                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="font" type="boldSystem" pointSize="11"/>
                                                                 </label>
-                                                                <label alignment="left" verticalAlignment="center" text="21" textAlignment="center" minimumScaleFactor="0.5" id="4oG-TE-K8F">
+                                                                <label width="0.29999999999999999" alignment="left" verticalAlignment="center" text="HP" textAlignment="left" minimumScaleFactor="0.5" id="rK3-C1-YcT">
+                                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                                <label width="0.55000000000000004" alignment="left" verticalAlignment="center" text="21" textAlignment="left" minimumScaleFactor="0.5" id="4oG-TE-K8F">
                                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="font" type="boldSystem" pointSize="11"/>
                                                                 </label>
@@ -150,12 +143,30 @@
                                                         </group>
                                                         <group width="1" height="0.33329999999999999" alignment="left" verticalAlignment="center" spacing="0.0" id="g1R-HW-ftr">
                                                             <items>
-                                                                <label width="0.20000000000000001" alignment="left" verticalAlignment="center" text="♦︎" textAlignment="left" minimumScaleFactor="0.5" id="0J8-jJ-bbs">
-                                                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <label width="0.14999999999999999" alignment="left" verticalAlignment="center" text="♦︎" textAlignment="left" minimumScaleFactor="0.5" id="0J8-jJ-bbs">
+                                                                    <color key="textColor" red="0.38823529411764707" green="0.85098039215686272" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="font" type="boldSystem" pointSize="11"/>
                                                                 </label>
-                                                                <label alignment="left" verticalAlignment="center" text="11/21" textAlignment="center" minimumScaleFactor="0.5" id="2k7-oP-gYy">
-                                                                    <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <label width="0.29999999999999999" alignment="left" verticalAlignment="center" text="AP" textAlignment="left" minimumScaleFactor="0.5" id="LKo-Gw-cBv">
+                                                                    <color key="textColor" red="0.38823529411764707" green="0.85098039215686272" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                                <label width="0.55000000000000004" alignment="left" verticalAlignment="center" text="11/21" textAlignment="left" minimumScaleFactor="0.5" id="2k7-oP-gYy">
+                                                                    <color key="textColor" red="0.38823529411764707" green="0.85098039215686272" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                            </items>
+                                                        </group>
+                                                        <group width="1" height="0.33329999999999999" alignment="center" verticalAlignment="bottom" spacing="0.0" id="q21-cp-7sd">
+                                                            <items>
+                                                                <label width="0.14999999999999999" alignment="left" verticalAlignment="center" text="●" textAlignment="left" minimumScaleFactor="0.5" id="QgF-2M-OLt">
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                                <label width="0.29999999999999999" alignment="left" verticalAlignment="center" text="XP" textAlignment="left" minimumScaleFactor="0.5" id="ju3-Q6-fjJ">
+                                                                    <fontDescription key="font" type="boldSystem" pointSize="11"/>
+                                                                </label>
+                                                                <label width="0.55000000000000004" alignment="left" verticalAlignment="center" text="1000" textAlignment="left" minimumScaleFactor="0.5" id="QSI-jf-0je">
+                                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <fontDescription key="font" type="boldSystem" pointSize="11"/>
                                                                 </label>
                                                             </items>
