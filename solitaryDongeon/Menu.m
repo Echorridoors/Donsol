@@ -361,7 +361,7 @@ typedef NS_ENUM(NSInteger, CastleTile) {
 	_packDesignLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
 	
     _thanksLabel.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin*2);
-    _thanksLabel.text = @"SPECIAL THANKS\nJOHN ETERNAL, ZACH GAGE, KURT BIEG";
+    _thanksLabel.text = @"SPECIAL THANKS\nJOHN ETERNAL, ZACH GAGE, KURT BIEG & TEKGO";
     _thanksLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
 }
 
