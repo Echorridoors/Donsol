@@ -9,13 +9,11 @@
 #import "Menu.h"
 #import "ViewController.h"
 #import "User.h"
-#import "Splash.h"
 
 @implementation Menu
 
 -(void)viewDidLoad
 {
-    [slideTimer invalidate];
     [self start];
 }
 

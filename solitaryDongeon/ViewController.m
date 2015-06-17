@@ -13,7 +13,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "ViewController.h"
-#import "Splash.h"
 #import "Deck.h"
 #import "Hand.h"
 #import "Card.h"

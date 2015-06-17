@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		571E42581ABFA7FE00898520 /* Splash.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E42571ABFA7FE00898520 /* Splash.m */; };
 		571E425B1ABFA99200898520 /* tune.menu.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571E42591ABFA99200898520 /* tune.menu.wav */; };
 		571E425C1ABFA99200898520 /* tune.intro.wav in Resources */ = {isa = PBXBuildFile; fileRef = 571E425A1ABFA99200898520 /* tune.intro.wav */; };
 		571E425F1ABFAA0400898520 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 571E425E1ABFAA0400898520 /* GameViewController.m */; };
+		57494CBD1B32238000E9E3DD /* splash.logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 57494CB91B32238000E9E3DD /* splash.logo.png */; };
+		57494CBE1B32238000E9E3DD /* splash.tune.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57494CBA1B32238000E9E3DD /* splash.tune.wav */; };
+		57494CBF1B32238000E9E3DD /* xxiivvSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494CBC1B32238000E9E3DD /* xxiivvSplash.m */; };
 		574CFC881ABF1AEB00717F08 /* piece.fill.3.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC871ABF1AEB00717F08 /* piece.fill.3.png */; };
 		574CFC8A1ABF1D2D00717F08 /* piece.star.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC891ABF1D2D00717F08 /* piece.star.png */; };
 		574CFC8E1ABF4E1900717F08 /* tune.defeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */; };
@@ -213,12 +215,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		571E42561ABFA7FE00898520 /* Splash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Splash.h; sourceTree = "<group>"; };
-		571E42571ABFA7FE00898520 /* Splash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Splash.m; sourceTree = "<group>"; };
 		571E42591ABFA99200898520 /* tune.menu.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.menu.wav; sourceTree = "<group>"; };
 		571E425A1ABFA99200898520 /* tune.intro.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.intro.wav; sourceTree = "<group>"; };
 		571E425D1ABFAA0400898520 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		571E425E1ABFAA0400898520 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		57494CB91B32238000E9E3DD /* splash.logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.logo.png; sourceTree = "<group>"; };
+		57494CBA1B32238000E9E3DD /* splash.tune.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = splash.tune.wav; sourceTree = "<group>"; };
+		57494CBB1B32238000E9E3DD /* xxiivvSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxiivvSplash.h; sourceTree = "<group>"; };
+		57494CBC1B32238000E9E3DD /* xxiivvSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xxiivvSplash.m; sourceTree = "<group>"; };
 		574CFC871ABF1AEB00717F08 /* piece.fill.3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.fill.3.png; sourceTree = "<group>"; };
 		574CFC891ABF1D2D00717F08 /* piece.star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.star.png; sourceTree = "<group>"; };
 		574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.defeat.wav; sourceTree = "<group>"; };
@@ -420,6 +424,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57494CC01B32238B00E9E3DD /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				57494CB91B32238000E9E3DD /* splash.logo.png */,
+				57494CBA1B32238000E9E3DD /* splash.tune.wav */,
+				57494CBB1B32238000E9E3DD /* xxiivvSplash.h */,
+				57494CBC1B32238000E9E3DD /* xxiivvSplash.m */,
+			);
+			name = splash;
+			sourceTree = "<group>";
+		};
 		574F0A861ABE07C1008EAF3B /* assets.castle */ = {
 			isa = PBXGroup;
 			children = (
@@ -598,12 +613,11 @@
 		57BC29C91AA162BA00098150 /* solitaryDongeon */ = {
 			isa = PBXGroup;
 			children = (
+				57494CC01B32238B00E9E3DD /* splash */,
 				574F0A861ABE07C1008EAF3B /* assets.castle */,
 				57C722801AB23B47005F70B6 /* assets.splash */,
 				57C722751AB23521005F70B6 /* assets.sounds */,
 				57C386191AAD6A8B0080F31D /* assets.cards */,
-				571E42561ABFA7FE00898520 /* Splash.h */,
-				571E42571ABFA7FE00898520 /* Splash.m */,
 				57BC29CE1AA162BA00098150 /* AppDelegate.h */,
 				57BC29CF1AA162BA00098150 /* AppDelegate.m */,
 				57BC29D11AA162BA00098150 /* ViewController.h */,
@@ -881,6 +895,7 @@
 				57C3865B1AAD6A8B0080F31D /* default.card.0010 in Resources */,
 				57C3866C1AAD6A8B0080F31D /* default.card.0027 in Resources */,
 				578056311AB09AAC007296E4 /* default.card.0060 in Resources */,
+				57494CBD1B32238000E9E3DD /* splash.logo.png in Resources */,
 				57C386601AAD6A8B0080F31D /* default.card.0015 in Resources */,
 				57C386811AAD6A8B0080F31D /* default.card.0048 in Resources */,
 				5766B7311AFB9BE5008A631D /* logan.card.0003 in Resources */,
@@ -917,6 +932,7 @@
 				5766B76C1AFBA4A5008A631D /* tune.shield.break.wav in Resources */,
 				5766B7551AFB9BE5008A631D /* logan.card.0039 in Resources */,
 				5766B7731AFBA65A008A631D /* tune.health.unchanged.wav in Resources */,
+				57494CBE1B32238000E9E3DD /* splash.tune.wav in Resources */,
 				571E425B1ABFA99200898520 /* tune.menu.wav in Resources */,
 				574CFC8F1ABF4E1900717F08 /* tune.victory.wav in Resources */,
 				5766B7461AFB9BE5008A631D /* logan.card.0024 in Resources */,
@@ -999,13 +1015,13 @@
 				57BC29F51AA169E200098150 /* Hand.m in Sources */,
 				571E425F1ABFAA0400898520 /* GameViewController.m in Sources */,
 				57B172571AA182FD00DE1796 /* User.m in Sources */,
+				57494CBF1B32238000E9E3DD /* xxiivvSplash.m in Sources */,
 				57BC29F21AA1653E00098150 /* Deck.m in Sources */,
 				57BC29D31AA162BA00098150 /* ViewController.m in Sources */,
 				57C722861AB23B6C005F70B6 /* segueFade.m in Sources */,
 				57BC29D01AA162BA00098150 /* AppDelegate.m in Sources */,
 				57BC29CD1AA162BA00098150 /* main.m in Sources */,
 				57C722721AB22FE2005F70B6 /* Menu.m in Sources */,
-				571E42581ABFA7FE00898520 /* Splash.m in Sources */,
 				57B172541AA1807800DE1796 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
