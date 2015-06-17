@@ -339,11 +339,28 @@
                     </view>
                     <navigationItem key="navigationItem" id="vRV-s8-xC8"/>
                     <connections>
-                        <segue destination="dda-4h-R4V" kind="custom" identifier="skip" customClass="segueFade" id="Qei-Bh-OQP"/>
+                        <segue destination="NVb-lP-6EM" kind="custom" identifier="skip" customClass="segueFade" id="cFB-A8-k54"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="765" y="461"/>
+        </scene>
+        <!--Xxiivv Splash Extra Slide-->
+        <scene sceneID="qbO-Ds-XmL">
+            <objects>
+                <viewController id="NVb-lP-6EM" customClass="xxiivvSplashExtraSlide" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v2q-Wb-XIy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="dda-4h-R4V" kind="custom" identifier="skip" customClass="segueFade" id="Uuz-vR-neT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="unn-mZ-jQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1201" y="461"/>
         </scene>
         <!--Menu-->
         <scene sceneID="8xZ-5q-HdM">
@@ -449,6 +466,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Qei-Bh-OQP"/>
+        <segue reference="Uuz-vR-neT"/>
     </inferredMetricsTieBreakers>
 </document>

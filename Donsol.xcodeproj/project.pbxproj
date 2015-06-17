@@ -13,6 +13,7 @@
 		57494CBD1B32238000E9E3DD /* splash.logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 57494CB91B32238000E9E3DD /* splash.logo.png */; };
 		57494CBE1B32238000E9E3DD /* splash.tune.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57494CBA1B32238000E9E3DD /* splash.tune.wav */; };
 		57494CBF1B32238000E9E3DD /* xxiivvSplash.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494CBC1B32238000E9E3DD /* xxiivvSplash.m */; };
+		57494CC31B322AE200E9E3DD /* xxiivvSplashExtraSlide.m in Sources */ = {isa = PBXBuildFile; fileRef = 57494CC21B322AE200E9E3DD /* xxiivvSplashExtraSlide.m */; };
 		574CFC881ABF1AEB00717F08 /* piece.fill.3.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC871ABF1AEB00717F08 /* piece.fill.3.png */; };
 		574CFC8A1ABF1D2D00717F08 /* piece.star.png in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC891ABF1D2D00717F08 /* piece.star.png */; };
 		574CFC8E1ABF4E1900717F08 /* tune.defeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */; };
@@ -171,7 +172,6 @@
 		57C7227C1AB23521005F70B6 /* click.3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722781AB23521005F70B6 /* click.3.wav */; };
 		57C7227D1AB23521005F70B6 /* click.4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722791AB23521005F70B6 /* click.4.wav */; };
 		57C722861AB23B6C005F70B6 /* segueFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C722841AB23B6C005F70B6 /* segueFade.m */; };
-		57C722871AB23B6C005F70B6 /* splash.logo.xxiivv.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C722851AB23B6C005F70B6 /* splash.logo.xxiivv.png */; };
 		57C722891AB23D84005F70B6 /* splash.logo.eternal.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C722881AB23D84005F70B6 /* splash.logo.eternal.png */; };
 		58FDF0BB1B138E38002C654E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FDF0BA1B138E38002C654E /* InterfaceController.swift */; };
 		58FDF0BD1B138E38002C654E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FDF0BC1B138E38002C654E /* Images.xcassets */; };
@@ -223,6 +223,8 @@
 		57494CBA1B32238000E9E3DD /* splash.tune.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = splash.tune.wav; sourceTree = "<group>"; };
 		57494CBB1B32238000E9E3DD /* xxiivvSplash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xxiivvSplash.h; sourceTree = "<group>"; };
 		57494CBC1B32238000E9E3DD /* xxiivvSplash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xxiivvSplash.m; sourceTree = "<group>"; };
+		57494CC11B322AE200E9E3DD /* xxiivvSplashExtraSlide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xxiivvSplashExtraSlide.h; path = Splash/xxiivvSplashExtraSlide.h; sourceTree = "<group>"; };
+		57494CC21B322AE200E9E3DD /* xxiivvSplashExtraSlide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = xxiivvSplashExtraSlide.m; path = Splash/xxiivvSplashExtraSlide.m; sourceTree = "<group>"; };
 		574CFC871ABF1AEB00717F08 /* piece.fill.3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.fill.3.png; sourceTree = "<group>"; };
 		574CFC891ABF1D2D00717F08 /* piece.star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piece.star.png; sourceTree = "<group>"; };
 		574CFC8B1ABF4E1900717F08 /* tune.defeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tune.defeat.wav; sourceTree = "<group>"; };
@@ -389,10 +391,9 @@
 		57C722771AB23521005F70B6 /* click.2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.2.wav; sourceTree = "<group>"; };
 		57C722781AB23521005F70B6 /* click.3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.3.wav; sourceTree = "<group>"; };
 		57C722791AB23521005F70B6 /* click.4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.4.wav; sourceTree = "<group>"; };
-		57C722831AB23B6C005F70B6 /* segueFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = segueFade.h; sourceTree = "<group>"; };
-		57C722841AB23B6C005F70B6 /* segueFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = segueFade.m; sourceTree = "<group>"; };
-		57C722851AB23B6C005F70B6 /* splash.logo.xxiivv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.logo.xxiivv.png; sourceTree = "<group>"; };
-		57C722881AB23D84005F70B6 /* splash.logo.eternal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.logo.eternal.png; sourceTree = "<group>"; };
+		57C722831AB23B6C005F70B6 /* segueFade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = segueFade.h; path = assets.splash/segueFade.h; sourceTree = "<group>"; };
+		57C722841AB23B6C005F70B6 /* segueFade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = segueFade.m; path = assets.splash/segueFade.m; sourceTree = "<group>"; };
+		57C722881AB23D84005F70B6 /* splash.logo.eternal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.logo.eternal.png; path = assets.splash/splash.logo.eternal.png; sourceTree = "<group>"; };
 		58FDF0B61B138E38002C654E /* Donsol WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Donsol WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FDF0B91B138E38002C654E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58FDF0BA1B138E38002C654E /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -427,10 +428,15 @@
 		57494CC01B32238B00E9E3DD /* splash */ = {
 			isa = PBXGroup;
 			children = (
+				57C722881AB23D84005F70B6 /* splash.logo.eternal.png */,
+				57C722831AB23B6C005F70B6 /* segueFade.h */,
+				57C722841AB23B6C005F70B6 /* segueFade.m */,
 				57494CB91B32238000E9E3DD /* splash.logo.png */,
 				57494CBA1B32238000E9E3DD /* splash.tune.wav */,
 				57494CBB1B32238000E9E3DD /* xxiivvSplash.h */,
 				57494CBC1B32238000E9E3DD /* xxiivvSplash.m */,
+				57494CC11B322AE200E9E3DD /* xxiivvSplashExtraSlide.h */,
+				57494CC21B322AE200E9E3DD /* xxiivvSplashExtraSlide.m */,
 			);
 			name = splash;
 			sourceTree = "<group>";
@@ -615,7 +621,6 @@
 			children = (
 				57494CC01B32238B00E9E3DD /* splash */,
 				574F0A861ABE07C1008EAF3B /* assets.castle */,
-				57C722801AB23B47005F70B6 /* assets.splash */,
 				57C722751AB23521005F70B6 /* assets.sounds */,
 				57C386191AAD6A8B0080F31D /* assets.cards */,
 				57BC29CE1AA162BA00098150 /* AppDelegate.h */,
@@ -679,17 +684,6 @@
 				57C722791AB23521005F70B6 /* click.4.wav */,
 			);
 			path = assets.sounds;
-			sourceTree = "<group>";
-		};
-		57C722801AB23B47005F70B6 /* assets.splash */ = {
-			isa = PBXGroup;
-			children = (
-				57C722881AB23D84005F70B6 /* splash.logo.eternal.png */,
-				57C722831AB23B6C005F70B6 /* segueFade.h */,
-				57C722841AB23B6C005F70B6 /* segueFade.m */,
-				57C722851AB23B6C005F70B6 /* splash.logo.xxiivv.png */,
-			);
-			path = assets.splash;
 			sourceTree = "<group>";
 		};
 		58FDF0B71B138E38002C654E /* Donsol WatchKit Extension */ = {
@@ -927,7 +921,6 @@
 				57C386821AAD6A8B0080F31D /* default.card.0049 in Resources */,
 				57C3865A1AAD6A8B0080F31D /* default.card.0009 in Resources */,
 				57C386891AAD729A0080F31D /* default.card.0055 in Resources */,
-				57C722871AB23B6C005F70B6 /* splash.logo.xxiivv.png in Resources */,
 				5766B7371AFB9BE5008A631D /* logan.card.0009 in Resources */,
 				5766B76C1AFBA4A5008A631D /* tune.shield.break.wav in Resources */,
 				5766B7551AFB9BE5008A631D /* logan.card.0039 in Resources */,
@@ -1017,6 +1010,7 @@
 				57B172571AA182FD00DE1796 /* User.m in Sources */,
 				57494CBF1B32238000E9E3DD /* xxiivvSplash.m in Sources */,
 				57BC29F21AA1653E00098150 /* Deck.m in Sources */,
+				57494CC31B322AE200E9E3DD /* xxiivvSplashExtraSlide.m in Sources */,
 				57BC29D31AA162BA00098150 /* ViewController.m in Sources */,
 				57C722861AB23B6C005F70B6 /* segueFade.m in Sources */,
 				57BC29D01AA162BA00098150 /* AppDelegate.m in Sources */,
