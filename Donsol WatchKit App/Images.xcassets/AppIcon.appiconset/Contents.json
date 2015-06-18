@@ -4,6 +4,7 @@
       "size" : "24x24",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "48-1.png",
       "role" : "notificationCenter",
       "subtype" : "38mm"
     },
@@ -11,6 +12,7 @@
       "size" : "27.5x27.5",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "55-1.png",
       "role" : "notificationCenter",
       "subtype" : "42mm"
     },
@@ -48,7 +50,7 @@
       "size" : "86x86",
       "idiom" : "watch",
       "scale" : "2x",
-      "filename" : "172.png",
+      "filename" : "172-1.png",
       "role" : "quickLook",
       "subtype" : "38mm"
     },
