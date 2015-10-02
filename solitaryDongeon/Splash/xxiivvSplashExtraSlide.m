@@ -33,7 +33,6 @@ UIImageView * logoView;
 - (void) splashTemplate
 {
 	CGRect screen = [[UIScreen mainScreen] bounds];
-	float screenMargin = screen.size.width/8;
 	
 	// Create logo
 	logoView = [[UIImageView alloc] initWithFrame:CGRectMake((screen.size.width/2)-60, (screen.size.height/2)-60, 120, 120)];

@@ -32,9 +32,41 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.6.1</string>
+	<string>1.6.2</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>alphavetist</string>
+		<string>bifurcan</string>
+		<string>dew</string>
+		<string>donsol</string>
+		<string>entaloneralie</string>
+		<string>hiversaires</string>
+		<string>ledoliel</string>
+		<string>noirca</string>
+		<string>oquonie</string>
+		<string>rafinograde</string>
+		<string>vocavularist</string>
+		<string>geomekey</string>
+		<string>eakout</string>
+		<string>xxiivv001</string>
+		<string>xxiivv002</string>
+		<string>xxiivv003</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>xxiivv.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -57,37 +89,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>alphavetist</string>
-		<string>bifurcan</string>
-		<string>dew</string>
-		<string>donsol</string>
-		<string>entaloneralie</string>
-		<string>hiversaires</string>
-		<string>ledoliel</string>
-		<string>noirca</string>
-		<string>oquonie</string>
-		<string>rafinograde</string>
-		<string>vocavularist</string>
-		<string>geomekey</string>
-		<string>eakout</string>
-		<string>xxiivv001</string>
-		<string>xxiivv002</string>
-		<string>xxiivv003</string>
-	</array>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>xxiivv.com</key>
-			<dict>
-				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
 </dict>
 </plist>

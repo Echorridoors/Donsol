@@ -804,15 +804,15 @@
 				TargetAttributes = {
 					57BC29C61AA162BA00098150 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 77UF6USCA9;
+						DevelopmentTeam = B948MFAE5C;
 					};
 					58FDF0B51B138E38002C654E = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 77UF6USCA9;
+						DevelopmentTeam = B948MFAE5C;
 					};
 					58FDF0BF1B138E39002C654E = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = 77UF6USCA9;
+						DevelopmentTeam = B948MFAE5C;
 					};
 				};
 			};
