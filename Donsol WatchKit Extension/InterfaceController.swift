@@ -8,8 +8,9 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
-class InterfaceController: WKInterfaceController
+class InterfaceController: WKInterfaceController, WCSessionDelegate
 {
     @IBOutlet var titleGroup:WKInterfaceGroup?
     
@@ -60,7 +61,11 @@ class InterfaceController: WKInterfaceController
     override func awakeWithContext(context: AnyObject?)
     {
         super.awakeWithContext(context)
-        
+
+        let session = WCSession.defaultSession()
+        session.delegate = self
+        session.activateSession()
+
         self.TLCard = cardView(baseCardView: self.TLBaseCard!, baseOuterGroup: self.TLBaseOuterGroup!,baseInnerGroup: self.TLBaseInnerGroup!, baseLabel: self.TLBaseLabel!)
         self.TRCard = cardView(baseCardView: self.TRBaseCard!, baseOuterGroup: self.TRBaseOuterGroup!,baseInnerGroup: self.TRBaseInnerGroup!, baseLabel: self.TRBaseLabel!)
         self.BLCard = cardView(baseCardView: self.BLBaseCard!, baseOuterGroup: self.BLBaseOuterGroup!,baseInnerGroup: self.BLBaseInnerGroup!, baseLabel: self.BLBaseLabel!)
@@ -77,6 +82,7 @@ class InterfaceController: WKInterfaceController
             self.gameGroup?.setHidden(true)
             self.titleGroup?.setHidden(false)
         }
+        self.syncScore()
         self.setHighScore(0)
     }
     
@@ -84,6 +90,7 @@ class InterfaceController: WKInterfaceController
     {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        self.syncScore()
     }
     
     override func didDeactivate()
@@ -101,39 +108,7 @@ class InterfaceController: WKInterfaceController
         }
         NSUserDefaults.standardUserDefaults().synchronize()
     }
-    
-    func setHighScore(newScore: Int)
-    {
-        var currentScore = NSUserDefaults.standardUserDefaults().integerForKey("score")
-        
-        if (newScore > currentScore)
-        {
-            NSUserDefaults.standardUserDefaults().setInteger(newScore, forKey: "score")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            currentScore = newScore
-        }
-        self.syncScore()
-        
-        self.ScoreLabel?.setText(String(currentScore))
-    }
-    
-    func syncScore()
-    {
-        var highScore: Int = NSUserDefaults.standardUserDefaults().integerForKey("score")
-        WKInterfaceController.openParentApplication(["score":highScore], reply:
-        {
-            [weak self] (reply: [NSObject : AnyObject]!, error:NSError!) -> Void in
-            if let replyScore = reply["score"] as? Int
-            {
-                if(replyScore > highScore)
-                {
-                    self?.setHighScore(replyScore)
-                }
-            }
-            
-        })
-    }
-    
+
     func continueGame() -> Bool
     {
         if let data = NSUserDefaults.standardUserDefaults().objectForKey("playerState") as? NSData {
@@ -156,6 +131,7 @@ class InterfaceController: WKInterfaceController
     
     func setUp()
     {
+        self.playHaptic(WKHapticType.Start)
         NSUserDefaults.standardUserDefaults().removeObjectForKey("playerState")
         self.gameGroup?.setHidden(false)
         self.titleGroup?.setHidden(true)
@@ -209,6 +185,7 @@ class InterfaceController: WKInterfaceController
     
     func endDon()
     {
+        self.playHaptic(WKHapticType.Success)
         self.currentPlayerState.endDon()
         self.loadRoom()
         self.presentControllerWithName("alertView", context: ["title":"Won","text":"Defeated the don","button":"Continue"])
@@ -273,6 +250,7 @@ class InterfaceController: WKInterfaceController
         if (self.currentPlayerState.health == 0)
         {
             endGame()
+            self.playHaptic(WKHapticType.Failure)
             self.presentControllerWithName("alertView", context: ["title":"Dead","text":"You Died","button":"Play again"])
             return
         }
@@ -305,6 +283,7 @@ class InterfaceController: WKInterfaceController
     
     func playCard(cardHolder:cardView)
     {
+        self.playHaptic(WKHapticType.Click)
         if((cardHolder.baseCard != nil) && (tapper.cantap(cardHolder.baseCard!) == true))
         {
             cardHolder.baseCard?.setEnabled(false)
@@ -359,6 +338,66 @@ class InterfaceController: WKInterfaceController
         {
             self.presentControllerWithName("alertView", context: ["title":"Howto","text":"Howto text goes here","button":"Back"])
         }
+    }
+
+    func setHighScore(newScore: Int)
+    {
+        var currentScore = NSUserDefaults.standardUserDefaults().integerForKey("score")
+
+        if (newScore > currentScore)
+        {
+            NSUserDefaults.standardUserDefaults().setInteger(newScore, forKey: "score")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            currentScore = newScore
+        }
+        self.syncScore()
+
+        self.ScoreLabel?.setText(String(currentScore))
+    }
+
+    func syncScore()
+    {
+        let session = WCSession.defaultSession()
+
+        let currentScore: Int = NSUserDefaults.standardUserDefaults().integerForKey("score")
+        let contextScore = self.scoreFromAppContext(session.receivedApplicationContext)
+        if(currentScore < contextScore)
+        {
+            self.setHighScore(contextScore)
+            return;
+        }
+
+        do {
+            try session.updateApplicationContext(["score":currentScore])
+        }
+        catch
+        {
+
+        }
+    }
+
+    func scoreFromAppContext(applicationContext: [String : AnyObject]) -> Int
+    {
+        if let messageScore = applicationContext["score"] as? Int
+        {
+            return messageScore
+        }
+        return 0
+    }
+
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject])
+    {
+        self.setHighScore(self.scoreFromAppContext(applicationContext))
+    }
+
+    func sessionReachabilityDidChange(session: WCSession)
+    {
+        self.syncScore()
+    }
+
+    func playHaptic(hapticType: WKHapticType)
+    {
+//        WKInterfaceDevice.currentDevice().playHaptic(hapticType)
     }
 }
 

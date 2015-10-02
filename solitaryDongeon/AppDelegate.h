@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@import WatchConnectivity;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,WCSessionDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
++(void) syncScore;
++(void)didUpdateScore;
++(void)setHighScore:(int)score shouldSync:(BOOL)shouldSync;
++(int)highScore;
 
 @end
 

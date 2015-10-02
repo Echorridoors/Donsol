@@ -12,6 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <QuartzCore/QuartzCore.h>
 
+#import "AppDelegate.h"
 #import "ViewController.h"
 #import "Deck.h"
 #import "Hand.h"
@@ -811,15 +812,12 @@
 
 -(void)setHighScore:(int)score
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:@(score) forKey:@"score"];
-	[defaults synchronize];
+    [AppDelegate setHighScore:score shouldSync:true];
 }
 
 -(int)loadHighScore
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	return [[defaults objectForKey:@"score"] intValue];
+    return [AppDelegate highScore];
 }
 
 -(void)apiContact:(NSString*)source :(NSString*)method :(NSString*)term :(NSString*)value

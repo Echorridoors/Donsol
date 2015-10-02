@@ -9,12 +9,19 @@
 #import "Menu.h"
 #import "ViewController.h"
 #import "User.h"
+#import "AppDelegate.h"
 
 @implementation Menu
 
 -(void)viewDidLoad
 {
     [self start];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(template) name:@"highScoreUpdated" object:nil];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)start
@@ -349,7 +356,7 @@ typedef NS_ENUM(NSInteger, CastleTile) {
     _enterButton.frame = CGRectMake(margin, self.castleView.frame.size.height + margin, self.view.frame.size.width-(2*margin), margin);
 
     _scoreLabel.frame = CGRectMake(margin, self.castleView.frame.size.height + margin, self.view.frame.size.width-(2*margin), margin);
-    _scoreLabel.text = [NSString stringWithFormat:@"BEST SCORE %d",[self loadHighScore]];
+    _scoreLabel.text = [NSString stringWithFormat:@"BEST SCORE %d",[AppDelegate highScore]];
     _scoreLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
 	
 	// Pack

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0630"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "58FDF0BF1B138E39002C654E"
-               BuildableName = "Donsol WatchKit App.app"
-               BlueprintName = "Donsol WatchKit App"
-               ReferencedContainer = "container:Donsol.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "57BC29C61AA162BA00098150"
-               BuildableName = "Donsol.app"
-               BlueprintName = "Donsol"
+               BlueprintIdentifier = "7D8A58DE1BB36F6800989F02"
+               BuildableName = "watchkitapp.app"
+               BlueprintName = "watchkitapp"
                ReferencedContainer = "container:Donsol.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,52 +34,83 @@
                ReferencedContainer = "container:Donsol.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7D8A58EA1BB36F6800989F02"
+               BuildableName = "watchkitapp Extension.appex"
+               BlueprintName = "watchkitapp Extension"
+               ReferencedContainer = "container:Donsol.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "57BC29C61AA162BA00098150"
+               BuildableName = "Donsol.app"
+               BlueprintName = "Donsol"
+               ReferencedContainer = "container:Donsol.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "58FDF0BF1B138E39002C654E"
-            BuildableName = "Donsol WatchKit App.app"
-            BlueprintName = "Donsol WatchKit App"
+            BlueprintIdentifier = "7D8A58DE1BB36F6800989F02"
+            BuildableName = "watchkitapp.app"
+            BlueprintName = "watchkitapp"
             ReferencedContainer = "container:Donsol.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <RemoteRunnable
          runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.springboard"
+         BundleIdentifier = "com.apple.carousel"
          RemotePath = "/Donsol">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "58FDF0BF1B138E39002C654E"
-            BuildableName = "Donsol WatchKit App.app"
-            BlueprintName = "Donsol WatchKit App"
+            BlueprintIdentifier = "7D8A58DE1BB36F6800989F02"
+            BuildableName = "watchkitapp.app"
+            BlueprintName = "watchkitapp"
             ReferencedContainer = "container:Donsol.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "58FDF0BF1B138E39002C654E"
-            BuildableName = "Donsol WatchKit App.app"
-            BlueprintName = "Donsol WatchKit App"
+            BlueprintIdentifier = "7D8A58DE1BB36F6800989F02"
+            BuildableName = "watchkitapp.app"
+            BlueprintName = "watchkitapp"
             ReferencedContainer = "container:Donsol.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -101,29 +118,29 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <RemoteRunnable
          runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.springboard"
+         BundleIdentifier = "com.apple.carousel"
          RemotePath = "/Donsol">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "58FDF0BF1B138E39002C654E"
-            BuildableName = "Donsol WatchKit App.app"
-            BlueprintName = "Donsol WatchKit App"
+            BlueprintIdentifier = "7D8A58DE1BB36F6800989F02"
+            BuildableName = "watchkitapp.app"
+            BlueprintName = "watchkitapp"
             ReferencedContainer = "container:Donsol.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "58FDF0BF1B138E39002C654E"
-            BuildableName = "Donsol WatchKit App.app"
-            BlueprintName = "Donsol WatchKit App"
+            BlueprintIdentifier = "7D8A58DE1BB36F6800989F02"
+            BuildableName = "watchkitapp.app"
+            BlueprintName = "watchkitapp"
             ReferencedContainer = "container:Donsol.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
