@@ -352,11 +352,23 @@ typedef NS_ENUM(NSInteger, CastleTile) {
     _scoreLabel.text = [NSString stringWithFormat:@"BEST SCORE %d",[self loadHighScore]];
     _scoreLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
 	
+	// Pack
+	
 	_packDesignButton.frame = CGRectMake(margin, self.castleView.frame.size.height + (margin*3), self.view.frame.size.width-(2*margin), margin);
 	_packDesignLabel.frame = CGRectMake(margin, self.castleView.frame.size.height + (margin*3), self.view.frame.size.width-(2*margin), margin);
 	
 	_packDesignLabel.text = [[self loadPackDesign] uppercaseString];
 	_packDesignLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
+	
+	// Tutorial
+	
+	_tutorialToggleButton.frame = CGRectMake(margin, self.castleView.frame.size.height + (margin*5), self.view.frame.size.width-(2*margin), margin);
+	_tutorialToggleLabel.frame = CGRectMake(margin, self.castleView.frame.size.height + (margin*5), self.view.frame.size.width-(2*margin), margin);
+	
+	_tutorialToggleLabel.text = [self loadTutorialSetting];
+	_tutorialToggleLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
+	
+	// Thank
 	
     _thanksLabel.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin*2);
     _thanksLabel.text = @"SPECIAL THANKS\nJOHN ETERNAL, ZACH GAGE, KURT BIEG & TEKGO";
@@ -382,6 +394,18 @@ typedef NS_ENUM(NSInteger, CastleTile) {
 	[self playTuneNamed:@"tune.enter"];
 }
 
+- (IBAction)tutorialToggleButton:(id)sender
+{
+	if( [[self loadTutorialSetting] isEqualToString:@"ON"] ){
+		[self setTutorialSetting:@"OFF"];
+	}
+	else{
+		[self setTutorialSetting:@"ON"];
+	}
+	
+	_tutorialToggleLabel.text = [[self loadTutorialSetting] uppercaseString];
+}
+
 -(void)setPackDesign:(NSString*)pack
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -400,6 +424,26 @@ typedef NS_ENUM(NSInteger, CastleTile) {
 		return @"default";
 	}
 	return [defaults objectForKey:@"packDesign"];
+}
+
+-(void)setTutorialSetting:(NSString*)toggle
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:toggle forKey:@"tutorial"];
+	[defaults synchronize];
+}
+
+-(NSString*)loadTutorialSetting
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	if( ![defaults objectForKey:@"tutorial"]  ){
+		return @"ON";
+	}
+	if( [[defaults objectForKey:@"tutorial"] isEqualToString:@""] ){
+		return @"ON";
+	}
+	return [defaults objectForKey:@"tutorial"];
 }
 
 -(int)loadHighScore

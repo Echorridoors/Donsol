@@ -18,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *packDesignButton;
 @property (weak, nonatomic) IBOutlet UILabel *packDesignLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *tutorialToggleButton;
+@property (weak, nonatomic) IBOutlet UILabel *tutorialToggleLabel;
 
 @end

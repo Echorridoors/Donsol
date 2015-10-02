@@ -40,10 +40,10 @@
 	[self updateStage];
 	
 	if( [user difficulty] == 1 ){
-		[self modal:[NSString stringWithFormat:@"dungeon %d",[user difficulty]]:@"You are walking into the abyss of the dungeon, clear each room and exit alive."];
+		[self modal:[NSString stringWithFormat:@"dungeon %d",[user difficulty]]:@"You are walking into the abyss of the dungeon, clear each room and exit alive.":false];
 	}
 	else{
-		[self modal:[NSString stringWithFormat:@"dungeon %d",[user difficulty]]:[NSString stringWithFormat:@"Your maximum HP has increased to %dHP, but the monsters are growing stronger.",[user lifeMaximum]]];
+		[self modal:[NSString stringWithFormat:@"dungeon %d",[user difficulty]]:[NSString stringWithFormat:@"Your maximum HP has increased to %dHP, but the monsters are growing stronger.",[user lifeMaximum]]:false];
 	}
 }
 
@@ -261,7 +261,7 @@
 		[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(death) userInfo:nil repeats:NO];
 		// Percetn reached.
 		float percentage = ((float)[discardPile count] / 54.0) * 100;
-		[self modal:@"A monster killed you":[NSString stringWithFormat:@"You explored %d%% the dungeon before succumbing to your wounds.",(int)percentage]];
+		[self modal:@"A monster killed you":[NSString stringWithFormat:@"You explored %d%% the dungeon before succumbing to your wounds.",(int)percentage]:false];
 		[self playTuneNamed:@"tune.defeat"];
 		return;
 	}
@@ -269,7 +269,7 @@
 	// Victory
 	
 	if( (int)[discardPile count] == 54 ){
-		[self modal:@"Dungeon complete":@"You have reached the end of the dongeon."];
+		[self modal:@"Dungeon complete":@"You have reached the end of the dongeon.":false];
 		[self playTuneNamed:@"tune.victory"];
 	}
 }
@@ -343,7 +343,7 @@
 	// Malus
 	if( [card value] >= [user malus] ){
 		if( [user equip] > 0 ){
-			[self modal:@"Your shield broke":@"Attacking monsters with the same or greater strength as your shield, will break it."];
+			[self modal:@"Your shield broke":@"Attacking monsters with the same or greater strength as your shield, will break it.":true];
 			[self playTuneNamed:@"tune.shield.break"];
 		}
 		[user looseEquip];
@@ -381,12 +381,12 @@
 	// Tutorials
 	if( [self loadHighScore] < 54 )
 	{
-		if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions."]; }
-		if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters."]; }
-		if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters."]; }
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"H"] && [user life] == [user lifeMaximum] ){ [self modal:@"Wasted A Potion" :@"Your health is already full, you should avoid wasting valuable potions.":true]; }
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"C"] && [user equip] < 1 ){ [self modal:@"Without protection" :@"You should really equip a shield before attacking monsters.":true]; }
+		if( [discardPile count] < 4 && [[card type] isEqualToString:@"S"] && [user equip] < 1 ){ [self modal:@"You need a shield" :@"You should really equip a shield before attacking monsters.":true]; }
 	}
 	
-	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; [self modal:@"Feeling sick" :@"You may not consume 2 potions in a row."]; }
+	if( justHealed == 1 && [[card type] isEqualToString:@"H"] ){ justHealed = 1; [self modal:@"Feeling sick" :@"You may not consume 2 potions in a row.":true]; }
 	else if( [[card type] isEqualToString:@"H"] ){ [self healCard:card]; }
 	else if( [[card type] isEqualToString:@"D"] ){[self swordCard:card]; }
 	else{ [self monsterCard:card]; }
@@ -504,7 +504,7 @@
 	}
 	
 	if([user escaped] == 1 && (int)[discardPile count] != 0){
-		[self modal:@"LOCKED":@"You may not run away twice in a row."];
+		[self modal:@"LOCKED":@"You may not run away twice in a row.":true];
 		return;
 	}
 	
@@ -516,7 +516,7 @@
 	}
 	else
 	{
-		[self modal:@"LOCKED":@"You may not run away before a single card remains in the room."];
+		[self modal:@"LOCKED":@"You may not run away before a single card remains in the room.":false];
 		return;
 	}
 	
@@ -726,9 +726,11 @@
 
 # pragma mark - Modal
 
--(void)modal :(NSString*)header :(NSString*)text
+-(void)modal :(NSString*)header :(NSString*)text :(BOOL)tutorial
 {
 	NSLog(@"! MODAL | %@",header);
+	
+	if( tutorial == true ){}
 	
 	_modalView.hidden = false;
 	
