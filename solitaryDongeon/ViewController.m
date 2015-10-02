@@ -285,7 +285,7 @@
 		[_runButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	}
 	else if( [user life] < 1 ){
-		[_runButton setTitle:[NSString stringWithFormat:@"DEAD"] forState:UIControlStateNormal];
+		[_runButton setTitle:[NSString stringWithFormat:@"RETRY"] forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 	}
 	else if( (int)[discardPile count] == 54 ){
@@ -315,7 +315,6 @@
 		[_runButton setTitle:@"FIGHT" forState:UIControlStateNormal];
 		[_runButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 	}
-	
 	
 }
 
@@ -441,6 +440,26 @@
 	} completion:^(BOOL finished){ }];
 }
 
+-(void)life
+{
+	[UIView animateWithDuration:0.25 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card1Wrapper.frame = card1Origin;
+		_card1Wrapper.alpha = 1;
+	} completion:^(BOOL finished){ }];
+	[UIView animateWithDuration:0.25 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card2Wrapper.frame = card2Origin;
+		_card2Wrapper.alpha = 1;
+	} completion:^(BOOL finished){ }];
+	[UIView animateWithDuration:0.25 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card3Wrapper.frame = card3Origin;
+		_card3Wrapper.alpha = 1;
+	} completion:^(BOOL finished){ }];
+	[UIView animateWithDuration:0.25 delay:0.4 options:UIViewAnimationOptionCurveEaseOut animations:^{
+		_card4Wrapper.frame = card4Origin;
+		_card4Wrapper.alpha = 1;
+	} completion:^(BOOL finished){ }];
+}
+
 # pragma mark - Interactions
 
 - (IBAction)runButton:(id)sender
@@ -448,8 +467,11 @@
 	[runHoldTimer invalidate];
 	
 	if( [user life] < 1 ){
-		[self playTuneNamed:@"tune.menu"];
-		[self performSegueWithIdentifier: @"leave" sender: self];
+		[self start];
+		[self life];
+		[self draw];
+//		[self playTuneNamed:@"tune.menu"];
+//		[self performSegueWithIdentifier: @"leave" sender: self];
 	}
 	else{
 		[self runAction];
