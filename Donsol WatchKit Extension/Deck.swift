@@ -11,7 +11,7 @@ import WatchKit
 
 func shuffle<C: MutableCollectionType where C.Index == Int>(var list: C) -> C
 {
-    let c = count(list)
+    let c = list.count
     for i in 0..<(c - 1)
     {
         let j = Int(arc4random_uniform(UInt32(c - i))) + i
@@ -24,7 +24,7 @@ extension Array
 {
     mutating func removeObject<U: Equatable>(object: U) -> Bool
     {
-        for (idx, objectToCompare) in enumerate(self) {
+        for (idx, objectToCompare) in self.enumerate() {
             if let to = objectToCompare as? U {
                 if object == to {
                     self.removeAtIndex(idx)
@@ -242,7 +242,7 @@ class deck : NSObject, NSCoding
         self.cards = shuffle(self.cards)
     }
     
-    required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
         super.init()
         self.cards = self.unStack(aDecoder.decodeObjectForKey(constants.cardsKey) as! [Int])
@@ -353,7 +353,7 @@ class playerState : NSObject, NSCoding
     
     override init() {}
     
-    required init(coder aDecoder: NSCoder)
+    required init?(coder aDecoder: NSCoder)
     {
         super.init()
         self.deckCards = aDecoder.decodeObjectForKey(constants.deck) as! deck
@@ -390,7 +390,7 @@ class playerState : NSObject, NSCoding
     
     var isRoomSkippable:Bool
     {
-        var cardsInRoom = self.cardsInRoom
+        let cardsInRoom = self.cardsInRoom
         
         if(self.canShuffle == true)
         {
@@ -456,7 +456,7 @@ class playerState : NSObject, NSCoding
         }
         else
         {
-            var monsterValue = currentCard.value
+            let monsterValue = currentCard.value
             if (self.lastShield != 0 && monsterValue >= self.lastShield)
             {
                 self.shield = 0

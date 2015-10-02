@@ -173,43 +173,54 @@
 		57C7227D1AB23521005F70B6 /* click.4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 57C722791AB23521005F70B6 /* click.4.wav */; };
 		57C722861AB23B6C005F70B6 /* segueFade.m in Sources */ = {isa = PBXBuildFile; fileRef = 57C722841AB23B6C005F70B6 /* segueFade.m */; };
 		57C722891AB23D84005F70B6 /* splash.logo.eternal.png in Resources */ = {isa = PBXBuildFile; fileRef = 57C722881AB23D84005F70B6 /* splash.logo.eternal.png */; };
+		57DF2F071BBEE3AA00F0DE0E /* Donsol WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 58FDF0B61B138E38002C654E /* Donsol WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		57DF2F0A1BBEE3AA00F0DE0E /* Donsol WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 58FDF0C01B138E39002C654E /* Donsol WatchKit App.app */; };
 		58FDF0BB1B138E38002C654E /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FDF0BA1B138E38002C654E /* InterfaceController.swift */; };
 		58FDF0BD1B138E38002C654E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FDF0BC1B138E38002C654E /* Images.xcassets */; };
-		58FDF0C11B138E39002C654E /* Donsol WatchKit App.app in Resources */ = {isa = PBXBuildFile; fileRef = 58FDF0C01B138E39002C654E /* Donsol WatchKit App.app */; };
 		58FDF0C91B138E39002C654E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FDF0C71B138E39002C654E /* Interface.storyboard */; };
 		58FDF0CB1B138E39002C654E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FDF0CA1B138E39002C654E /* Images.xcassets */; };
-		58FDF0CE1B138E39002C654E /* Donsol WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 58FDF0B61B138E38002C654E /* Donsol WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		58FDF0D81B138E91002C654E /* alertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FDF0D61B138E91002C654E /* alertView.swift */; };
 		58FDF0D91B138E91002C654E /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FDF0D71B138E91002C654E /* Deck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		58FDF0C21B138E39002C654E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 57BC29BF1AA162BA00098150 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 58FDF0BF1B138E39002C654E;
-			remoteInfo = "Donsol WatchKit App";
-		};
-		58FDF0CC1B138E39002C654E /* PBXContainerItemProxy */ = {
+		57DF2F051BBEE3AA00F0DE0E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 57BC29BF1AA162BA00098150 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 58FDF0B51B138E38002C654E;
 			remoteInfo = "Donsol WatchKit Extension";
 		};
+		57DF2F081BBEE3AA00F0DE0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 57BC29BF1AA162BA00098150 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58FDF0BF1B138E39002C654E;
+			remoteInfo = "Donsol WatchKit App";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		58FDF0D51B138E39002C654E /* Embed App Extensions */ = {
+		57DF2F0B1BBEE3AA00F0DE0E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				58FDF0CE1B138E39002C654E /* Donsol WatchKit Extension.appex in Embed App Extensions */,
+				57DF2F071BBEE3AA00F0DE0E /* Donsol WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		57DF2F0C1BBEE3AA00F0DE0E /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				57DF2F0A1BBEE3AA00F0DE0E /* Donsol WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -734,12 +745,12 @@
 				57BC29C31AA162BA00098150 /* Sources */,
 				57BC29C41AA162BA00098150 /* Frameworks */,
 				57BC29C51AA162BA00098150 /* Resources */,
-				58FDF0D51B138E39002C654E /* Embed App Extensions */,
+				57DF2F0C1BBEE3AA00F0DE0E /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				58FDF0CD1B138E39002C654E /* PBXTargetDependency */,
+				57DF2F091BBEE3AA00F0DE0E /* PBXTargetDependency */,
 			);
 			name = Donsol;
 			productName = solitaryDongeon;
@@ -757,27 +768,28 @@
 			buildRules = (
 			);
 			dependencies = (
-				58FDF0C31B138E39002C654E /* PBXTargetDependency */,
 			);
 			name = "Donsol WatchKit Extension";
 			productName = "Donsol WatchKit Extension";
 			productReference = 58FDF0B61B138E38002C654E /* Donsol WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit-extension";
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		58FDF0BF1B138E39002C654E /* Donsol WatchKit App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58FDF0D31B138E39002C654E /* Build configuration list for PBXNativeTarget "Donsol WatchKit App" */;
 			buildPhases = (
 				58FDF0BE1B138E39002C654E /* Resources */,
+				57DF2F0B1BBEE3AA00F0DE0E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				57DF2F061BBEE3AA00F0DE0E /* PBXTargetDependency */,
 			);
 			name = "Donsol WatchKit App";
 			productName = "Donsol WatchKit App";
 			productReference = 58FDF0C01B138E39002C654E /* Donsol WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp";
+			productType = "com.apple.product-type.application.watchapp2";
 		};
 /* End PBXNativeTarget section */
 
@@ -785,7 +797,9 @@
 		57BC29BF1AA162BA00098150 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Devine Lu Linvega";
 				TargetAttributes = {
 					57BC29C61AA162BA00098150 = {
@@ -987,7 +1001,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FDF0BD1B138E38002C654E /* Images.xcassets in Resources */,
-				58FDF0C11B138E39002C654E /* Donsol WatchKit App.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1035,15 +1048,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		58FDF0C31B138E39002C654E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 58FDF0BF1B138E39002C654E /* Donsol WatchKit App */;
-			targetProxy = 58FDF0C21B138E39002C654E /* PBXContainerItemProxy */;
-		};
-		58FDF0CD1B138E39002C654E /* PBXTargetDependency */ = {
+		57DF2F061BBEE3AA00F0DE0E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 58FDF0B51B138E38002C654E /* Donsol WatchKit Extension */;
-			targetProxy = 58FDF0CC1B138E39002C654E /* PBXContainerItemProxy */;
+			targetProxy = 57DF2F051BBEE3AA00F0DE0E /* PBXContainerItemProxy */;
+		};
+		57DF2F091BBEE3AA00F0DE0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58FDF0BF1B138E39002C654E /* Donsol WatchKit App */;
+			targetProxy = 57DF2F081BBEE3AA00F0DE0E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1096,6 +1109,7 @@
 				COPY_PHASE_STRIP = NO;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1166,6 +1180,7 @@
 				INFOPLIST_FILE = solitaryDongeon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.donsol;
 				PRODUCT_NAME = Donsol;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1183,6 +1198,7 @@
 				INFOPLIST_FILE = solitaryDongeon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.donsol;
 				PRODUCT_NAME = Donsol;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1204,9 +1220,13 @@
 				INFOPLIST_FILE = "Donsol WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.donsol.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -1222,8 +1242,12 @@
 				INFOPLIST_FILE = "Donsol WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.donsol.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -1241,12 +1265,13 @@
 				);
 				IBSC_MODULE = Donsol_WatchKit_Extension;
 				INFOPLIST_FILE = "Donsol WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.donsol.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -1261,12 +1286,13 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				IBSC_MODULE = Donsol_WatchKit_Extension;
 				INFOPLIST_FILE = "Donsol WatchKit App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xxiivv.donsol.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
