@@ -731,7 +731,7 @@
 {
 	NSLog(@"! MODAL | %@",header);
 	
-	if( tutorial == true ){}
+	if( [[self loadTutorialSetting] isEqualToString:@"OFF"] ){ return; }
 	
 	_modalView.hidden = false;
 	
@@ -748,7 +748,6 @@
 	_modalHeaderLabel.frame = CGRectMake(margin, margin, _modalWrapperView.frame.size.width-(2*margin), margin);
 	_modalTextLabel.text = text;
 	_modalTextLabel.frame = CGRectMake(margin, margin*2, _modalWrapperView.frame.size.width-(2*margin), margin*2);
-	
 	
 	_modalCloseButton.frame = CGRectMake(0, 0, 0, 0);
 	
@@ -809,6 +808,26 @@
 }
 
 # pragma mark - High Score
+
+-(void)setTutorialSetting:(NSString*)toggle
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:toggle forKey:@"tutorial"];
+	[defaults synchronize];
+}
+
+-(NSString*)loadTutorialSetting
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	if( ![defaults objectForKey:@"tutorial"]  ){
+		return @"ON";
+	}
+	if( [[defaults objectForKey:@"tutorial"] isEqualToString:@""] ){
+		return @"ON";
+	}
+	return [defaults objectForKey:@"tutorial"];
+}
 
 -(void)setHighScore:(int)score
 {
