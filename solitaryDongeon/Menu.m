@@ -380,6 +380,25 @@ typedef NS_ENUM(NSInteger, CastleTile) {
     _thanksLabel.frame = CGRectMake(margin, self.view.frame.size.height-(3*margin), self.view.frame.size.width-(2*margin), margin*2);
     _thanksLabel.text = @"SPECIAL THANKS\nJOHN ETERNAL, ZACH GAGE, KURT BIEG & TEKGO";
     _thanksLabel.textColor = [UIColor colorWithWhite:0.3 alpha:1];
+	
+	float ratio = self.view.frame.size.width/self.view.frame.size.height;
+	NSLog(@"%f",ratio);
+	
+	if( ratio == 0.75 ){
+		
+		float half_width = (self.view.frame.size.width-(2*margin))/2;
+		NSLog(@"Load iPad Layout");
+		_enterButton.frame = CGRectMake(margin, self.castleView.frame.size.height + margin, half_width, margin);
+		_scoreLabel.frame = CGRectMake(margin, self.castleView.frame.size.height + margin, half_width - 10, margin);
+		
+		_tutorialToggleButton.frame = CGRectMake(margin + half_width + 10, self.castleView.frame.size.height + (margin*1), half_width - 10, margin);
+		_tutorialToggleLabel.frame = _tutorialToggleButton.frame;
+		
+		_packDesignButton.frame = CGRectMake(margin + half_width + 10, self.castleView.frame.size.height + (margin*2), half_width - 10, margin);
+		_packDesignLabel.frame = _packDesignButton.frame;
+		
+		_thanksLabel.frame = CGRectMake(margin, _enterButton.frame.origin.y + margin, half_width - 10, margin);
+	}
 }
 
 - (IBAction)packDesignButton:(id)sender
